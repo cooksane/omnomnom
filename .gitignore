@@ -1,3 +1,10 @@
+*.DS_Store
+
+# LaTeX crap
+*.synctex.gz
+*.aux
+*.out
+
 # Logs
 logs
 *.log
