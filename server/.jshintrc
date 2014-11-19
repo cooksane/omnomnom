@@ -1,0 +1,28 @@
+{
+  "boss": true,
+  "browser": true,
+  "curly": true,
+  "devel": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "immed": true,
+  "indent": 2,
+  "jquery": true,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "undef": true,
+  "white": true,
+  "laxcomma": true,
+  "predef": [
+    "cs279hw2",
+    "google",
+    "_",
+    "Backbone",
+    "Rickshaw",
+    "Handlebars",
+    "require",
+    "define"
+  ]
+}
