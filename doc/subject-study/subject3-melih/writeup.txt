@@ -65,8 +65,8 @@ FEEDBACK
 
 METRICS (super rough):
 - Number of times subject checks recipe: ~11 times.
-- ~30-60 secs.
-- Total duration spent reading recipe (30+60)/2*11/60 = 8m 15s.
+- Time spent reading recipe while cooking: ~30-120 secs.
+- Total duration spent reading recipe (30+120)/2*11/60 = 8m 15s.
 - Number of additional steps: ~12-4 = 6 (could be used in computation of some cognitive load measure).
 
 SELECT SOLUTIONS:
@@ -74,3 +74,6 @@ SELECT SOLUTIONS:
 - Feedback 3: Specify recipe food quantity as cups, not portions.
 - Issue 1: Incorporate "Loaded ingredients" (ingredients that themselves are full on recipes) as steps into the recipe preparation process.
 - Issue 2,3: Emphasize current step. Indicate ingredients associated with each step (e.g. always show all ingredients, but highlight ingredients used in current step).
+
+IDEAS:
+- Built-in timers may be more useful for novices, but may get in the way for experts.
