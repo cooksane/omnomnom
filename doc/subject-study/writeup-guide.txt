@@ -1,0 +1,14 @@
+STUDY
+New Recipe Cooking Observation
+
+DESCRIPTION
+Observe subject cooking a new recipe. 
+
+GOAL
+To demonstrate that learning a new recipe is a process that requires significant cognitive effort. This is measured by
+
+METRICS
+- Number of times subject checks recipe (not necessarily a measure that I expect to be to our advantage, but we should still include it.)
+- Duration spent looking at recipe per check.
+- Total duration spent reading recipe (sum of all recipe check durations).
+- Number of additional steps carried out by subject which exceed the number of steps originally given by recipe.

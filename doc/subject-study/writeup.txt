@@ -1,0 +1,76 @@
+RECIPE TITLE
+Spaghetti Squash Gratin
+
+INGREDIENTS
+
+1 cup low-sodium chicken broth
+1 cup whole milk
+2 garlic cloves, smashed and peeled
+3 tablespoons all-purpose flour
+1 tablespoon unsalted butter
+1 to 2 anchovy fillets, chopped
+3 teaspoons chopped fresh sage leaves
+5 cups Roasted Spaghetti Squash
+Coarse salt and ground pepper
+3/4 cup fresh breadcrumbs
+2 tablespoons grated Parmesan
+
+DIRECTIONS
+
+Preheat oven to 375 degrees. In a small pot, bring broth, milk, and garlic to a boil over medium-high and cook 1 minute. Pour into a medium bowl, then slowly add flour, whisking constantly.
+
+In pot, melt butter over medium. Add anchovies and 2 teaspoons sage and cook, stirring, 1 minute. Return broth mixture to pan, bring to a simmer, and cook until thickened, 6 minutes. Discard garlic.
+
+Add squash to sauce and season with salt and pepper. Transfer to a 2-quart shallow baking dish.
+
+In a small bowl, combine 1 teaspoon sage, breadcrumbs, and Parmesan and sprinkle over squash. Bake until top is golden brown and mixture is bubbling at edges, 20 to 25 minutes. 
+
+SUBJECT
+Relatively experienced cook. Had experience roasting spaghetti squash, but had no prior experience preparing this recipe.
+
+SUMMARY
+
+Subject picked a small pot, filled with water, and began heating to boil. Spent about ~1 min reading instructions and realized that Roasted Spaghetti Squash ingredient actually required significant preperation. After preheating oven, subject read instructions again to scan for things that could be done while the oven preheats and the water boils. Whatever could be prepared was prepared ahead of time. When oven preheats, puts squash in.
+
+At this point, subject actually starts carrying out steps specified in instructions: Water boils, adds mixture and "whisks." Subject looks at past instructions to determine if she has made a mistake. When squash done, most other ignredients have been prepped. Subject reads the entire recipe again, from beginning, to re-evaluate her process. While waiting for liquid solution to reboil, subject preps flour. Only time she uses a timer is for liquid solution, because it contained milk, which burns easily. Read recipe again to reassess her own mental process for cooking the recipe.
+
+"Whisked" flour into liquid solution (which was done boiling). Flour was clumping, which was unexpected ("this is not good"). Melted butter in pot, added flower/liquid mixture to pot. Noticed that amount of sage she used was incorrect, so had to remeasure sage. Subject had to add squash to pot, but pot called for by recipe was too small. Subject improvised by mixing spaghetti squash and liquid/flour mixture in a larger container. Subject poured mixture into baking container, sprinkled remaining ingredients over mixture, and baked the final mixture. A timer was used for this last step.
+
+ERRORS
+- Mistook smashed garlic as crushed garlic (there's a difference). Picture may have helped here.
+- Prepared incorrect amount of sage during pre-prep process.
+
+ISSUES
+1) Roasted Spaghetti Squash, listed as an ingredient, is a significant step in preparing the recipe. This was not covered in the instructions, potentially requiring unexperienced cooks to find a recipe contains instructions on properly roasting spaghetti squash.
+2) Continually reading instructions whenever not cooking.
+3) Most ingredients were "prepped," meaning a process exists from taking the raw ingredient to the prepped ingredient.
+4) In general, subject spent most of her time reading the recipe and constructing her own process for executing the recipe. She essentially had to translate the process laid out by the recipe into her own process, suggesting the process given by the recipe is inefficient.
+5) Pot size called for by recipe was too small; had to improvise and determined that any container would suffice to mix liquid/flour mixture with roasted spaghetti squash.
+
+
+NOTES
+- Not everything that could be prepared ahead of time was prepared ahead of time (measuring out breadcrumbs and other ingredients, presumably due to the fact that such preparation would unecessarily dirty tools).
+- Subject considered starting another recipe while waiting for oven to preheat and water to boil.
+- Timer was used for milk, making sure to underestimate the timer duration so that solution was checked before liquid boiled for too long, to avoid burning the milk. In general, she uses timers for things that burn easily.
+- Recipe sauce is so good, could be its own recipe (system could somehow encourage recipe innovation for such cases).
+
+FEEDBACK
+1) Subject prefers instructions that have "multitasking" built in (doesn't require as much cognitive processing / no need to construct her own process based on poor recipe instructions).
+2) Subject always prefers to read instructions, as this helps her generate a mental map. She has grown accustomed to recipes not laying out a clear process. She does not "trust" the recipe instructions; not reading them all makes her unsure about what to do. For example, she would not "sautee mushroom, add grated cheese," as sauteeing mushrooms takes less time than is required to grating cheese (she would grate the cheese ahead of time).
+3) She doesn't check time / portions; in general she doesn't trust these values (they are always wrong). Instead, she estimates portion and time by reading the recipe!
+  - Need a good way to communicate the amount of food produced by a recipe ("portions" is meaningless, "cups" is meaningful).
+  - Need a good way to measure the duration accurately.
+  - Need a good way to communicate accuracy of food amount and duration.
+4) Idea: "hyperlinking" data for helping with "cooking fundamentals" (like Martha Stuart; see http://www.marthastewart.com/968062/cooking-fundamentals#1036152).
+
+METRICS (super rough):
+- Number of times subject checks recipe: ~11 times.
+- ~30-60 secs.
+- Total duration spent reading recipe (30+60)/2*11/60 = 8m 15s.
+- Number of additional steps: ~12-4 = 6 (could be used in computation of some cognitive load measure).
+
+SELECT SOLUTIONS:
+- Issue 1, Feedback 1,2: Minimize total duration spent reading recipe by rewriting instructions into actual step-by-step instructions to eliminate the need for cooks to generate a mental map.
+- Feedback 3: Specify recipe food quantity as cups, not portions.
+- Issue 1: Incorporate "Loaded ingredients" (ingredients that themselves are full on recipes) as steps into the recipe preparation process.
+- Issue 2,3: Emphasize current step. Indicate ingredients associated with each step (e.g. always show all ingredients, but highlight ingredients used in current step).
