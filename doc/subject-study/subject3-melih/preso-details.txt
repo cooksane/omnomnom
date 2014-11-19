@@ -1,0 +1,42 @@
+Subject 3:
+Experienced cook. Had experience roasting spaghetti squash, but had no prior experience preparing this recipe.
+
+Recipe:
+Spaghetti Squash Gratin
+
+Key Observations:
+1) Most ingredients were "prepped," meaning a process exists from taking the raw ingredient to the prepped ingredient (e.g. "baked spaghetti squash" as an ingredient).
+2) Subject repeatedly read/scanned entire recipe, often standing idle, contemplating how to go about executing recipe. 
+3) Material (pot size) called for by recipe was incorrect (too small).
+4) Timer was only used for items that may burn (warming milk).
+5) When asked, subject stated she preferred recipes that structure preparation process.
+6) Recipe was read ~11 times, but time spent reading recipe ranged from 30 to 90 second periods. 
+7) A significant gap was observed between the number of steps carried out by the subject and the number of steps.
+
+------------------------------
+
+Conclusions (to be drawn from subject 3 observations):
+
+* We believe the intrinsic cognitive load of learning a new recipe is low. Thus, the cognitive load of learning a new recipe may be decreased by good instructional design. The following properties arguably increase germane cognitive load through consistent recipe structure and presentation, allowing novices to develop an efficient schema for cooking, and experienced cooks to quickly learn new recipes. In order to improve recipe instruction, existing recipes must be curated to possess the following properties:
+  - Preparation of entire meal must be incorporated into step-by-step instructions of recipe.
+  - Recipe ingredients need to be mapped to recipe instructions.
+  - Include images for steps that may contain ambiguities that arise from expressive limitations of concise use of language.
+
+* The following properties arguably decrease extraneous cognitive load by allowing cooks to immediately identify and focus on the current step, and ingredients involved. This also justifies the use of interactive media, which is capable of keeping track of the state of the cook's progress (also reducing extraneous cognitive load by offloading progress tracking to system). In order to improve process:
+  - Visually identify (highlighting) the current step being executed.
+  - Visually identify (highlighting) the ingredients involved in the step being executed.
+
+* Subject expressed being able to see ingredients and instructions (even past ones) helped her check whether she has done everything correctly. To retain this sense of control for cooks, the following features are arguably important to retain in any user interface:
+  - Display in some fashion ingredients and key information of "inactive" steps while recipe is being prepared.
+
+------------------------------
+
+Details on key observations (for myself during preso):
+
+1) Recipe instructions contained no steps to prepare "prepped" ingredients, nor did estimated prep time account for preparation of these ingredients. (e.g. Baked spaghetti squash, listed as an ingredient, required significant preparation).
+2) This suggests subject had to translate the process laid out by the recipe into her own process, implying the process given by the recipe was ineffective ("declarative" vs. "imperative"). This also suggests difficulty in determing which step is being executed, and which ingredients are involved in that step. Also, double checked past steps to ensure no mistakes were made (do what she can to correct at current step).
+3) Subject had to improvise (determined that any container would suffice to mix liquid/flour mixture with roasted spaghetti squash).
+4) -
+5) Suggests a desire to minimize cognitive load of learning a new recipe.
+6) This suggests significant cognitive processing involved in learning the recipe.
+7) Suggests poor instructional design, which can be improved.

@@ -5,7 +5,7 @@ DESCRIPTION
 Observe subject cooking a new recipe. 
 
 GOAL
-To demonstrate that learning a new recipe is a process that requires significant cognitive effort. This is measured by
+To demonstrate that learning a new recipe is a process that requires significant cognitive effort. This is measured by the following metrics.
 
 METRICS
 - Number of times subject checks recipe (not necessarily a measure that I expect to be to our advantage, but we should still include it.)
