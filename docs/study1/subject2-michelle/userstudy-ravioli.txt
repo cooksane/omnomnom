@@ -1,0 +1,64 @@
+SUBJECT
+
+Relatively experienced--cooked multiple meals per week for about 4 years. Mostly self-taught from cooking videos and recipe experimentation.
+Has not frequently worked with dough (which both dishes below use).
+
+
+DISH: GOAT CHEESE + MUSHROOM RAVIOLI FROM SCRATCH
+
+OVERVIEW
+
+Here, the subject combined two recipes from the same site, one for the goat-cheese mushroom filling, and the other for the ravioli dough.
+He did so because he lacked a pasta machine and wanted to find a dough recipe that provided instructions for hand rolling and cutting the 
+dough. 
+
+Subject began by skimming both recipes. He commented that he likes to "parallelize" when cooking to minimize time spent, and to do that, he 
+needs to read all steps a few times to process them and decide what to do first. Noting that the filling needed to cool before being wrapped,
+and that the dough preparation really only had 20 minutes of downtime, he decided to first prepare the filling and then move on to the dough.
+
+The subject moved sequentially through the steps of the filling recipe without major issues. Because he was familiar with the tools and 
+ingredients, he was confident and quick in movements and was able to clean bowls as he went. Despite this proficiency, he referred back to the 
+recipe at least twice in each step, often once every couple of ingredients (and some steps had many ingredients), to double check the quantity 
+and amount of time necessary to process each. He sometimes asked me to double-check for him because hands were dirty and he didn't want to 
+check the computer. Each time he checked the recipe, he only glanced at it a second or two, skimming for key numbers.
+
+Making and rolling dough was a greater challenge, because the subject had never before worked with pasta dough. Here, he still followed the 
+recipe step by step, but referred to it more to understand how to work the dough rather than what to put in it. As a result, each recipe
+check was longer and more involved; he read the sentences of the recipe and scrolled back and forth to check the pictures. 
+
+Next came filling and wrapping the ravioli. He first unsuccessfully skimmed both recipes looking for specifics on the optimal ratio of filling to dough, as well as how large to cut the ravioli. He then Google searched quickly, before deciding that it was useless since nothing was to scale and decided to
+just use "gut" and his prior experience with Chinese dumplings. He did not need to consult wrapping instructions after that point.
+
+The last step written on the recipe was to boil the ravioli. This he did without consulting the recipe. He did wonder aloud when the ravioli
+would be done but decided that he'd just wait until a bit after they floated, like dumplings. As per his "parallelization" tactic, he set the water
+on a boil when he still had a few more ravioli to wrap so that he could get moving immediately when the ravioli were ready. He commented that it would 
+be faster to have started boiling the ravioli in batches, while more of the ravioli were still unwrapped, but that it was unimportant because
+boiling time was so short.
+
+On a whim, he then decided to pan sear them a bit in olive oil just for extra flavor. 
+
+
+NOTABLE CHALLENGES
+
+1. Because the two recipes were separately written, their scales were mismatched. The recipes provided little guidance for determining appropriate
+scale--"Makes about 16 large ravioli" did not help, because "large" was unclear.
+2. The pasta dough, after cooking, was thick and stiff. This was a result of the following problems:
+	- The subject found it unclear how long to knead the dough, because he was uncertain about his technique, so the time estimate provided by the 
+	  recipe seemed unreliable. He chose to err on the side of overkneading.
+	- The recipe did not state measurements for how thin the dough needed to be when rolled out.
+	- Even though the dough would roll out to be thin enough to let light through, the dough would invariably contract when cut. The subject 
+	  remarked that the recipe was "unhelpful" in that it provided no pointers for how to make the dough stay thin.
+3. Neither recipe's time estimation accounted for the filling and wrapping step--which actually took the longest for the subject. As a result, the
+   entire process took over an hour longer than expected. 
+
+
+TAKEAWAYS
+
+- Major point of confusion is the lack of precise measurements and descriptions for how long or how much a certain process should last
+- When technique is in doubt, pictures are preferred over words, and longer, richer, explanation-based descriptions are preferred
+- When a step is 'easy' or familiar, concise summaries are preferred for quickness
+- Ingredient quantity was easily forgotten
+- Subject seems to prefer improvising or drawing on experience over consulting the recipe
+- Recipes for components of a larger dish need to provide more explanations for relationship (time, ingredients, quantity) between the components and 
+  how to combine them effectively
+
