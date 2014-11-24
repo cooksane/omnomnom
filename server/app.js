@@ -1,52 +1,56 @@
-//var _ = require("underscore");
-var BigOvenAPI = require("./service/BigOvenAPI");
-var Promise = require('bluebird');
+var express = require("express");
+var bodyParser = require("body-parser");
+var http = require('http');
+var path = require('path');
 
-var lookup = process.argv.length > 2? process.argv[2] : "Ravioli Basil";
-var mode = process.argv.length > 3? process.argv[3] : "title";
+var cors = require("./middleware/cors");
+var router = require("./router");
 
-if(mode == "title"){
-    BigOvenAPI.recipesTitle(lookup, function(err, result){
-        var id = result.Results[0].RecipeID;
-        BigOvenAPI.recipe(id, function(err, result){
-            console.log(JSON.stringify(result, null, "    "));
-        });
-    });
-} else if(mode == "any"){
-    BigOvenAPI.recipesAny(lookup, function(err, result){
-        var id = result.Results[0].RecipeID;
-        BigOvenAPI.recipe(id, function(err, result){
-            console.log(JSON.stringify(result, null, "    "));
-        });
-    });
-} else {
-    console.log("Supported modes:", "title", "any");
+var MongoService = require("./services/MongoService");
+var BigOvenService = require("./services/BigOvenService");
+
+var serviceInstance = null;
+var app = null;
+
+//init();
+exports.init = init;
+exports.openService = openService;
+
+function init(dbName){
+    if(dbName == null){
+        dbName = "";
+    }
+    openService(dbName);
 }
 
-//var url = endpoint + path + "/" + recipeId + "?api_key=" + apiKey;
-//var endpoint = "http://api.bigoven.com/recipes?";
+function openService(dbName){
+    serviceInstance = new MongoService(dbName);
+    serviceInstance.open(serviceOpened.bind(this));
+}
 
-/*
-BigOvenAPI.recipesTitle(lookup, function(err, result){
-    var id = result.Results[0].RecipeID;
-    BigOvenAPI.recipe(id, function(err, result){
-        var log = function(x){console.log(x)};
-        var instructions = result.Instructions.split("\r\n");
-        log("\nKEYS: ");
-        Object.keys(result).forEach(log);
-        log("\nINSTRUCTIONS: ");
-        instructions.forEach(log);
-        log("\nINGREDIENTS: ");
-        result.Ingredients.forEach(log)
-    });
-});
-*/
+function serviceOpened(err, db){
+    var ok = err==null;
+    if(!ok){
+        console.log("\nDatabase not ok\n");
+        console.log(err);
+        return;
+    }
+    console.log("Mongo Database:", db.databaseName);
+    initServer.bind(this)();
+}
 
+function initServer(){
+    router.mongoService = serviceInstance;
+    router.bigOvenService = BigOvenService;
+    app = express();
+    app.set('port', 8000);
+    app.use(express.static(path.join(__dirname, 'static')));
+    app.use(bodyParser.json());
+    app.use(cors.allowAnyCrossDomain);
+    app.use(router.router);
+    http.createServer(app).listen(app.get('port'), null, serverCreated);
+}
 
-/*
-Q.fcall(something).then(function(err,result){
-
-}).then(function(err,result){
-
-});
-*/
+function serverCreated(){
+    console.log('Express server:', app.get('port'));
+}
