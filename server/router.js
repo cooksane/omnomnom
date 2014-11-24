@@ -6,34 +6,35 @@ exports.bigOvenService = null;
 exports.router = express.Router();
 
 //?q=Recipe Name&mode=any
+//currently returns only a single result.
 exports.router.get('/search/', function(req, res) {
-    var mode = req.query.mode;
     var lookup = req.query.q;
-    console.log(mode, lookup);
+    var mode = req.query.mode;
+    //console.log(mode, lookup);
     if(mode == "title"){
         exports.bigOvenService.recipesTitle(lookup, function(err, result){
             if(err != null){
-                return res.json({"message": "error", error: err, result: result});
+                return res.json({error: err, result: result});
             }
             if(result.ResultCount === 0){
-                return res.json({"message": "NO_RESULTS", error: err, result: result});
+                return res.json({error: "NO_RESULTS", result: result});
             }
             var id = result.Results[0].RecipeID;
             exports.bigOvenService.recipe(id, function(err, result){
-                res.json({"message": "error", error: err, result: result});
+                res.json({error: null, result: result});
             });
         });
     } else if(mode == "any"){
         exports.bigOvenService.recipesAny(lookup, function(err, result){
             if(err != null){
-                return res.json({"message": "error", error: err, result: result});
+                return res.json({error: err, result: result});
             }
             if(result.ResultCount === 0){
-                return res.json({"message": "NO_RESULTS", error: err, result: result});
+                return res.json({error: "NO_RESULTS", result: result});
             }
             var id = result.Results[0].RecipeID;
             exports.bigOvenService.recipe(id, function(err, result){
-                res.json({"message": "error", error: err, result: result});
+                res.json({error: null, result: result});
             });
         });
     } else {

@@ -1,6 +1,28 @@
-html, body {
-    height: 100%;
+html {
+
 }
+
+body {
+    padding-top: 15px;
+    /*
+    height: 100%;
+    width: 100%;
+    */
+}
+
+.jumbotron {
+    background-color: #f5f5f5;
+}
+
+.text-ellipsis {
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+/*.bg-success {background-color: lightgreen; }*/
 
 /*
 .container {

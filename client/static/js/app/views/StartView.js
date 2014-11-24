@@ -11,13 +11,13 @@ define([
             "click #next": "nextClicked"
         },
 
-        subjectModel: null,
+        appData: null,
         started: false,
 
         initialize: function(params){
-            this.subjectModel = params.subjectModel;
-            this.started = this.subjectModel.get("started");
-            console.log("StartView.initialize", this.subjectModel.attributes);
+            this.appData = params.appData;
+            this.started = this.appData.subjectModel.get("started");
+            console.log("StartView.initialize", this.appData.subjectModel.attributes);
         },
 
         render: function(){

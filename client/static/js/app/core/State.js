@@ -25,7 +25,7 @@ define(["core/EventBus"],
             var state = _.clone(stateModel.attributes);
             delete state['id'];
             var qs = $.param(state);
-            var params = [state, state.state, "?" + qs];
+            var params = [state, "Machine Assisted Cooking (Omnomnom)", "?" + qs];
             return params;
         };
 

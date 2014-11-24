@@ -6,34 +6,38 @@ define([
     "views/NasaView",
     "views/SurveyView",
     "views/ThankYouView",
-    "views/ControlView"
+
+    "views/SummaryView",
+    "views/ControlView",
+    "views/ResponsiveView"
 
 ], function (EventBus, Utils,
-             StartView, NasaView, SurveyView, ThankYouView,
-             ControlView) {
+             StartView,
+             NasaView,
+             SurveyView,
+             ThankYouView,
+             SummaryView, ControlView, ResponsiveView) {
 
     function Controller(){
-        this.stateModel = null;
-        this.subjectModel = null;
         this.service = null;
         this.appData = null;
         this.currentView = null;
     }
 
-    Controller.prototype.init = function(stateModel, subjectModel, service, appData){
-        this.stateModel = stateModel;
-        this.subjectModel = subjectModel;
+    Controller.prototype.init = function(service, appData){
         this.service = service;
         this.appData = appData;
 
-        EventBus.on("start", _.bind(this.displayStart, this));
+        //EventBus.on("start", _.bind(this.displayStart, this));
+        EventBus.on("start", _.bind(this.fetchData, this));
         EventBus.on("startCompleted", _.bind(this.startCompleted, this));
+        EventBus.on("SummaryView:continue", _.bind(this.summaryCompleted, this));
     };
 
     Controller.prototype.displayStart = function(){
         console.log("displayStart");
-        this.currentView = new StartView({subjectModel: this.subjectModel});
-        this.currentView.initialize({subjectModel: this.subjectModel});
+        this.currentView = new StartView({appData: this.appData});
+        //this.currentView.initialize({subjectModel: this.subjectModel});
         this.currentView.render();
         this.stateModel.set("state", "start");
     };
@@ -44,27 +48,32 @@ define([
         this.subjectModel.set("started", true);
         this.subjectModel.save();
 
+        this.fetchData();
+    };
+
+    Controller.prototype.fetchData = function(){
+        this.service.search(this.appData.recipeName, "any", _.bind(this.fetchDataComplete, this));
+    };
+
+    Controller.prototype.fetchDataComplete = function(err, response){
+        console.log('fetchDataComplete', err, response);
+        this.appData.borModel.set(response.result);
+        this.appData.borModel.save();
+        this.startSummary();
+    };
+
+    Controller.prototype.startSummary = function() {
+        this.currentView = new SummaryView({model: this.appData.borModel});
+        this.currentView.render();
+    };
+
+    Controller.prototype.summaryCompleted = function() {
         this.startBlock();
     };
 
     Controller.prototype.startBlock = function() {
-
-        function fetchData(){
-            fetchDataComplete();
-        }
-
-        function fetchDataComplete(err, results){
-            start();
-        }
-
-        function start(){
-            console.log("startBlock");
-            this.currentView = new ControlView();
-            this.currentView.initialize();
-            this.currentView.render();
-        }
-
-        fetchData();
+        this.currentView = new ControlView({model: this.appData.borModel});
+        this.currentView.render();
     };
 
     return Controller;
