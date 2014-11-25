@@ -50,6 +50,7 @@ define([
 
                 //BigOven Model
                 this.borModel = new BORModel({id: "nom.model.BORModel"});
+                this.borModel.fetch();
 
             }
 
