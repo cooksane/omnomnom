@@ -10,7 +10,7 @@ define([
             stateModel: null,
             subjectModel: null,
             borModel: null,
-            recipeName: "Lasagna",
+            recipeName: null,
 
             init: function(state){
 

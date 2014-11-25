@@ -52,7 +52,11 @@ define([
     };
 
     Controller.prototype.fetchData = function(){
-        this.service.search(this.appData.recipeName, "any", _.bind(this.fetchDataComplete, this));
+        if(this.appData.recipeName == null){
+            this.service.search(this.appData.recipeName, "any", _.bind(this.fetchDataComplete, this));
+        } else {
+            this.startSummary();
+        }
     };
 
     Controller.prototype.fetchDataComplete = function(err, response){
