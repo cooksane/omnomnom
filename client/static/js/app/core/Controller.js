@@ -52,7 +52,7 @@ define([
     };
 
     Controller.prototype.fetchData = function(){
-        if(this.appData.recipeName == null){
+        if(this.appData.recipeName != null){
             this.service.search(this.appData.recipeName, "any", _.bind(this.fetchDataComplete, this));
         } else {
             this.startSummary();
