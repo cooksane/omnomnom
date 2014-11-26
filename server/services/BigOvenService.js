@@ -6,10 +6,10 @@ var request = require('request');
 
 //var category = "dessert,appetizer,bread,breakfast,drinks,main%20dish,salad,side%20dish,soup,marinade,other".split(",");
 
-module.exports = BigOvenAPI;
+module.exports = BigOvenService;
 
-function BigOvenAPI() {}
-var Service = BigOvenAPI;
+function BigOvenService() {}
+var Service = BigOvenService;
 
 Service.baseUrl = "http://api.bigoven.com";
 Service.apiKey = "dvxmS70dN2OLWd67ao8559Yi3ko16wk4";

@@ -1,0 +1,44 @@
+{
+  "name": "nom",
+  "version": "0.0.0",
+  "authors": [
+    "Miriam Cha",
+    "Melih Elibol",
+    "Michelle Deng"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.2.0",
+    "jquery": "~1.11.0",
+    "backbone": "~1.1.2",
+    "backbone.localStorage": "~1.1.7",
+    "underscore": "~1.6.0",
+    "requirejs": "~2.1.14",
+    "handlebars": "~1.3.0",
+    "requirejs-plugins": "~1.0.2",
+    "cryptojslib": "~3.1.2",
+    "history.js": "~1.8.0",
+    "object-fit": "~0.3.4"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "js": "**/dist/js/*.js",
+      "css": "**/dist/css/*.*",
+      "fonts": "**/dist/fonts/*.*"
+    },
+    "history.js": {
+      "": "**/scripts/bundled-uncompressed/html4+html5/*.js"
+    },
+    "object-fit": {
+      "": "**/dist/*.js"
+    }
+  }
+}
