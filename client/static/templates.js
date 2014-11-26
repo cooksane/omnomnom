@@ -42,11 +42,11 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"row\">\n    <div class=\"col-lg-1 col-xs-1\">\n        <p><strong>";
+  buffer += "<div class=\"row\">\n    <div class=\"col-lg-1 col-xs-1 list-number\">\n        <p>";
   if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + ".</strong></p>\n    </div>\n    <div class=\"col-lg-11 col-xs-11\">\n        <p>";
+    + ".</p>\n    </div>\n    <div class=\"col-lg-11 col-xs-11\">\n        <p>";
   if (helper = helpers.text) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.text); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -69,15 +69,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"row\">\n\n    <div id=\"left\" class=\"col-lg-2\">\n        <div class=\"thumbnail\">\n            <img id=\"recipeImage\" class=\"unselectable img-responsive img-rounded\" src=\"";
+  buffer += "<div class=\"row\">\n\n    <div id=\"left\" class=\"col-lg-2\">\n        <div class=\"thumbnail shadow\">\n            <img id=\"recipeImage\" class=\"unselectable img-responsive img-rounded\" src=\"";
   if (helper = helpers.ImageURL) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.ImageURL); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" >\n            <div class=\"caption text-center\">\n                <h5>";
+    + "\" >\n            <div class=\"caption text-center\">\n                <h4 class=\"title\">";
   if (helper = helpers.Title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.Title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h5>\n                <p class=\"small\">";
+    + "</h4>\n                <p class=\"small stats\">";
   if (helper = helpers.TotalMinutes) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.TotalMinutes); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -121,7 +121,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.Description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.Description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p> -->\n            </div>\n        </div>\n    </div>\n\n    <div id=\"mid\" class=\"col-lg-4\">\n        <div class=\"panel panel-primary\">\n            <div class=\"panel-heading\"><strong>INGREDIENTS</strong></div>\n            <div id=\"ingredients-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n\n    <div id=\"right\" class=\"col-lg-6\">\n        <div class=\"panel panel-primary\">\n            <div class=\"panel-heading\"><strong>INSTRUCTIONS</strong></div>\n            <div id=\"instruction-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n</div>\n";
+    + "</p> -->\n            </div>\n        </div>\n    </div>\n\n    <div id=\"mid\" class=\"col-lg-4\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Ingredients</div>\n            <div id=\"ingredients-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n\n    <div id=\"right\" class=\"col-lg-6\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Instructions</div>\n            <div id=\"instruction-container\" class=\"panel-body\">\n            </div>\n        </div>\n    </div>\n</div>\n";
   return buffer;
   });
 
@@ -140,23 +140,39 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"col-lg-6 col-lg-offset-3\">\n    <div class=\"jumbotron text-center\">\n        <img id=\"recipeImage\" class=\"center-block unselectable img-responsive img-rounded\" src=\"";
-  if (helper = helpers.ImageURL) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.ImageURL); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + "\" />\n        <h2>";
-  if (helper = helpers.Title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
-  else { helper = (depth0 && depth0.Title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
-  buffer += escapeExpression(stack1)
-    + " <small>(";
+  buffer += "<div class=\"col-lg-6 col-lg-offset-3 text-center\">\n    <div class=\"panel shadow\" id=\"panel-start\">\n        <!--div class=\"subtitle\">";
   if (helper = helpers.Category) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.Category); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + ")</small></h2>\n        <p>";
+    + " > ";
+  if (helper = helpers.Subcategory) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Subcategory); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</div-->\n        <h1 class=\"title\">";
+  if (helper = helpers.Title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</h1>\n        <h4 class=\"description\">";
   if (helper = helpers.Description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.Description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n        <p><a id=\"continue\" class=\"btn btn-primary btn-lg\" href=\"javascript:\" role=\"button\">Continue</a></p>\n        <!-- <button id=\"continue\" type=\"button\" class=\"btn btn-default pull-right\">Continue</button> -->\n    </div>\n</div>\n\n<!--\n<div id=\"left\" class=\"col-lg-5\">\n    <img id=\"recipeImage\" class=\"unselectable img-responsive\" src=\"";
+    + "</h4>\n        <div class=\"stats\">\n            ";
+  if (helper = helpers.TotalMinutes) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.TotalMinutes); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " Min | ";
+  if (helper = helpers.YieldNumber) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.YieldNumber); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.YieldUnit) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.YieldUnit); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\n        </div>\n        <div class=\"header-image\">\n            <img id=\"recipeImage\" class=\"center-block unselectable img-responsive img-rounded\" src=\"";
+  if (helper = helpers.ImageURL) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.ImageURL); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" />\n        </div>\n        <p><a id=\"continue\" class=\"btn btn-lg\" href=\"javascript:\" role=\"button\">Continue</a></p>\n        <!-- <button id=\"continue\" type=\"button\" class=\"btn btn-default pull-right\">Continue</button> -->\n    </div>\n</div>\n\n<!--\n<div id=\"left\" class=\"col-lg-5\">\n    <img id=\"recipeImage\" class=\"unselectable img-responsive\" src=\"";
   if (helper = helpers.ImageURL) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.ImageURL); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -168,7 +184,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.Description) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.Description); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n    </div>\n\n    <div class=\"row\">\n        <button id=\"continue\" type=\"button\" class=\"btn btn-default pull-right\">Continue</button>\n    </div>\n\n</div>\n-->";
+    + "</p>\n    </div>\n\n    <div class=\"row\">\n        <button id=\"continue\" type=\"button\" class=\"btn btn-default pull-right\">Begin</button>\n    </div>\n\n</div>\n-->";
   return buffer;
   });
 

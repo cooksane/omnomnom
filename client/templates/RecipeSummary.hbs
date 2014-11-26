@@ -1,9 +1,15 @@
-<div class="col-lg-6 col-lg-offset-3">
-    <div class="jumbotron text-center">
-        <img id="recipeImage" class="center-block unselectable img-responsive img-rounded" src="{{ImageURL}}" />
-        <h2>{{Title}} <small>({{Category}})</small></h2>
-        <p>{{Description}}</p>
-        <p><a id="continue" class="btn btn-primary btn-lg" href="javascript:" role="button">Continue</a></p>
+<div class="col-lg-6 col-lg-offset-3 text-center">
+    <div class="panel shadow" id="panel-start">
+        <!--div class="subtitle">{{Category}} > {{Subcategory}}</div-->
+        <h1 class="title">{{Title}}</h1>
+        <h4 class="description">{{Description}}</h4>
+        <div class="stats">
+            {{TotalMinutes}} Min | {{YieldNumber}} {{YieldUnit}}
+        </div>
+        <div class="header-image">
+            <img id="recipeImage" class="center-block unselectable img-responsive img-rounded" src="{{ImageURL}}" />
+        </div>
+        <p><a id="continue" class="btn btn-lg" href="javascript:" role="button">Continue</a></p>
         <!-- <button id="continue" type="button" class="btn btn-default pull-right">Continue</button> -->
     </div>
 </div>
@@ -21,7 +27,7 @@
     </div>
 
     <div class="row">
-        <button id="continue" type="button" class="btn btn-default pull-right">Continue</button>
+        <button id="continue" type="button" class="btn btn-default pull-right">Begin</button>
     </div>
 
 </div>
