@@ -1,10 +1,14 @@
 /* variables */
+
+@text-primary: #294921;
+//@text-primary: #000;
+
 /*  scaffolding */
-html,
-body,
-#main-container {
+
+html, body, #main-container {
   background-color: #faf9f5;
 }
+
 body {
   padding-top: 15px;
   /*
@@ -16,17 +20,20 @@ body {
   font-size: 16px;
   line-height: 1.6em;
 }
+
 #main-container {
   padding: 10px 30px;
 }
+
 .jumbotron {
   background-color: #f5f5f5;
 }
+
 .panel {
   border: 0px;
 }
-.panel-heading,
-.btn {
+
+.panel-heading, .btn {
   font-family: Raleway, Lato, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
@@ -35,42 +42,53 @@ body {
   text-align: center;
   color: #fff;
   background-color: #508912;
+
   -webkit-transition: background-color 100ms ease-out;
   -moz-transition: background-color 100ms ease-out;
   -o-transition: background-color 100ms ease-out;
   transition: background-color 100ms ease-out;
 }
+
 .btn:hover {
   background-color: #7dba3c;
   color: #fff;
 }
+
+
 /*  general styles */
+
 .title {
   font-family: Muli, sans-serif;
   font-weight: 700;
-  color: #294921;
+  color: @text-primary;
 }
+
 strong {
-  color: #294921;
+  color: @text-primary;
 }
+
 .list-number {
   margin-left: 10px;
   margin-right: -20px;
 }
+
 .description {
   font-family: Muli, sans-serif;
   color: #999;
   padding: 10px 0 7px;
 }
+
 .stats {
-  color: #294921;
+  color: @text-primary;
   font-weight: 700;
 }
+
 .shadow {
-  -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+  box-shadow: 0px 0px 5px rgba(0,0,0,.3);
 }
+
 .text-ellipsis {
   overflow: hidden;
   -ms-text-overflow: ellipsis;
@@ -78,14 +96,20 @@ strong {
   text-overflow: ellipsis;
   display: block;
 }
+
+
 /* intro page */
+
 .header-image {
   padding: 20px 0 30px 0;
 }
+
 #panel-start {
   padding: 20px 40px;
 }
+
 /*.bg-success {background-color: lightgreen; }*/
+
 /*
 .container {
     margin: 0 auto;
@@ -153,17 +177,15 @@ strong {
     padding: 10px;
 }
 */
+
 .unselectable {
   /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
   /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
-  -moz-user-select: none;
-  /* These user-select properties are inheritable, used to prevent text selection */
+  -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
   -webkit-user-select: none;
-  -ms-user-select: none;
-  /* From IE10 only */
-  user-select: none;
-  /* Not valid CSS yet, as of July 2012 */
-  -webkit-user-drag: none;
-  /* Prevents dragging of images/divs etc */
+  -ms-user-select: none; /* From IE10 only */
+  user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
   user-drag: none;
 }

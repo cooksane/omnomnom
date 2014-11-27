@@ -6,7 +6,7 @@ npm install
 
 Run:
 
-node app.js
+grunt
 
 Details:
 
