@@ -1,5 +1,5 @@
 //var _ = require("underscore");
-var BigOvenService = require("./mongoService/BigOvenService");
+var BigOvenService = require("../services/BigOvenService");
 var Promise = require('bluebird');
 
 var lookup = process.argv.length > 2? process.argv[2] : "Ravioli Basil";
