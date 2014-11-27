@@ -5,7 +5,7 @@ define([], function () {
         defaults: function() {
             return {
                 "RecipeID": 672330,
-                "Title": "Spaghetti Squash Au Gasd",
+                "Title": "Spaghetti Squash Au Gratin",
                 "Description": "Spaghetti Squash Au Gratin Tastes like Hash Brown Casserole without all the calories and carbs",
                 "Cuisine": null,
                 "Category": "Side Dish",
