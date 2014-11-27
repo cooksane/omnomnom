@@ -65,15 +65,22 @@ define([
 
                 //BigOven Model
                 this.borModel = new BORModel({id: "nom.model.BORModel"});
-                this.borModel.fetch();
 
                 //Parsed BigOven Model
                 this.parsedBorModel = new ParsedBORModel({id: "nom.model.ParsedBORModel"});
-                this.parsedBorModel.fetch();
 
                 //Curated Model
                 this.curatedModel = new CuratedModel({id: "nom.model.CuratedModel"});
-                this.curatedModel.fetch();
+
+                if(resetSession){
+                    this.parsedBorModel.save();
+                    this.borModel.save();
+                    this.curatedModel.save();
+                } else {
+                    this.parsedBorModel.fetch();
+                    this.borModel.fetch();
+                    this.curatedModel.fetch();
+                }
 
             }
 
