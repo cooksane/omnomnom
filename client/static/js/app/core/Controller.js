@@ -9,14 +9,17 @@ define([
 
     "views/SummaryView",
     "views/ControlView",
-    "views/ResponsiveView"
+    "views/ResponsiveView",
+    "views/SBSView"
 
 ], function (EventBus, Utils,
              StartView,
              NasaView,
              SurveyView,
              ThankYouView,
-             SummaryView, ControlView, ResponsiveView) {
+
+             SummaryView,
+             ControlView, ResponsiveView, SBSView) {
 
     function Controller(){
         this.service = null;
@@ -37,16 +40,15 @@ define([
     Controller.prototype.displayStart = function(){
         console.log("displayStart");
         this.currentView = new StartView({appData: this.appData});
-        //this.currentView.initialize({subjectModel: this.subjectModel});
         this.currentView.render();
-        this.stateModel.set("state", "start");
+        this.appData.stateModel.set("state", "start");
     };
 
     Controller.prototype.startCompleted = function(){
         this.currentView.remove();
 
-        this.subjectModel.set("started", true);
-        this.subjectModel.save();
+        this.appData.subjectModel.set("started", true);
+        this.appData.subjectModel.save();
 
         this.fetchData();
     };
@@ -61,13 +63,13 @@ define([
 
     Controller.prototype.fetchDataComplete = function(err, response){
         console.log('fetchDataComplete', err, response);
-        this.appData.borModel.set(response.result);
-        this.appData.borModel.save();
+        this.appData.parsedBorModel.set(response.result);
+        this.appData.parsedBorModel.save(response.result);
         this.startSummary();
     };
 
     Controller.prototype.startSummary = function() {
-        this.currentView = new SummaryView({model: this.appData.borModel});
+        this.currentView = new SummaryView({model: this.appData.parsedBorModel});
         this.currentView.render();
     };
 
@@ -76,7 +78,18 @@ define([
     };
 
     Controller.prototype.startBlock = function() {
-        this.currentView = new ControlView({model: this.appData.borModel});
+        switch(this.appData.interface){
+            case "control":
+                this.currentView = new ControlView({model: this.appData.parsedBorModel});
+                break;
+            case "sbs":
+                this.currentView = new SBSView({model: this.appData.parsedBorModel});
+                break;
+            case "responsive":
+                this.currentView = new ResponsiveView({model: this.appData.curatedModel});
+                break;
+        }
+
         this.currentView.render();
     };
 

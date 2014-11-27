@@ -8,7 +8,8 @@ define([], function () {
             return {
                 session: "",
                 state: "start",
-                group: 0
+                group: 0,
+                interface: "sbs"
                 //this should be hidden if not set
                 //debug: false
             };

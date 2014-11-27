@@ -3,21 +3,36 @@
 html,
 body,
 #main-container {
+  height: 100%;
+  /*
+  width: 100%;
+  */
   background-color: #faf9f5;
 }
 body {
-  padding-top: 15px;
-  /*
-  height: 100%;
-  width: 100%;
-  */
+  padding-top: 0px;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   font-size: 16px;
   line-height: 1.6em;
 }
 #main-container {
-  padding: 10px 30px;
+  padding: 30px 15px;
+}
+strong {
+  color: #000000;
+}
+.container {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.row {
+  margin: 0 auto;
 }
 .jumbotron {
   background-color: #f5f5f5;
@@ -48,10 +63,7 @@ body {
 .title {
   font-family: Muli, sans-serif;
   font-weight: 700;
-  color: #294921;
-}
-strong {
-  color: #294921;
+  color: #000000;
 }
 .list-number {
   margin-left: 10px;
@@ -63,7 +75,7 @@ strong {
   padding: 10px 0 7px;
 }
 .stats {
-  color: #294921;
+  color: #000000;
   font-weight: 700;
 }
 .shadow {
@@ -85,30 +97,18 @@ strong {
 #panel-start {
   padding: 20px 40px;
 }
-/*.bg-success {background-color: lightgreen; }*/
+.full-vertical {
+  height: 100%;
+}
+/* this makes the panel body take up full vertical space */
+.sbs-panel-body-vertical {
+  height: calc(100% - 110px);
+}
+.vertical-center-content {
+  position: absolute;
+  top: 50%;
+}
 /*
-.container {
-    margin: 0 auto;
-    height: 100%;
-    width: 100%;
-    padding: 0;
-
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-
-    display: table;
-    vertical-align: middle;
-}
-
-.expand {
-    height: 100%;
-    width: 100%;
-}
-
-.row {
-    margin: 0 auto;
-}
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
 .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
@@ -123,11 +123,6 @@ strong {
 .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
 .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
     padding: 0;
-}
-
-.vertical-center-item {
-    position:absolute; top:50%;
-    width: 100%;
 }
 
 .horizontal-center-item {

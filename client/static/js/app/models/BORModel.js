@@ -1,7 +1,7 @@
 define([], function () {
 
     var BORModel = Backbone.Model.extend({
-        localStorage: new Backbone.LocalStorage('nom.model.StateModel'),
+        localStorage: new Backbone.LocalStorage('nom.model.BORModel'),
         defaults: function() {
             return {
                 "RecipeID": 672330,
