@@ -4,7 +4,7 @@ define(["models/ParsedBORModel"], function (ParsedBORModel) {
     var CuratedModel = ParsedBORModel.extend({
     //var CuratedModel = Backbone.Model.extend({
 
-        localStorage: new Backbone.LocalStorage('nom.model.CuratedModel'),
+        localStorage: new Backbone.LocalStorage('nom.model.CuratedModel')
 
     });
 

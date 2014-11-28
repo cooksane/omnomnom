@@ -54,6 +54,28 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   return buffer;
   });
 
+this["nom"]["templates"]["InstructionResponsive"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div id=\"instruction_";
+  if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" class=\"row\">\n    <div class=\"col-lg-1 col-xs-1 list-number\">\n        <p>";
+  if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + ".</p>\n    </div>\n    <div class=\"col-lg-11 col-xs-11\">\n        <p>";
+  if (helper = helpers.text) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.text); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n    </div>\n</div>";
+  return buffer;
+  });
+
 this["nom"]["templates"]["InstructionSBS"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
@@ -142,10 +164,31 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 this["nom"]["templates"]["RecipeResponsive"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  return "<div id=\"left\" class=\"col-lg-3\">\n\n</div>\n\n<div id=\"right\" class=\"col-lg-9\">\n\n</div>\n";
+  buffer += "<div class=\"row\">\n\n    <div id=\"left\" class=\"col-lg-2\">\n        <div class=\"thumbnail shadow\">\n            <img id=\"recipeImage\" class=\"unselectable img-responsive img-rounded\" src=\"";
+  if (helper = helpers.ImageURL) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.ImageURL); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" >\n            <div class=\"caption text-center\">\n                <h4 class=\"title\">";
+  if (helper = helpers.Title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</h4>\n                <p class=\"small stats\">";
+  if (helper = helpers.TotalMinutes) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.TotalMinutes); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " Min | ";
+  if (helper = helpers.YieldNumber) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.YieldNumber); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.YieldUnit) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.YieldUnit); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"mid\" class=\"col-lg-4\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Ingredients</div>\n            <div id=\"ingredients-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n\n    <div id=\"right\" class=\"col-lg-6\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Instructions</div>\n            <div id=\"instruction-container\" class=\"panel-body\">\n            </div>\n            <div class=\"panel-footer\">\n                <div class=\"row\">\n                    <div class=\"col-lg-2 pull-left\">\n                        <button id=\"prev\" type=\"button\" class=\"btn btn-lg\">Previous</button>\n                    </div>\n                    <div class=\"col-lg-2 pull-right\">\n                        <button id=\"next\" type=\"button\" class=\"btn btn-lg\">Next</button>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n";
+  return buffer;
   });
 
 this["nom"]["templates"]["RecipeSBS"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {

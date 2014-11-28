@@ -1,7 +1,39 @@
-<div id="left" class="col-lg-3">
+<div class="row">
 
-</div>
+    <div id="left" class="col-lg-2">
+        <div class="thumbnail shadow">
+            <img id="recipeImage" class="unselectable img-responsive img-rounded" src="{{ImageURL}}" >
+            <div class="caption text-center">
+                <h4 class="title">{{Title}}</h4>
+                <p class="small stats">{{TotalMinutes}} Min | {{YieldNumber}} {{YieldUnit}}</p>
+            </div>
+        </div>
+    </div>
 
-<div id="right" class="col-lg-9">
+    <div id="mid" class="col-lg-4">
+        <div class="panel shadow">
+            <div class="panel-heading">Ingredients</div>
+            <div id="ingredients-container" class="panel-body">
 
+            </div>
+        </div>
+    </div>
+
+    <div id="right" class="col-lg-6">
+        <div class="panel shadow">
+            <div class="panel-heading">Instructions</div>
+            <div id="instruction-container" class="panel-body">
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-lg-2 pull-left">
+                        <button id="prev" type="button" class="btn btn-lg">Previous</button>
+                    </div>
+                    <div class="col-lg-2 pull-right">
+                        <button id="next" type="button" class="btn btn-lg">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
