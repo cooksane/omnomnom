@@ -1,6 +1,6 @@
 /**
  * Backbone localStorage Adapter
- * Version 1.1.13
+ * Version 1.1.14
  *
  * https://github.com/jeromegn/Backbone.localStorage
  */
@@ -20,9 +20,6 @@
 // A simple module to replace `Backbone.sync` with *localStorage*-based
 // persistence. Models are given GUIDS, and saved into a JSON object. Simple
 // as that.
-
-// Hold reference to Underscore.js and Backbone.js in the closure in order
-// to make things work even if they are removed from the global namespace
 
 // Generate four random hex digits.
 function S4() {
@@ -47,6 +44,12 @@ function contains(array, item) {
 function extend(obj, props) {
   for (var key in props) obj[key] = props[key]
   return obj;
+}
+
+function result(object, property) {
+    if (object == null) return void 0;
+    var value = object[property];
+    return (typeof value === 'function') ? object[property]() : value;
 }
 
 // Our Store is represented by a single JS object in *localStorage*. Create it
@@ -80,14 +83,14 @@ extend(Backbone.LocalStorage.prototype, {
   // Add a model, giving it a (hopefully)-unique GUID, if it doesn't already
   // have an id of it's own.
   create: function(model) {
-    if (!model.id) {
+    if (!model.id && model.id !== 0) {
       model.id = guid();
       model.set(model.idAttribute, model.id);
     }
     this.localStorage().setItem(this._itemName(model.id), this.serializer.serialize(model));
     this.records.push(model.id.toString());
     this.save();
-    return this.find(model) !== false;
+    return this.find(model);
   },
 
   // Update a model by replacing its copy in `this.data`.
@@ -98,7 +101,7 @@ extend(Backbone.LocalStorage.prototype, {
       this.records.push(modelId);
       this.save();
     }
-    return this.find(model) !== false;
+    return this.find(model);
   },
 
   // Retrieve a model from `this.data` by id.
@@ -167,7 +170,7 @@ extend(Backbone.LocalStorage.prototype, {
 // *localStorage* property, which should be an instance of `Store`.
 // window.Store.sync and Backbone.localSync is deprecated, use Backbone.LocalStorage.sync instead
 Backbone.LocalStorage.sync = window.Store.sync = Backbone.localSync = function(method, model, options) {
-  var store = model.localStorage || model.collection.localStorage;
+  var store = result(model, 'localStorage') || result(model.collection, 'localStorage');
 
   var resp, errorMessage;
   //If $ is having Deferred - use it.

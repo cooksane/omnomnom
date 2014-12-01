@@ -4,8 +4,6 @@ define([
 ], function(EventBus, Utils) {
 
     return Backbone.View.extend({
-
-        className: "full-vertical",
         template: nom.templates.RecipeSBS,
         ingredientTemplate: nom.templates.Ingredient,
         instructionTemplate: nom.templates.InstructionSBS,
@@ -91,8 +89,22 @@ define([
         renderInstruction: function(){
             var instructions = this.model.get("ParsedInstructions");
 
-            var title = this.$el.find("#instruction-title");
-            title.html("Step " + (this.stepIndex+1) + " of " + (instructions.length));
+            // set state of prev & next buttons
+            if (this.stepIndex == 0) {
+                this.$el.find("#prev").addClass("inactive");
+            } else {
+                this.$el.find("#prev").removeClass("inactive");
+            }
+            if (this.stepIndex == instructions.length-1) {
+                this.$el.find("#next").addClass("inactive");
+            } else {
+                this.$el.find("#next").removeClass("inactive");
+            }
+
+           // var title = this.$el.find("#instruction-title");
+          // title.html("Step " + (this.stepIndex+1) + " of " + (instructions.length));
+            var steps = this.$el.find("#sbs-nav-step");
+            steps.html("Step " + (this.stepIndex+1) + " of " + (instructions.length));
 
             var container = this.$el.find("#instruction-container");
             container.empty();
