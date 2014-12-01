@@ -1,8 +1,9 @@
 define(
     [
-        "models/BORModel"
+        "models/BORModel",
+        "core/Utils"
     ],
-    function(BORModel) {
+    function(BORModel, Utils) {
 
     var ParsedBORModel = BORModel.extend({
 
@@ -21,7 +22,7 @@ define(
         },
 
         modifyBOR: function(data){
-            data.ParsedInstructions = [];
+            data.CuratedInstructions = [];
             var instructions = data.Instructions.split("\r\n");
             var count = 0;
             for(var i=-1;++i<instructions.length;){
@@ -30,10 +31,10 @@ define(
                     continue;
                 }
                 count += 1;
-                var cleanedInstruction = this.cleanInstruction(rawInstruction);
+                var cleanedInstruction = Utils.cleanInstruction(rawInstruction);
                 var summary = cleanedInstruction.substr(0, cleanedInstruction.length*0.4)+"...";
                 var instruction = {index: count, text: cleanedInstruction, summary: summary};
-                data.ParsedInstructions.push(instruction);
+                data.CuratedInstructions.push(instruction);
             }
             return data;
         },

@@ -60,7 +60,7 @@ define([
         },
 
         prevClicked: function(){
-            var instructions = this.model.get("ParsedInstructions");
+            var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex > 0){
                 this.lastIndex = this.stepIndex;
                 this.stepIndex -= 1;
@@ -70,7 +70,7 @@ define([
         },
 
         nextClicked: function(){
-            var instructions = this.model.get("ParsedInstructions");
+            var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex < instructions.length-1){
                 this.lastIndex = this.stepIndex;
                 this.stepIndex += 1;
@@ -88,7 +88,7 @@ define([
                 }
             }
 
-            var instructions = this.model.get("ParsedInstructions");
+            var instructions = this.model.get("CuratedInstructions");
             updateBtn(this.stepIndex > 0, this.$el.find("#prev"));
             updateBtn(this.stepIndex < instructions.length-1, this.$el.find("#next"));
         },
@@ -96,7 +96,7 @@ define([
 
         renderInstructions: function(){
             var result = this.model.attributes;
-            var instructions = result.ParsedInstructions;
+            var instructions = result.CuratedInstructions;
             var container = this.$el.find("#instruction-container");
             for(var i=-1;++i<instructions.length;){
                 var compiledTemplate = this.instructionTemplate(instructions[i]);
@@ -106,15 +106,17 @@ define([
         },
 
         selectView: function(select, index){
-            var instructions = this.model.get("ParsedInstructions");
+            var instructions = this.model.get("CuratedInstructions");
             var targetInstruction = instructions[index];
             //var targetView = this.viewLookup[index];
             var targetView = this.$el.find("#instruction_"+(index+1));
-
+            var targetHTML = targetView.find("#instruction-text");
             if(select){
                 targetView.addClass("bg-success");
+                targetHTML.html(targetInstruction.text);
             } else {
                 targetView.removeClass("bg-success");
+                targetHTML.html(targetInstruction.summary);
             }
 
         },

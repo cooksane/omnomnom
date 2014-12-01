@@ -69,7 +69,7 @@ define([
 
         renderInstructions: function(){
             var result = this.model.attributes;
-            var instructions = result.ParsedInstructions;
+            var instructions = result.CuratedInstructions;
             var container = this.$el.find("#instruction-container");
             for(var i=-1;++i<instructions.length;){
                 var compiledTemplate = this.instructionTemplate(instructions[i]);

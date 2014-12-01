@@ -55,7 +55,7 @@ define([
         },
 
         prevClicked: function(){
-            var instructions = this.model.get("ParsedInstructions");
+            var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex > 0){
                 this.stepIndex -= 1;
                 this.renderInstruction();
@@ -64,7 +64,7 @@ define([
         },
 
         nextClicked: function(){
-            var instructions = this.model.get("ParsedInstructions");
+            var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex < instructions.length-1){
                 this.stepIndex += 1;
                 this.renderInstruction();
@@ -81,13 +81,13 @@ define([
                 }
             }
 
-            var instructions = this.model.get("ParsedInstructions");
+            var instructions = this.model.get("CuratedInstructions");
             updateBtn(this.stepIndex > 0, this.$el.find("#prev"));
             updateBtn(this.stepIndex < instructions.length-1, this.$el.find("#next"));
         },
 
         renderInstruction: function(){
-            var instructions = this.model.get("ParsedInstructions");
+            var instructions = this.model.get("CuratedInstructions");
 
             // set state of prev & next buttons
             if (this.stepIndex === 0) {
