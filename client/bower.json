@@ -26,13 +26,18 @@
     "requirejs-plugins": "~1.0.2",
     "cryptojslib": "~3.1.2",
     "history.js": "~1.8.0",
-    "object-fit": "~0.3.4"
+    "object-fit": "~0.3.4",
+    "font-awesome": "~4.2.0"
   },
   "exportsOverride": {
     "bootstrap": {
       "js": "**/dist/js/*.js",
       "css": "**/dist/css/*.*",
       "fonts": "**/dist/fonts/*.*"
+    },
+    "font-awesome": {
+      "css": "**/css/*.*",
+      "fonts": "**/fonts/*.*"
     },
     "history.js": {
       "": "**/scripts/bundled-uncompressed/html4+html5/*.js"
