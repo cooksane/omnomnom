@@ -90,12 +90,12 @@ define([
             var instructions = this.model.get("ParsedInstructions");
 
             // set state of prev & next buttons
-            if (this.stepIndex == 0) {
+            if (this.stepIndex === 0) {
                 this.$el.find("#prev").addClass("inactive");
             } else {
                 this.$el.find("#prev").removeClass("inactive");
             }
-            if (this.stepIndex == instructions.length-1) {
+            if (this.stepIndex === instructions.length-1) {
                 this.$el.find("#next").addClass("inactive");
             } else {
                 this.$el.find("#next").removeClass("inactive");
