@@ -9,17 +9,20 @@ define([
         instructionTemplate: nom.templates.InstructionSBS,
 
         events: {
-            "click #prev": "prevClicked",
-            "click #next": "nextClicked"
+            "click #prev": "prev",
+            "click #next": "next"
         },
 
         stepIndex: 0,
 
         initialize: function(){
             console.log("SBSView.initialize");
+             _.bindAll(this, 'keyAction');
+            $(document).bind('keyup', this.keyAction);
         },
 
         die: function(){
+            $(document).unbind('keyup', this.keyAction);
             this.removeAllListeners();
             this.remove();
         },
@@ -54,7 +57,16 @@ define([
             }
         },
 
-        prevClicked: function(){
+        keyAction: function(e) {
+            var code = e.keyCode || e.which;
+            if (code == 39) { // right arrow
+                this.next();
+            } else if (code == 37) {  // left arrow
+                this.prev();
+            }
+        },
+
+        prev: function(){
             var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex > 0){
                 this.stepIndex -= 1;
@@ -63,7 +75,7 @@ define([
             }
         },
 
-        nextClicked: function(){
+        next: function(){
             var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex < instructions.length-1){
                 this.stepIndex += 1;

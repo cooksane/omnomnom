@@ -10,10 +10,12 @@ define([
         ingredientTemplate: nom.templates.Ingredient,
         instructionTemplate: nom.templates.InstructionResponsive,
 
+        /*
         events: {
-            "click #prev": "prevClicked",
-            "click #next": "nextClicked"
+            "click #prev": "prev",
+            "click #next": "next",
         },
+        */
 
         viewLookup: [],
         lastIndex: null,
@@ -21,9 +23,12 @@ define([
 
         initialize: function(){
             console.log("ResponsiveView.initialize");
+            _.bindAll(this, 'keyAction');
+            $(document).bind('keyup', this.keyAction);
         },
 
         die: function(){
+            $(document).unbind('keyup', this.keyAction);
             this.removeAllListeners();
             this.remove();
         },
@@ -59,7 +64,16 @@ define([
             }
         },
 
-        prevClicked: function(){
+        keyAction: function(e) {
+            var code = e.keyCode || e.which;
+            if (code == 38) { // up arrow
+                this.prev();
+            } else if (code == 40) {  // down arrow
+                this.next();
+            }
+        },
+
+        prev: function(){
             var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex > 0){
                 this.lastIndex = this.stepIndex;
@@ -69,7 +83,7 @@ define([
             }
         },
 
-        nextClicked: function(){
+        next: function(){
             var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex < instructions.length-1){
                 this.lastIndex = this.stepIndex;
@@ -108,15 +122,13 @@ define([
         selectView: function(select, index){
             var instructions = this.model.get("CuratedInstructions");
             var targetInstruction = instructions[index];
-            //var targetView = this.viewLookup[index];
+
             var targetView = this.$el.find("#instruction_"+(index+1));
-            var targetHTML = targetView.find("#instruction-text");
-            if(select){
-                targetView.addClass("bg-success");
-                targetHTML.html(targetInstruction.text);
+            var targetHTML = targetView.find(".responsive-text");
+            if (select) {
+                targetView.addClass("responsive-selected");
             } else {
-                targetView.removeClass("bg-success");
-                targetHTML.html(targetInstruction.summary);
+                targetView.removeClass("responsive-selected");
             }
 
         },

@@ -2,6 +2,7 @@
 
 @white: #fff;
 @black: #000;
+@black-20: rgba(0, 0, 0, 0.2);
 @black-40: rgba(0, 0, 0, 0.4);
 @black-60: rgba(0, 0, 0, 0.6);
 @pale-green: #faf9f5;
@@ -26,6 +27,11 @@
     box-shadow: 0 0 @radius @color;
 }
 
+.shadow-top(@color: @black-40) {
+  -webkit-box-shadow: 0 -5px 10px -5px @color;
+    box-shadow: 0 -5px 10px -5px @color;
+}
+
 .shadow-bottom(@color: @black-40) {
   -webkit-box-shadow: 0 5px 10px -5px @color;
     box-shadow: 0 5px 10px -5px @color;
@@ -36,6 +42,12 @@
      -moz-border-radius: @radius;
       -ms-border-radius: @radius;
           border-radius: @radius;
+}
+
+.border-inset() {
+  -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+      box-sizing:border-box;
 }
 
 .transition(@style, @time) {
@@ -65,8 +77,18 @@ body {
 }
 
 #instruction-container {
+  padding: 15px 0;
   min-height: 15em;
 }
+/*
+.instruction {
+  &:first-child {
+    padding-top: 15px;
+  }  
+  &:last-child {
+    padding-bottom: 15px;
+  }
+}*/ 
 
 strong {
   color: @color-text-primary;
@@ -94,8 +116,17 @@ strong {
   border: 0px;
 }
 
+.label {
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0 5px 0 0;
+  color: @black;
+}
 
 .panel-heading, .btn {
+  position: relative;
+  z-index: 100;
   font-family: Lato, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
@@ -134,9 +165,40 @@ a {
   }
 
   &.inactive {
-    display: none;
+    visibility: hidden;
   }
 } 
+
+.responsive-text {
+  display: none;
+}
+
+.responsive-selected {
+  .border-inset();
+  border-left: 10px solid @color-main;
+  .shadow-mixin(10px, @black-20);
+  padding: 15px 0;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 99;
+
+  & .list-number {
+    margin-left: 0;
+    font-weight: 700;
+  }
+
+  & .responsive-summary {
+    font-weight: 700;
+  }
+
+  & .responsive-text {
+    display: block;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
 
 .title {
   font-family: raleway, sans-serif;
@@ -205,6 +267,10 @@ a {
   .shadow-bottom();
 }
 
+.sbs-instruction-text {
+  padding: 15px 20px;
+  font-size: 20px;
+}
 .vertical-center-content {
   position:absolute; top:50%;
 }
