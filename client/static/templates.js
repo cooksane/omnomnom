@@ -64,7 +64,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" class=\"row instruction\" data-index=\"";
+    + "\" class=\"row instruction responsive-selected\" data-index=\"";
   if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -195,7 +195,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.YieldUnit) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.YieldUnit); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"mid\" class=\"col-lg-4\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Ingredients</div>\n            <div id=\"ingredients-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n\n    <div id=\"right\" class=\"col-lg-6\">\n        <div class=\"panel shadow\">\n            <div id=\"instruction-title\" class=\"panel-heading\">Instructions</div>\n            <div id=\"instruction-container\" class=\"panel-body\">\n            </div>\n        </div>\n    </div>\n</div>\n";
+    + "</p>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"mid\" class=\"col-lg-4\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Ingredients</div>\n            <div id=\"ingredients-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n\n    <div id=\"right\" class=\"col-lg-6\">\n        <div class=\"panel shadow\">\n            <div id=\"instruction-title\" class=\"panel-heading \">Instructions</div>\n            <div id=\"instruction-container\" class=\"panel-body invisible\">\n            </div>\n        </div>\n    </div>\n</div>\n";
   return buffer;
   });
 
@@ -225,7 +225,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.YieldUnit) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.YieldUnit); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"mid\" class=\"col-lg-4\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Ingredients</div>\n            <div id=\"ingredients-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n\n    <div id=\"right\" class=\"col-lg-6 full-vertical\">\n        <div class=\"panel shadow\" id=\"panel-instructions\">\n            <div id=\"instruction-title\" class=\"panel-heading\">Instructions</div>\n            <div id=\"sbs-nav\" class=\"row\">\n                    <div class=\"col-md-3 pull-left\">\n                        <a id=\"prev\" type=\"button\"><i class=\"fa fa-arrow-left\"></i> Previous</a>\n                    </div>\n                    <div id=\"sbs-nav-step\" class=\"col-lg-6\">\n                        sup\n                    </div>\n                    <div class=\"col-lg-2 pull-right\">\n                        <a id=\"next\" type=\"button\">Next <i class=\"fa fa-arrow-right\"></i></a>\n                    </div>\n                </div>\n            <div id=\"instruction-container\" class=\"panel-body sbs-panel-body-vertical\">\n            </div>\n        </div>\n    </div>\n</div>\n";
+    + "</p>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"mid\" class=\"col-lg-4\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Ingredients</div>\n            <div id=\"ingredients-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n\n    <div id=\"right\" class=\"col-lg-6 full-vertical\">\n        <div class=\"panel shadow\" id=\"panel-instructions\">\n            <div id=\"instruction-title\" class=\"panel-heading\">Instructions</div>\n            <div id=\"sbs-nav\" class=\"row\">\n                <div class=\"col-md-3 pull-left\">\n                    <a id=\"prev\" type=\"button\"><i class=\"fa fa-arrow-left\"></i> Previous</a>\n                </div>\n                <div id=\"sbs-nav-step\" class=\"col-lg-6\"></div>\n                <div class=\"col-lg-2 pull-right\">\n                    <a id=\"next\" type=\"button\">Next <i class=\"fa fa-arrow-right\"></i></a>\n                </div>\n            </div>\n            <div id=\"instruction-container\" class=\"panel-body sbs-panel-body-vertical invisible\">\n            </div>\n        </div>\n    </div>\n</div>\n";
   return buffer;
   });
 

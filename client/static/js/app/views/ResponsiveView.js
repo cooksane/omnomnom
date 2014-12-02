@@ -47,7 +47,6 @@ define([
             this.renderIngredients();
             this.renderInstructions();
             this.selectInstruction();
-            this.updateButtons();
         },
 
         renderIngredients: function(){
@@ -76,7 +75,6 @@ define([
                 this.lastIndex = this.stepIndex;
                 this.stepIndex = index;
                 this.selectInstruction();
-                this.updateButtons();
             }
         },
 
@@ -86,7 +84,6 @@ define([
                 this.lastIndex = this.stepIndex;
                 this.stepIndex -= 1;
                 this.selectInstruction();
-                this.updateButtons();
             }
         },
 
@@ -96,11 +93,10 @@ define([
                 this.lastIndex = this.stepIndex;
                 this.stepIndex += 1;
                 this.selectInstruction();
-                this.updateButtons();
             }
         },
 
-        updateButtons: function(){
+        /* updateButtons: function(){
             function updateBtn(enable, $btn){
                 if(enable && $btn.hasClass("disabled")){
                     $btn.removeClass("disabled");
@@ -112,34 +108,40 @@ define([
             var instructions = this.model.get("CuratedInstructions");
             updateBtn(this.stepIndex > 0, this.$el.find("#prev"));
             updateBtn(this.stepIndex < instructions.length-1, this.$el.find("#next"));
-        },
+        }, */
 
-
-        renderInstructions: function(){
+        renderInstructions: function() {
             var result = this.model.attributes;
             var instructions = result.CuratedInstructions;
             var container = this.$el.find("#instruction-container");
-            for(var i=-1;++i<instructions.length;){
+
+            this.instructionHeight = 0;
+            for (var i = -1; ++i < instructions.length; ) {
                 var compiledTemplate = this.instructionTemplate(instructions[i]);
                 this.viewLookup.push(compiledTemplate);
                 container.append(compiledTemplate);
+                var height = this.$el.find("#instruction_" + (i+1)).height();
+                this.instructionHeight = Math.max(this.instructionHeight, height);
             }
+
+            this.$el.find(".instruction").removeClass("responsive-selected");
+            this.$el.find("#instruction-container").removeClass("invisible");
+
+            console.log(this.instructionHeight);
         },
-
-
 
         selectView: function(select, index){
             var instructions = this.model.get("CuratedInstructions");
             var targetInstruction = instructions[index];
-
             var targetView = this.$el.find("#instruction_"+(index+1));
             var targetHTML = targetView.find(".responsive-text");
             if (select) {
                 targetView.addClass("responsive-selected");
+                targetView.height(this.instructionHeight);
             } else {
                 targetView.removeClass("responsive-selected");
+                targetView.css('height','auto');
             }
-
         },
 
         selectInstruction: function(){

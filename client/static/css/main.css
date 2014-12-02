@@ -18,18 +18,8 @@ body {
   padding: 30px 15px;
 }
 #instruction-container {
-  padding: 15px 0;
-  min-height: 15em;
+  padding: 20px 0 15px 0;
 }
-/*
-.instruction {
-  &:first-child {
-    padding-top: 15px;
-  }  
-  &:last-child {
-    padding-bottom: 15px;
-  }
-}*/
 strong {
   color: #000000;
 }
@@ -54,6 +44,9 @@ strong {
   font-weight: 700;
   padding: 0 5px 0 0;
   color: #000000;
+}
+.panel-body {
+  padding-top: 20px;
 }
 .panel-heading,
 .btn {
@@ -104,6 +97,9 @@ a:hover {
 a.inactive {
   visibility: hidden;
 }
+.invisible {
+  visibility: hidden;
+}
 .responsive-text {
   display: none;
 }
@@ -130,7 +126,7 @@ a.inactive {
   display: block;
 }
 .responsive-selected:last-child {
-  margin-bottom: 0;
+  margin-bottom: 15px;
 }
 .title {
   font-family: raleway, sans-serif;

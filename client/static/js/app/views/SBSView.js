@@ -42,6 +42,22 @@ define([
 
         renderModel: function(){
             this.renderIngredients();
+
+            // compute height
+            var container = this.$el.find("#instruction-container");
+            var instructions = this.model.get("CuratedInstructions");
+            this.instructionHeight = 0;
+            for (var i=-1; ++i < instructions.length; ) {
+                container.empty();
+                var compiledTemplate = this.instructionTemplate(instructions[i]);
+                container.html(compiledTemplate);
+                this.instructionHeight = Math.max(this.instructionHeight, container.height());
+                console.log(container.height());
+            }
+            container.height(this.instructionHeight);
+            container.removeClass("invisible");
+            
+            // actually render instructions
             this.renderInstruction();
             this.updateButtons();
         },
@@ -113,8 +129,6 @@ define([
                 this.$el.find("#next").removeClass("inactive");
             }
 
-           // var title = this.$el.find("#instruction-title");
-          // title.html("Step " + (this.stepIndex+1) + " of " + (instructions.length));
             var steps = this.$el.find("#sbs-nav-step");
             steps.html("Step " + (this.stepIndex+1) + " of " + (instructions.length));
 
