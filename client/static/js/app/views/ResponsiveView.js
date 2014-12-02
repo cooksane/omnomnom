@@ -10,12 +10,9 @@ define([
         ingredientTemplate: nom.templates.Ingredient,
         instructionTemplate: nom.templates.InstructionResponsive,
 
-        /*
         events: {
-            "click #prev": "prev",
-            "click #next": "next",
+            'click .instruction': 'instructionClicked'
         },
-        */
 
         viewLookup: [],
         lastIndex: null,
@@ -73,9 +70,19 @@ define([
             }
         },
 
+        instructionClicked: function(event) {
+            var index = $(event.currentTarget).data('index') - 1;
+            if (this.stepIndex != index) {
+                this.lastIndex = this.stepIndex;
+                this.stepIndex = index;
+                this.selectInstruction();
+                this.updateButtons();
+            }
+        },
+
         prev: function(){
             var instructions = this.model.get("CuratedInstructions");
-            if(this.stepIndex > 0){
+            if (this.stepIndex > 0){
                 this.lastIndex = this.stepIndex;
                 this.stepIndex -= 1;
                 this.selectInstruction();
@@ -85,7 +92,7 @@ define([
 
         next: function(){
             var instructions = this.model.get("CuratedInstructions");
-            if(this.stepIndex < instructions.length-1){
+            if (this.stepIndex < instructions.length-1){
                 this.lastIndex = this.stepIndex;
                 this.stepIndex += 1;
                 this.selectInstruction();
@@ -119,6 +126,8 @@ define([
             }
         },
 
+
+
         selectView: function(select, index){
             var instructions = this.model.get("CuratedInstructions");
             var targetInstruction = instructions[index];
@@ -135,7 +144,7 @@ define([
 
         selectInstruction: function(){
             this.selectView(true, this.stepIndex);
-            if(this.lastIndex != null){
+            if (this.lastIndex != null){
                 this.selectView(false, this.lastIndex);
             }
         }
