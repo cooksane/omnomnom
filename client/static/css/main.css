@@ -58,7 +58,8 @@ strong {
   font-size: 16px;
   letter-spacing: 1px;
   text-align: center;
-  color: #ffffff;
+  color: #ffffff !important;
+  outline: none !important;
   background-color: #00cb8b;
 }
 .panel-heading {

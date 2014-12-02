@@ -127,7 +127,8 @@ strong {
   font-size: 16px;
   letter-spacing: 1px;
   text-align: center;
-  color: @white;
+  color: @white !important;
+  outline: none !important;
   background-color: @color-main;
 }
 
@@ -139,11 +140,10 @@ strong {
   .transition(background-color, 200ms);
   .transition(color, 200ms);
   .shadow-mixin(5px, @black-40);
-}
-
-.btn:hover {
-  background-color: @dark-spearmint;
-  color: @white;
+  &:hover {
+    background-color: @dark-spearmint;
+    color: @white;
+  }
 }
 
 /*  general styles */

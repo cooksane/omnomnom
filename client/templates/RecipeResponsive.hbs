@@ -1,14 +1,17 @@
 <div class="row">
 
-    <div id="left" class="col-lg-2">
+    <div id="left" class="col-lg-2 text-center">
         <div class="thumbnail shadow">
             <img id="recipeImage" class="unselectable img-responsive img-rounded" src="{{ImageURL}}" >
-            <div class="caption text-center">
+            <div class="caption">
                 <h4 class="title">{{Title}}</h4>
                 <p class="small stats">{{TotalMinutes}} Min | {{YieldNumber}} {{YieldUnit}}</p>
             </div>
         </div>
+
+        <button id="done" type="button" class="btn btn-lg">I'm Done!</button>
     </div>
+
 
     <div id="mid" class="col-lg-4">
         <div class="panel shadow">
