@@ -1,21 +1,19 @@
-Get/Install nvm:
-https://github.com/creationix/nvm
-
-Install node and npm:
-nvm install 0.10.29 //if not already installed
-nvm alias default 0.10.29 //if you want to use node 0.10.29 by default
-nvm use 0.10.29
-
 Install packages:
-npm install
+* npm install
 
 Run:
-node app "{search}" {mode}
-
-Examples:
-node app "Ravioli Basil" any
-node app "French" title
-node app "Cookies"
+* node start.js
 
 Description:
-Currently prints the top recipe result for the given keyword search.
+* Samples BigOven data via /search/ path.
+
+Sample Recipe:
+* node tests/test-api "{search}" {mode}
+
+Examples:
+* node tests/test-api "Ravioli Basil" any
+* node tests/test-api "French" title
+* node tests/test-api "Cookies"
+
+TODO:
+* Integrate get/set data functions to build curated database.

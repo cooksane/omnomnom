@@ -36,17 +36,61 @@ function program1(depth0,data) {
   return buffer;
   });
 
-this["nom"]["templates"]["InstructionSimple"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+this["nom"]["templates"]["InstructionControl"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div class=\"row\">\n    <div class=\"col-lg-1 col-xs-1 list-number\">\n        <p>";
+  buffer += "<div class=\"row instruction\">\n    <div class=\"col-lg-1 col-xs-1 list-number\">\n        <p>";
   if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
     + ".</p>\n    </div>\n    <div class=\"col-lg-11 col-xs-11\">\n        <p>";
+  if (helper = helpers.text) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.text); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n    </div>\n</div>";
+  return buffer;
+  });
+
+this["nom"]["templates"]["InstructionResponsive"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div id=\"instruction_";
+  if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" class=\"row instruction\" data-index=\"";
+  if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\">\n    <div class=\"col-lg-1 col-xs-1 list-number\">\n        <p>";
+  if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + ".</p>\n    </div>\n    <div class=\"col-lg-11 col-xs-11\">\n        <p class=\"responsive-summary\">";
+  if (helper = helpers.summary) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.summary); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n        <p class=\"responsive-text\"><span class=\"label small\">Details </span>";
+  if (helper = helpers.text) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.text); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n    </div>\n</div>";
+  return buffer;
+  });
+
+this["nom"]["templates"]["InstructionSBS"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class=\"row instruction\">\n    <div class=\"col-lg-12 col-xs-12\">\n        <p class=\"sbs-instruction-text\">";
   if (helper = helpers.text) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.text); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -128,10 +172,61 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 this["nom"]["templates"]["RecipeResponsive"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
-  
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  return "<div id=\"left\" class=\"col-lg-3\">\n\n</div>\n\n<div id=\"right\" class=\"col-lg-9\">\n\n</div>\n";
+  buffer += "<div class=\"row\">\n\n    <div id=\"left\" class=\"col-lg-2\">\n        <div class=\"thumbnail shadow\">\n            <img id=\"recipeImage\" class=\"unselectable img-responsive img-rounded\" src=\"";
+  if (helper = helpers.ImageURL) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.ImageURL); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" >\n            <div class=\"caption text-center\">\n                <h4 class=\"title\">";
+  if (helper = helpers.Title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</h4>\n                <p class=\"small stats\">";
+  if (helper = helpers.TotalMinutes) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.TotalMinutes); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " Min | ";
+  if (helper = helpers.YieldNumber) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.YieldNumber); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.YieldUnit) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.YieldUnit); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"mid\" class=\"col-lg-4\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Ingredients</div>\n            <div id=\"ingredients-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n\n    <div id=\"right\" class=\"col-lg-6\">\n        <div class=\"panel shadow\">\n            <div id=\"instruction-title\" class=\"panel-heading\">Instructions</div>\n            <div id=\"instruction-container\" class=\"panel-body\">\n            </div>\n        </div>\n    </div>\n</div>\n";
+  return buffer;
+  });
+
+this["nom"]["templates"]["RecipeSBS"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
+  var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
+
+
+  buffer += "<div class=\"row full-vertical\">\n\n    <div id=\"left\" class=\"col-lg-2\">\n        <div class=\"thumbnail shadow\">\n            <img id=\"recipeImage\" class=\"unselectable img-responsive img-rounded\" src=\"";
+  if (helper = helpers.ImageURL) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.ImageURL); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" >\n            <div class=\"caption text-center\">\n                <h4 class=\"title\">";
+  if (helper = helpers.Title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.Title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</h4>\n                <p class=\"small stats\">";
+  if (helper = helpers.TotalMinutes) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.TotalMinutes); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " Min | ";
+  if (helper = helpers.YieldNumber) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.YieldNumber); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + " ";
+  if (helper = helpers.YieldUnit) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.YieldUnit); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "</p>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"mid\" class=\"col-lg-4\">\n        <div class=\"panel shadow\">\n            <div class=\"panel-heading\">Ingredients</div>\n            <div id=\"ingredients-container\" class=\"panel-body\">\n\n            </div>\n        </div>\n    </div>\n\n    <div id=\"right\" class=\"col-lg-6 full-vertical\">\n        <div class=\"panel shadow\" id=\"panel-instructions\">\n            <div id=\"instruction-title\" class=\"panel-heading\">Instructions</div>\n            <div id=\"sbs-nav\" class=\"row\">\n                    <div class=\"col-md-3 pull-left\">\n                        <a id=\"prev\" type=\"button\"><i class=\"fa fa-arrow-left\"></i> Previous</a>\n                    </div>\n                    <div id=\"sbs-nav-step\" class=\"col-lg-6\">\n                        sup\n                    </div>\n                    <div class=\"col-lg-2 pull-right\">\n                        <a id=\"next\" type=\"button\">Next <i class=\"fa fa-arrow-right\"></i></a>\n                    </div>\n                </div>\n            <div id=\"instruction-container\" class=\"panel-body sbs-panel-body-vertical\">\n            </div>\n        </div>\n    </div>\n</div>\n";
+  return buffer;
   });
 
 this["nom"]["templates"]["RecipeSummary"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -202,7 +297,7 @@ function program1(depth0,data) {
 function program3(depth0,data) {
   
   
-  return "\n            <div class=\"alert alert-warning\" role=\"alert\">\n                <b>Notice</b> Once you click start, you <b>must</b> complete the study without interruption.\n                If you close this window <b>after</b> pressing start, then you will be unable to take the test again.\n                Please carefully read the instructions below.</p>\n            </div>\n            <h2>Instructions</h2>\n            <p> Welcome to {legit name}! We thank you for participating in this study\n                to improve recipe instruction for cooks!\n                This study will not properly operate for any version of IE.\n                If you are using IE, please open this url in a browser other than IE.\n                Please maximize your window.\n                You will be given further instructions upon clicking the start button below.</p>\n            <button id=\"next\" type=\"button\" class=\"btn btn-lg btn-default\">Start</button>\n        ";
+  return "\n            <div class=\"alert alert-warning\" role=\"alert\">\n                <b>Notice</b> Once you click start, you <b>must</b> complete the study without interruption.\n                If you close this window <b>after</b> pressing start, then you will be unable to take the test again.\n                Please carefully read the instructions below.</p>\n            </div>\n            <h2>Instructions</h2>\n            <p> Welcome to {legit name}! We thank you for participating in this study\n                to improve recipe instruction for cooks!\n                This study will not properly operate for any version of IE.\n                If you are using IE, please open this url in a browser other than IE.\n                Please maximize your window.\n                You will be given further instructions upon clicking the start button below.</p>\n            <button id=\"next\" type=\"button\" class=\"btn btn-lg\">Start</button>\n        ";
   }
 
   buffer += "<div class=\"row\">\n    <div class=\"col-lg-4\"></div>\n    <div class=\"col-lg-4\">\n        <div class=\"text-center\">\n        ";

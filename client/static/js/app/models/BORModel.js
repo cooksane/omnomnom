@@ -1,12 +1,201 @@
 define([], function () {
 
     var BORModel = Backbone.Model.extend({
-        localStorage: new Backbone.LocalStorage('nom.model.StateModel'),
+        localStorage: new Backbone.LocalStorage('nom.model.BORModel'),
         defaults: function() {
+            return {
+                "Title": "Chocolate Chip Pancakes",
+                "Description": "Tastes just like all the calories and carbs inside.",
+                "Category": "Breakfast/Brunch",
+                "ImageURL": "http://www.kitchentreaty.com/wp-content/uploads/2013/06/IMG_7767.jpg",
+                "Ingredients": [
+                    {
+                        "DisplayIndex": 0,
+                        "Name": "whole wheat flour",
+                        "Quantity": 0.75,
+                        "DisplayQuantity": " 3/4 ",
+                        "Unit": "cups",
+                        "PreparationNotes": "Can substitute with all-purpose flour"
+                    }, 
+                    {
+                        "DisplayIndex": 1,
+                        "Name": "all-purpose flour",
+                        "Quantity": 0.75,
+                        "DisplayQuantity": " 3/4 ",
+                        "Unit": "cups",
+                    },  
+                    {
+                        "IngredientID": 1779765,
+                        "DisplayIndex": 2,
+                        "IsHeading": false,
+                        "Name": "baking powder ",
+                        "HTMLName": "<a href=\"http://www.bigoven.com/glossary/baking%20powder\" class=\"glosslink\">baking powder</a> ",
+                        "Quantity": 1,
+                        "DisplayQuantity": " 1 ",
+                        "Unit": "tablespoon",
+                        "MetricQuantity": 15,
+                        "MetricDisplayQuantity": "15",
+                        "MetricUnit": "ml",
+                        "PreparationNotes": "",
+                        "IngredientInfo": {
+                            "Name": "baking powder ",
+                            "Department": "Baking"
+                        },
+                        "IsLinked": true
+                    },
+                    {
+                        "IngredientID": 1779766,
+                        "DisplayIndex": 3,
+                        "IsHeading": false,
+                        "Name": "baking soda ",
+                        "HTMLName": "<a href=\"http://www.bigoven.com/glossary/baking%20soda\" class=\"glosslink\">baking soda</a> ",
+                        "Quantity": 0.5,
+                        "DisplayQuantity": " 1/2 ",
+                        "Unit": "teaspoon",
+                        "MetricQuantity": 2.46446079160853,
+                        "MetricDisplayQuantity": "2",
+                        "MetricUnit": "ml",
+                        "PreparationNotes": "",
+                        "IngredientInfo": {
+                            "Name": "baking soda ",
+                            "Department": "Baking"
+                        },
+                        "IsLinked": true
+                    },
+                    {
+                        "IngredientID": 1779767,
+                        "DisplayIndex": 4,
+                        "IsHeading": false,
+                        "Name": "Salt",
+                        "HTMLName": "<a href=\"http://www.bigoven.com/glossary/salt\" class=\"glosslink\">Salt</a>",
+                        "Quantity": 0.5,
+                        "DisplayQuantity": " 1/2 ",
+                        "Unit": "teaspoon",
+                        "MetricQuantity": 2.46446079160853,
+                        "MetricDisplayQuantity": "2",
+                        "MetricUnit": "ml",
+                        "PreparationNotes": "",
+                        "IngredientInfo": {
+                            "Name": "Salt",
+                            "Department": "Baking"
+                        },
+                        "IsLinked": true
+                    },
+                    {
+                        "IngredientID": 1779768,
+                        "DisplayIndex": 5,
+                        "IsHeading": false,
+                        "Name": "sugar",
+                        "HTMLName": "<a href=\"http://www.bigoven.com/glossary/sugar\" class=\"glosslink\">sugar</a>",
+                        "Quantity": 2,
+                        "DisplayQuantity": " 2 ",
+                        "Unit": "tablespoon",
+                        "MetricQuantity": 30,
+                        "MetricDisplayQuantity": "30",
+                        "MetricUnit": "ml",
+                        "IngredientInfo": {
+                            "Name": "sugar",
+                            "Department": "Baking"
+                        },
+                        "IsLinked": true
+                    },
+                    {
+                        "DisplayIndex": 6,
+                        "IsHeading": false,
+                        "Name": "nutmeg",
+                        "Quantity": 0.125,
+                        "DisplayQuantity": " 1/8 ",
+                        "Unit": "",
+                        "PreparationNotes": "optional, or to taste",
+                    },
+                    {
+                        "IngredientID": 1779764,
+                        "DisplayIndex": 7,
+                        "IsHeading": false,
+                        "Name": "buttermilk",
+                        "HTMLName": "<a href=\"http://www.bigoven.com/glossary/buttermilk\" class=\"glosslink\">buttermilk</a> ",
+                        "Quantity": 1.5,
+                        "DisplayQuantity": " 1 1/2 ",
+                        "Unit": "cups",
+                        "MetricQuantity": 355,
+                        "MetricDisplayQuantity": "355",
+                        "MetricUnit": "ml",
+                        "PreparationNotes": "",
+                        "IngredientInfo": {
+                            "Name": "buttermilk ",
+                            "Department": "Dairy"
+                        },
+                        "IsLinked": true
+                    },
+                    {
+                        "IngredientID": 1779769,
+                        "DisplayIndex": 8,
+                        "IsHeading": false,
+                        "Name": "egg",
+                        "HTMLName": "<a href=\"http://www.bigoven.com/glossary/egg\" class=\"glosslink\">egg</a> ",
+                        "Quantity": 2,
+                        "DisplayQuantity": " 2 ",
+                        "Unit": "",
+                        "MetricQuantity": 2,
+                        "MetricDisplayQuantity": " 2 ",
+                        "MetricUnit": "",
+                        "PreparationNotes": "",
+                        "IngredientInfo": {
+                            "Name": "egg ",
+                            "Department": "Dairy"
+                        },
+                        "IsLinked": true
+                    },
+                    {
+                        "IngredientID": 6790403,
+                        "DisplayIndex": 9,
+                        "IsHeading": false,
+                        "Name": "butter",
+                        "HTMLName": "<a href=\"http://www.bigoven.com/glossary/butter\" class=\"glosslink\">butter</a>",
+                        "Quantity": 2,
+                        "DisplayQuantity": "2",
+                        "Unit": "tablespoons",
+                        "MetricQuantity": 30,
+                        "MetricDisplayQuantity": "30",
+                        "MetricUnit": "ml",
+                        "PreparationNotes": "melted and cooled slightly",
+                        "IngredientInfo": {
+                            "Name": "butter",
+                            "Department": "Dairy"
+                        },
+                        "IsLinked": true
+                    },
+                    {
+                        "IngredientID": 1779771,
+                        "DisplayIndex": 10,
+                        "IsHeading": false,
+                        "Name": "semi-sweet chocolate chips",
+                        "HTMLName": "semi-sweet <a href=\"http://www.bigoven.com/glossary/chocolate\" class=\"glosslink\">chocolate</a> chips",
+                        "Quantity": 0.5,
+                        "DisplayQuantity": " 1/2 ",
+                        "Unit": "cup",
+                        "MetricUnit": "",
+                        "PreparationNotes": "and additional for garnish",
+                        "IngredientInfo": {
+                            "Name": "semi-sweet chocolate chips",
+                            "Department": "Baking"
+                        },
+                        "IsLinked": false
+                    }
+                ],
+                "Instructions": "In a large bowl, mix together flours, baking powder, baking soda, sugar, salt, and nutmeg if using.\r\nIn a medium bowl, whisk together the buttermilk, eggs, butter, and vanilla until blended.\r\nPour the wet ingredients over the dry ingredients and whisk JUST until incorporated (don’t overmix!)\r\nHeat a non-stick griddle to 325 degrees, or place a large non-stick frying pan over medium heat. Add a little butter, if desired. Scoop pancake batter by the scant 1/2 cup full onto griddle or pan. I like to use an ice cream scoop for this!\r\nSprinkle chocolate chips over the tops of the pancakes. For me it works out to about 10 to 12 chips per pancake.\r\nCook until the pancakes begin to look a little dry around the edges and start to form bubbles, about 1 to 2 minutes. Flip and cook for another minute or so until golden brown on both sides and cooked completely through (you might want to check one in the middle to be sure it’s cooked completely. If not, flip it back over and let it cook for a bit longer).\r\nServe with butter and maple syrup; sprinkle with additional chocolate chips if desired.",
+                "YieldNumber": 12,
+                "YieldUnit": "Pancakes",
+                "TotalMinutes": 25,
+                "ActiveMinutes": 25,
+                "CreationDate": "/Date(1382617897000)/",
+                "LastModified": "/Date(1413960460707)/",
+            };
+            /*
             return {
                 "RecipeID": 672330,
                 "Title": "Spaghetti Squash Au Gratin",
-                "Description": "Spaghetti Squash Au Gratin Tastes like Hash Brown Casserole without all the calories and carbs",
+                "Description": "Tastes just like a hash brown casserole without all the calories and carbs. ",
                 "Cuisine": null,
                 "Category": "Side Dish",
                 "Subcategory": "Casseroles",
@@ -222,7 +411,7 @@ define([], function () {
                     16
                 ],
                 "VerifiedByClass": "helper"
-            };
+            }; */
         }
     });
 

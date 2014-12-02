@@ -4,23 +4,20 @@ define([
 ], function(EventBus, Utils) {
 
     return Backbone.View.extend({
-
-        className: "full-vertical",
-        template: nom.templates.RecipeResponsive,
+        template: nom.templates.RecipeSBS,
         ingredientTemplate: nom.templates.Ingredient,
-        instructionTemplate: nom.templates.InstructionResponsive,
+        instructionTemplate: nom.templates.InstructionSBS,
 
         events: {
-            'click .instruction': 'instructionClicked'
+            "click #prev": "prev",
+            "click #next": "next"
         },
 
-        viewLookup: [],
-        lastIndex: null,
         stepIndex: 0,
 
         initialize: function(){
-            console.log("ResponsiveView.initialize");
-            _.bindAll(this, 'keyAction');
+            console.log("SBSView.initialize");
+             _.bindAll(this, 'keyAction');
             $(document).bind('keyup', this.keyAction);
         },
 
@@ -31,7 +28,7 @@ define([
         },
 
         render: function(){
-            console.log("ResponsiveView.render");
+            console.log("SBSView.render");
             this.renderTemplate();
             this.renderModel();
         },
@@ -45,8 +42,7 @@ define([
 
         renderModel: function(){
             this.renderIngredients();
-            this.renderInstructions();
-            this.selectInstruction();
+            this.renderInstruction();
             this.updateButtons();
         },
 
@@ -63,39 +59,27 @@ define([
 
         keyAction: function(e) {
             var code = e.keyCode || e.which;
-            if (code == 38) { // up arrow
-                this.prev();
-            } else if (code == 40) {  // down arrow
+            if (code == 39) { // right arrow
                 this.next();
-            }
-        },
-
-        instructionClicked: function(event) {
-            var index = $(event.currentTarget).data('index') - 1;
-            if (this.stepIndex != index) {
-                this.lastIndex = this.stepIndex;
-                this.stepIndex = index;
-                this.selectInstruction();
-                this.updateButtons();
+            } else if (code == 37) {  // left arrow
+                this.prev();
             }
         },
 
         prev: function(){
             var instructions = this.model.get("CuratedInstructions");
-            if (this.stepIndex > 0){
-                this.lastIndex = this.stepIndex;
+            if(this.stepIndex > 0){
                 this.stepIndex -= 1;
-                this.selectInstruction();
+                this.renderInstruction();
                 this.updateButtons();
             }
         },
 
         next: function(){
             var instructions = this.model.get("CuratedInstructions");
-            if (this.stepIndex < instructions.length-1){
-                this.lastIndex = this.stepIndex;
+            if(this.stepIndex < instructions.length-1){
                 this.stepIndex += 1;
-                this.selectInstruction();
+                this.renderInstruction();
                 this.updateButtons();
             }
         },
@@ -114,39 +98,30 @@ define([
             updateBtn(this.stepIndex < instructions.length-1, this.$el.find("#next"));
         },
 
-
-        renderInstructions: function(){
-            var result = this.model.attributes;
-            var instructions = result.CuratedInstructions;
-            var container = this.$el.find("#instruction-container");
-            for(var i=-1;++i<instructions.length;){
-                var compiledTemplate = this.instructionTemplate(instructions[i]);
-                this.viewLookup.push(compiledTemplate);
-                container.append(compiledTemplate);
-            }
-        },
-
-
-
-        selectView: function(select, index){
+        renderInstruction: function(){
             var instructions = this.model.get("CuratedInstructions");
-            var targetInstruction = instructions[index];
 
-            var targetView = this.$el.find("#instruction_"+(index+1));
-            var targetHTML = targetView.find(".responsive-text");
-            if (select) {
-                targetView.addClass("responsive-selected");
+            // set state of prev & next buttons
+            if (this.stepIndex === 0) {
+                this.$el.find("#prev").addClass("inactive");
             } else {
-                targetView.removeClass("responsive-selected");
+                this.$el.find("#prev").removeClass("inactive");
+            }
+            if (this.stepIndex === instructions.length-1) {
+                this.$el.find("#next").addClass("inactive");
+            } else {
+                this.$el.find("#next").removeClass("inactive");
             }
 
-        },
+           // var title = this.$el.find("#instruction-title");
+          // title.html("Step " + (this.stepIndex+1) + " of " + (instructions.length));
+            var steps = this.$el.find("#sbs-nav-step");
+            steps.html("Step " + (this.stepIndex+1) + " of " + (instructions.length));
 
-        selectInstruction: function(){
-            this.selectView(true, this.stepIndex);
-            if (this.lastIndex != null){
-                this.selectView(false, this.lastIndex);
-            }
+            var container = this.$el.find("#instruction-container");
+            container.empty();
+            var compiledTemplate = this.instructionTemplate(instructions[this.stepIndex]);
+            container.html(compiledTemplate);
         }
 
     });

@@ -11,12 +11,21 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         bower: {
-            main: {
+            dev: {
                 options: {
                     install: false,
                     layout: "byComponent",
                     cleanTargetDir: true,
                     targetDir: "static/lib"
+                }
+            }
+        },
+
+        // Compile less files
+        less: {
+            dev: {
+                files: {
+                    'static/css/main.css': 'less/main.less'
                 }
             }
         },
@@ -99,7 +108,7 @@ module.exports = function (grunt) {
 
     });
     
-    grunt.registerTask('build', ['bower:main', 'handlebars']);
-    grunt.registerTask('default', ['build', 'jshint', 'connect:dev', 'watch']);
+    grunt.registerTask('build', ['bower:dev', 'handlebars', 'less:dev', 'jshint']);
+    grunt.registerTask('default', ['build', 'connect:dev', 'watch']);
     
 };

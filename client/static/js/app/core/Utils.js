@@ -18,6 +18,17 @@ define([
                 cb({width: width, height: height});
             };
             newImg.src = imgSrc;
+        },
+
+        cleanInstruction: function(instruction){
+            var trim = function(s){return s.replace(/^\s+|\s+$/g, '');};
+            var ltrim = function(s){return s.replace(/^\s+/,'');};
+            var rtrim = function(s){return s.replace(/\s+$/,'');};
+            var fulltrim = function(s){return s.replace(/(?:(?:^|\n)\s+|\s+(?:$|\n))/g,'').replace(/\s+/g,' ');};
+
+            var trimNum = function(s){return s.replace(/([0-9]+\.)/g, '');};
+
+            return trim(trimNum(instruction));
         }
 
     };
