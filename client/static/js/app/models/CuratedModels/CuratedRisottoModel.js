@@ -1,3 +1,5 @@
+/* source: http://thepioneerwoman.com/cooking/2011/05/risotto-primavera/ */
+
 define(
     [
         "models/BORModel",
@@ -24,7 +26,7 @@ define(
             "Add green onions and peas, stirring to combine.",
             "Taste to make sure rice is the right texture; add another helping of broth if rice has too much bite to it. Check salt content and add more salt if necessary.",
             "Once rice is cooked, remove from heat. Stir in goat cheese, Parmesan, and vegetables until all goat cheese is combined.",
-            "Serve on a plate with a sprig of dill."
+            "Serve on plates, and garnish each with a sprig of dill."
         ];
 
         var CuratedModel = BORModel.extend({
