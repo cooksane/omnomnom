@@ -72,7 +72,7 @@ define([
                 //Curated Model
                 this.curatedModel = new CuratedModel({id: "nom.model.CuratedModel"});
 
-                if(resetSession){
+                if (resetSession) {
                     this.parsedBorModel.save();
                     this.borModel.save();
                     this.curatedModel.save();

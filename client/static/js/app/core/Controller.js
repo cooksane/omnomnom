@@ -69,7 +69,7 @@ define([
     };
 
     Controller.prototype.startSummary = function() {
-        this.currentView = new SummaryView({model: this.appData.parsedBorModel});
+        this.currentView = new SummaryView({model: this.appData.curatedModel});
         this.currentView.render();
     };
 
@@ -80,10 +80,10 @@ define([
     Controller.prototype.startBlock = function() {
         switch(this.appData.interface){
             case "control":
-                this.currentView = new ControlView({model: this.appData.parsedBorModel});
+                this.currentView = new ControlView({model: this.appData.curatedModel});
                 break;
             case "sbs":
-                this.currentView = new SBSView({model: this.appData.parsedBorModel});
+                this.currentView = new SBSView({model: this.appData.curatedModel});
                 break;
             case "responsive":
                 this.currentView = new ResponsiveView({model: this.appData.curatedModel});

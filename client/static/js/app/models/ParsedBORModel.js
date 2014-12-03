@@ -16,7 +16,7 @@ define(
         parse: function(response, options){
             try {
                 return this.modifyBOR(response);
-            } catch(e){
+            } catch (e) {
                 return this.modifyBOR(this.attributes);
             }
         },
