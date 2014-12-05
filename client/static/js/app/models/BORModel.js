@@ -5,7 +5,7 @@ define([], function () {
         defaults: function() {
             return {
                 "Title": "Risotto Primavera",
-                "Description": "A dish yo.",
+                "Description": "There are vegetables, so it must be healthy.",
                 "Category": "Mains",
                 "ImageURL": "http://farm3.static.flickr.com/2176/5701294093_0a54069b95_z.jpg",
                 "Ingredients": [
