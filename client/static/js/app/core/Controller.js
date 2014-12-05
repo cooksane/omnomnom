@@ -31,8 +31,7 @@ define([
         this.service = service;
         this.appData = appData;
 
-        //EventBus.on("start", _.bind(this.displayStart, this));
-        EventBus.on("start", _.bind(this.startSummary, this));
+        EventBus.on("start", _.bind(this.initStartState, this));
         EventBus.on("startCompleted", _.bind(this.startCompleted, this));
         EventBus.on("summaryCompleted", _.bind(this.summaryCompleted, this));
         EventBus.on("blockCompleted", _.bind(this.blockCompleted, this));
@@ -40,6 +39,30 @@ define([
         EventBus.on("surveyCompleted", _.bind(this.surveyCompleted, this));
         EventBus.on("logEvent", _.bind(this.logEvent, this));
 
+    };
+
+    Controller.prototype.initStartState = function(){
+        var startState = this.appData.stateModel.get("state");
+        switch(startState){
+            case "start":
+                this.displayStart();
+                break;
+            case "summary":
+                this.startSummary();
+                break;
+            case "interface":
+                this.startBlock();
+                break;
+            case "nasa":
+                this.startNasa();
+                break;
+            case "survey":
+                this.startSurvey();
+                break;
+            case "thankyou":
+                this.displayThankYou();
+                break;
+        }
     };
 
     Controller.prototype.displayStart = function(){
@@ -78,6 +101,7 @@ define([
     Controller.prototype.startSummary = function() {
         this.currentView = new SummaryView({model: this.appData.recipeModel});
         this.currentView.render();
+        this.appData.stateModel.set("state", "summary");
     };
 
     Controller.prototype.summaryCompleted = function() {
@@ -98,6 +122,7 @@ define([
         }
 
         this.currentView.render();
+        this.appData.stateModel.set("state", "interface");
     };
 
     Controller.prototype.blockCompleted = function(interfaceView){

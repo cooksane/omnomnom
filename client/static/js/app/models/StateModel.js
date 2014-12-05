@@ -1,4 +1,3 @@
-// state = start, experiment, nasa, survey, thankyou
 
 define([], function () {
 
@@ -7,13 +6,13 @@ define([], function () {
         defaults: function() {
             return {
                 session: "",
-                state: "start",
                 group: 1,
-                interface: "control",
-                recipe: "eggs" //eggs, lasagna, risotto
+                state: "summary", // start, summary, interface, nasa, survey, thankyou
+                interface: "control", // control, sbs, responsive
+                recipe: "eggs" // eggs, lasagna, risotto
 
-                //this should be hidden if not set
-                //debug: false
+                // this should be hidden if not set
+                // debug: false
             };
         }
     });

@@ -21,8 +21,9 @@ define([
                 "risotto": new CuratedRisottoModel({id: "nom.model.CuratedRisottoModel"})
             },
 
-            recipe: "eggs", //may be eggs, lasagna, or risotto
+            recipe: "eggs", //eggs, lasagna, risotto
             interface: "control", // control, sbs, responsive
+            stateValue: "summary", // start, summary, interface, nasa, survey, thankyou
 
             init: function(state){
 
@@ -37,12 +38,18 @@ define([
                 this.stateModel.set("recipe", this.recipe);
 
                 //interface
-                //this.interface =
                 var interface = state.getQueryParamByName("interface");
                 if(interface != null){
                     this.interface = interface;
                 }
                 this.stateModel.set("interface", this.interface);
+
+                //state
+                var stateValue = state.getQueryParamByName("state");
+                if(stateValue != null){
+                    this.stateValue = stateValue;
+                }
+                this.stateModel.set("state", this.stateValue);
 
                 //debug flag
                 var debug = state.getQueryParamByName("debug");

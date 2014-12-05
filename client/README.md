@@ -115,3 +115,14 @@ Data is logged whenever the user clicks the mouse anywhere on the screen or hits
 * To pick an interface, use http://localhost:8080/?interface=sbs
 * To reset a session, use http://localhost:8080/?reset=1
 * To debug, use http://localhost:8080/?debug=1
+
+### States
+* Get to any state using **http://localhost:8080/?state=nasa**
+* Possible states include:
+  * start
+  * summary
+  * interface
+  * nasa
+  * survey
+  * thankyou
+
