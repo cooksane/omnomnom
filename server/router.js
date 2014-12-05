@@ -47,8 +47,8 @@ exports.router.get('/:collection/', function(req, res) {
     var query = {};
     var projection = {};
     var options = {};
-    options.sort = ['_id', 'descending'];
-    options.limit = 180;
+    options.sort = [['_id', 'descending']];
+    options.limit = req.query.limit !== null? parseInt(req.query.limit) : 100;
     exports.mongoService.query(collection, query, projection, options, function(err, result){
         if(err != null){
             res.json({"message": "error", error: err.toString(), result: result});
@@ -61,7 +61,13 @@ exports.router.get('/:collection/', function(req, res) {
 exports.router.get('/:collection/:session', function(req, res) {
     var collection = req.params.collection;
     var session = req.params.session;
-    exports.mongoService.query(collection, {session: session}, {}, {}, function(err, result){
+
+    var query = {session: session};
+    var projection = {};
+    var options = {};
+    options.sort = [['_id', 'descending']];
+    options.limit = req.query.limit !== null? parseInt(req.query.limit) : 100;
+    exports.mongoService.query(collection, query, projection, options, function(err, result){
         if(err != null){
             res.json({"message": "error", error: err.toString(), result: result});
         } else {

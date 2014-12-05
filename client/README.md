@@ -62,11 +62,10 @@ Data is logged whenever the user clicks the mouse anywhere on the screen or hits
 #### Notes
 
 * Control Interface
-  * step == -1
+  * step == 0
   * stepDelta == 0
   * stepDuration == totalDuration
   * intentSuccess = true iff intent = "done"
-
 
 ### Sample log entry
 
@@ -77,7 +76,7 @@ Data is logged whenever the user clicks the mouse anywhere on the screen or hits
     "intent": "done",
     "intentSuccess": true,
     "stepDelta": 0,
-    "stepIndex": -1,
+    "step": 0,
     "stepDuration": 13722,
     "totalDuration": 13722,
     "group": 2,
