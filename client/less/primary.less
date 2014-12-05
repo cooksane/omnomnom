@@ -9,7 +9,9 @@
 @spearmint: #00cb8b;
 @dark-spearmint: #0fae7b;
 @pale-gray: #fafafa;
+@pale-green: #fafffa;
 @gray: #999;
+@dark-gray: #666;
 @fresh-green: #A0C336;
 @medium-green: #508912;
 @off-green: #3c763d;
@@ -35,9 +37,9 @@
     box-shadow: 0 -5px 10px -5px @color;
 }
 
-.shadow-bottom(@color: @black-40) {
-  -webkit-box-shadow: 0 5px 10px -5px @color;
-    box-shadow: 0 5px 10px -5px @color;
+.shadow-bottom(@color: @black-20) {
+  -webkit-box-shadow: 0 5px 6px -5px @color;
+    box-shadow: 0 5px 6px -5px @color;
 }
 
 .border-radius(@radius) {
@@ -136,9 +138,9 @@ strong {
   font-size: 16px;
   letter-spacing: 1px;
   text-align: center;
-  color: @white !important;
+  color: @black;
   outline: none !important;
-  background-color: @color-main;
+  background-color: @white;
 }
 
 .panel-heading {
@@ -148,10 +150,9 @@ strong {
 .btn {
   .transition(background-color, 200ms);
   .transition(color, 200ms);
-  .shadow-mixin(5px, @black-40);
+  .shadow-mixin(3px, @black-40);
   &:hover {
-    background-color: @dark-main;
-    color: @white;
+    color: @color-main;
   }
 }
 
@@ -270,7 +271,7 @@ a {
   font-weight: 700;
   font-size: 14px;
   text-align: center;
-  padding: 5px 0;
+  padding: 8px 0 5px 0;
   margin: 0;
   .shadow-bottom();
 }

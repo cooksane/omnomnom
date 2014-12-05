@@ -61,13 +61,13 @@ strong {
   font-size: 16px;
   letter-spacing: 1px;
   text-align: center;
-  color: #ffffff !important;
+  color: #000000;
   outline: none !important;
-  background-color: #00cb8b;
+  background-color: #ffffff;
 }
 .panel-heading {
-  -webkit-box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
 }
 .btn {
   -webkit-transition: background-color 200ms ease-out;
@@ -78,12 +78,11 @@ strong {
   -moz-transition: color 200ms ease-out;
   -o-transition: color 200ms ease-out;
   transition: color 200ms ease-out;
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
 }
 .btn:hover {
-  background-color: #0fae7b;
-  color: #ffffff;
+  color: #00cb8b;
 }
 /*  general styles */
 a {
@@ -186,10 +185,10 @@ a.inactive {
   font-weight: 700;
   font-size: 14px;
   text-align: center;
-  padding: 5px 0;
+  padding: 8px 0 5px 0;
   margin: 0;
-  -webkit-box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.4);
-  box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
 }
 .sbs-instruction-text {
   padding: 15px 20px;
