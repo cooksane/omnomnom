@@ -71,9 +71,6 @@ define([
             var stepDuration = time - this.stepTime;
             var stepDelta = stepChanged? this.stepIndex - this.lastIndex : 0;
 
-            // unknown, setStep, prevStep, nextStep, done
-            // instructionClick, prevClick, nextClick, unknownClick, doneClick
-            // upKey, leftKey, downKey, rightKey, unknownKey
 
             var intentMap = {
                 "doneClick": "done",
@@ -94,14 +91,17 @@ define([
                                 (intent == "setStep" && this.stepIndex !== this.lastIndex);
 
             var log = {
+                // instructionClick, prevClick, nextClick, unknownClick, doneClick
+                // upKey, leftKey, downKey, rightKey, unknownKey
                 interaction: interaction,
                 interactionDelta: time - this.lastInteractionTime, // duration since last interaction
 
+                // unknown, setStep, prevStep, nextStep, done
                 intent: intent, //what was the user trying to do?
                 intentSuccess: intentSuccess, //did the UI do what the user intended?
 
                 stepDelta: stepDelta, // +1, -1, 0, or something in [0, n-1]
-                stepIndex: this.stepIndex - stepDelta, // step on which event occurred
+                step: this.stepIndex - stepDelta + 1, // step on which event occurred
                 stepDuration: stepDuration, // duration spent on stepIndex
                 totalDuration: time - this.startTime // total duration
             };
