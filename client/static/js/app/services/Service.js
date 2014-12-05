@@ -28,9 +28,9 @@ define([
         });
     };
 
-    Service.prototype.getData = function(collection, id, callback){
-        console.log("getting data", collection, id);
-        var url = "http://"+document.domain+":8000/"+collection+"/"+id;
+    Service.prototype.getData = function(collection, session, callback){
+        console.log("getting data", collection, session);
+        var url = "http://"+document.domain+":8000/"+collection+"/"+session;
         var headers = {};
         var data = {};
         $.ajax({
@@ -46,9 +46,9 @@ define([
         });
     };
 
-    Service.prototype.putData = function(collection, id, data){
-        console.log("putting data", id, data);
-        var url = "http://"+document.domain+":8000/"+collection+"/"+id;
+    Service.prototype.putData = function(collection, session, data){
+        console.log("putting data", session, data);
+        var url = "http://"+document.domain+":8000/"+collection+"/"+session;
 
         $.ajax({
             type: "POST",

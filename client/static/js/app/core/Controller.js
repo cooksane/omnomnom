@@ -32,9 +32,14 @@ define([
         this.appData = appData;
 
         //EventBus.on("start", _.bind(this.displayStart, this));
-        EventBus.on("start", _.bind(this.fetchData, this));
+        EventBus.on("start", _.bind(this.startSummary, this));
         EventBus.on("startCompleted", _.bind(this.startCompleted, this));
-        EventBus.on("SummaryView:continue", _.bind(this.summaryCompleted, this));
+        EventBus.on("summaryCompleted", _.bind(this.summaryCompleted, this));
+        EventBus.on("blockCompleted", _.bind(this.blockCompleted, this));
+        EventBus.on("nasaCompleted", _.bind(this.nasaCompleted, this));
+        EventBus.on("surveyCompleted", _.bind(this.surveyCompleted, this));
+        EventBus.on("logEvent", _.bind(this.logEvent, this));
+
     };
 
     Controller.prototype.displayStart = function(){
@@ -50,12 +55,13 @@ define([
         this.appData.subjectModel.set("started", true);
         this.appData.subjectModel.save();
 
-        this.fetchData();
+        this.startSummary();
     };
 
+    /*
     Controller.prototype.fetchData = function(){
-        if(this.appData.recipeName != null){
-            this.service.search(this.appData.recipeName, "any", _.bind(this.fetchDataComplete, this));
+        if(this.appData.recipe != null){
+            this.service.search(this.appData.recipe, "any", _.bind(this.fetchDataComplete, this));
         } else {
             this.startSummary();
         }
@@ -67,9 +73,10 @@ define([
         this.appData.parsedBorModel.save(response.result);
         this.startSummary();
     };
+    */
 
     Controller.prototype.startSummary = function() {
-        this.currentView = new SummaryView({model: this.appData.curatedModel});
+        this.currentView = new SummaryView({model: this.appData.recipeModel});
         this.currentView.render();
     };
 
@@ -80,17 +87,97 @@ define([
     Controller.prototype.startBlock = function() {
         switch(this.appData.interface){
             case "control":
-                this.currentView = new ControlView({model: this.appData.curatedModel});
+                this.currentView = new ControlView({model: this.appData.recipeModel});
                 break;
             case "sbs":
-                this.currentView = new SBSView({model: this.appData.curatedModel});
+                this.currentView = new SBSView({model: this.appData.recipeModel});
                 break;
             case "responsive":
-                this.currentView = new ResponsiveView({model: this.appData.curatedModel});
+                this.currentView = new ResponsiveView({model: this.appData.recipeModel});
                 break;
         }
 
         this.currentView.render();
+    };
+
+    Controller.prototype.blockCompleted = function(interfaceView){
+        this.currentView.die();
+        this.appData.subjectModel.set("completed", true);
+        this.appData.subjectModel.save();
+        this.startNasa();
+    };
+
+    Controller.prototype.startNasa = function(){
+        console.log("startNasa");
+        this.currentView = new NasaView({appData: this.appData});
+        this.currentView.render();
+        this.appData.stateModel.set("state", "nasa");
+    };
+
+    Controller.prototype.nasaCompleted = function(nasaView){
+        console.log("nasaCompleted", nasaView.data);
+
+        //subject model
+        this.appData.subjectModel.set("nasa", nasaView.data);
+        this.appData.subjectModel.save();
+
+        var sData = this.appData.subjectModel.attributes;
+        var data = {data: nasaView.data};
+        var session = sData.session;
+        data.group = sData.group;
+        data.interface = this.appData.stateModel.get("interface");
+        data.recipe = this.appData.stateModel.get("recipe");
+        data.timestamp = (new Date()).toISOString();
+        this.service.putData("nasas", session, data);
+
+        this.currentView.remove();
+        this.startSurvey();
+    };
+
+    Controller.prototype.startSurvey = function(){
+        console.log("startSurvey");
+        this.currentView = new SurveyView({appData: this.appData});
+        this.currentView.render();
+        this.appData.stateModel.set("state", "survey");
+    };
+
+    Controller.prototype.surveyCompleted = function(surveyView){
+        console.log("surveyCompleted");
+
+        //subject model
+        this.appData.subjectModel.set("survey", surveyView.data);
+        this.appData.subjectModel.save();
+
+        var sData = this.appData.subjectModel.attributes;
+        var data = {data: surveyView.data};
+        var session = sData.session;
+        data.group = sData.group;
+        data.interface = this.appData.stateModel.get("interface");
+        data.recipe = this.appData.stateModel.get("recipe");
+        data.timestamp = (new Date()).toISOString();
+        this.service.putData("surveys", session, data);
+
+        this.currentView.remove();
+        this.displayThankYou();
+    };
+
+    Controller.prototype.displayThankYou = function(){
+        this.currentView = new ThankYouView({appData: this.appData});
+        this.currentView.render();
+
+        this.appData.stateModel.set("state", "thankyou");
+    };
+
+    Controller.prototype.logEvent = function(log, blockView){
+        console.log("log ", log);
+        var sData = this.appData.subjectModel.attributes;
+        var data = _.clone(log);
+        var session = sData.session;
+        data.group = sData.group;
+        data.interface = this.appData.stateModel.get("interface");
+        data.recipe = this.appData.stateModel.get("recipe");
+        data.timestamp = (new Date()).toISOString();
+        this.service.putData("logs", session, data);
     };
 
     return Controller;

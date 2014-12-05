@@ -1,9 +1,10 @@
 define([
     "core/EventBus",
-    "core/Utils"
-], function(EventBus, Utils) {
+    "core/Utils",
+    "views/InterfaceViewBase"
+], function(EventBus, Utils, InterfaceViewBase) {
 
-    return Backbone.View.extend({
+    return InterfaceViewBase.extend({
 
         className: "full-vertical",
         template: nom.templates.RecipeResponsive,
@@ -11,12 +12,12 @@ define([
         instructionTemplate: nom.templates.InstructionResponsive,
 
         events: {
-            'click .instruction': 'instructionClicked'
+            'click .instruction': 'instructionClicked',
+            "click #done": 'recipeComplete',
+            "click": "onClick"
         },
 
         viewLookup: [],
-        lastIndex: null,
-        stepIndex: 0,
 
         initialize: function(){
             console.log("ResponsiveView.initialize");
@@ -26,7 +27,7 @@ define([
 
         die: function(){
             $(document).unbind('keyup', this.keyAction);
-            this.removeAllListeners();
+            this.undelegateEvents();
             this.remove();
         },
 
@@ -63,18 +64,26 @@ define([
         keyAction: function(e) {
             var code = e.keyCode || e.which;
             if (code == 38) { // up arrow
-                this.prev();
+                e.stopImmediatePropagation();
+                this.updateLog("upKey", this.prev());
             } else if (code == 40) {  // down arrow
-                this.next();
+                e.stopImmediatePropagation();
+                this.updateLog("downKey", this.next());
+            } else {
+                this.onKey(e);
             }
         },
 
         instructionClicked: function(event) {
+            event.stopImmediatePropagation();
             var index = $(event.currentTarget).data('index') - 1;
             if (this.stepIndex != index) {
                 this.lastIndex = this.stepIndex;
                 this.stepIndex = index;
                 this.selectInstruction();
+                this.updateLog("instructionClick", true);
+            } else {
+                this.updateLog("instructionClick", false);
             }
         },
 
@@ -84,7 +93,9 @@ define([
                 this.lastIndex = this.stepIndex;
                 this.stepIndex -= 1;
                 this.selectInstruction();
+                return true;
             }
+            return false;
         },
 
         next: function(){
@@ -93,22 +104,10 @@ define([
                 this.lastIndex = this.stepIndex;
                 this.stepIndex += 1;
                 this.selectInstruction();
+                return true;
             }
+            return false;
         },
-
-        /* updateButtons: function(){
-            function updateBtn(enable, $btn){
-                if(enable && $btn.hasClass("disabled")){
-                    $btn.removeClass("disabled");
-                } else if(!enable && !$btn.hasClass("disabled")){
-                    $btn.addClass("disabled");
-                }
-            }
-
-            var instructions = this.model.get("CuratedInstructions");
-            updateBtn(this.stepIndex > 0, this.$el.find("#prev"));
-            updateBtn(this.stepIndex < instructions.length-1, this.$el.find("#next"));
-        }, */
 
         renderInstructions: function() {
             var result = this.model.attributes;
@@ -146,7 +145,7 @@ define([
 
         selectInstruction: function(){
             this.selectView(true, this.stepIndex);
-            if (this.lastIndex != null){
+            if (this.lastIndex != -1){
                 this.selectView(false, this.lastIndex);
             }
         }

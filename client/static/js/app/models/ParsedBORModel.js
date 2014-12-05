@@ -10,18 +10,18 @@ define(
         localStorage: new Backbone.LocalStorage('nom.model.ParsedBORModel'),
 
         defaults: function() {
-            return this.modifyBOR(BORModel.prototype.defaults.call(this));
+            return this.curateRecipe(BORModel.prototype.defaults.call(this));
         },
 
         parse: function(response, options){
             try {
-                return this.modifyBOR(response);
+                return this.curateRecipe(response);
             } catch (e) {
-                return this.modifyBOR(this.attributes);
+                return this.curateRecipe(this.attributes);
             }
         },
 
-        modifyBOR: function(data){
+        curateRecipe: function(data){
             data.CuratedInstructions = [];
             var instructions = data.Instructions.split("\r\n");
             var count = 0;

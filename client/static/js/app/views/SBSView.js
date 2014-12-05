@@ -1,19 +1,22 @@
 define([
     "core/EventBus",
-    "core/Utils"
-], function(EventBus, Utils) {
+    "core/Utils",
+    "views/InterfaceViewBase"
+], function(EventBus, Utils, InterfaceViewBase) {
 
-    return Backbone.View.extend({
+    return InterfaceViewBase.extend({
+
+        className: "",
         template: nom.templates.RecipeSBS,
         ingredientTemplate: nom.templates.Ingredient,
         instructionTemplate: nom.templates.InstructionSBS,
 
         events: {
-            "click #prev": "prev",
-            "click #next": "next"
+            "click #done": 'recipeComplete',
+            "click #prev": "prevClick",
+            "click #next": "nextClick",
+            "click": "onClick"
         },
-
-        stepIndex: 0,
 
         initialize: function(){
             console.log("SBSView.initialize");
@@ -23,7 +26,7 @@ define([
 
         die: function(){
             $(document).unbind('keyup', this.keyAction);
-            this.removeAllListeners();
+            this.undelegateEvents();
             this.remove();
         },
 
@@ -76,28 +79,48 @@ define([
         keyAction: function(e) {
             var code = e.keyCode || e.which;
             if (code == 39) { // right arrow
-                this.next();
+                e.stopImmediatePropagation();
+                this.updateLog("rightKey", this.next());
             } else if (code == 37) {  // left arrow
-                this.prev();
+                e.stopImmediatePropagation();
+                this.updateLog("leftKey", this.prev());
+            } else {
+                this.onKey(e);
             }
+        },
+
+        prevClick: function(e){
+            e.stopImmediatePropagation();
+            this.updateLog("prevClick", this.prev());
+        },
+
+        nextClick: function(e){
+            e.stopImmediatePropagation();
+            this.updateLog("nextClick", this.next());
         },
 
         prev: function(){
             var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex > 0){
+                this.lastIndex = this.stepIndex;
                 this.stepIndex -= 1;
                 this.renderInstruction();
                 this.updateButtons();
+                return true;
             }
+            return false;
         },
 
         next: function(){
             var instructions = this.model.get("CuratedInstructions");
             if(this.stepIndex < instructions.length-1){
+                this.lastIndex = this.stepIndex;
                 this.stepIndex += 1;
                 this.renderInstruction();
                 this.updateButtons();
+                return true;
             }
+            return false;
         },
 
         updateButtons: function(){

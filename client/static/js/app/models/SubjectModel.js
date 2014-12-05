@@ -7,8 +7,9 @@ define(["core/Utils"],
             return {
                 session: Utils.getSubjectId(),
                 started: false,
+                completed: false,
                 group: 0,
-                nasas: [],
+                nasa: null,
                 survey: null
             };
         }

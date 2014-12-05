@@ -1,20 +1,27 @@
 define([
     "models/StateModel",
     "models/SubjectModel",
-    "models/BORModel",
-    "models/ParsedBORModel",
-    "models/CuratedModel"
+    "models/curated/CuratedEggsModel",
+    "models/curated/CuratedLasagnaModel",
+    "models/curated/CuratedRisottoModel"
 ],
 
-    function (StateModel, SubjectModel, BORModel, ParsedBORModel, CuratedModel) {
+    function (StateModel, SubjectModel,
+              CuratedEggsModel, CuratedLasagnaModel, CuratedRisottoModel) {
 
         return {
 
             stateModel: null,
             subjectModel: null,
-            borModel: null,
+            recipeModel: null,
 
-            recipeName: null,
+            curatedRecipeMap: {
+                "eggs": new CuratedEggsModel({id: "nom.model.CuratedEggsModel"}),
+                "lasagna": new CuratedLasagnaModel({id: "nom.model.CuratedLasagnaModel"}),
+                "risotto": new CuratedRisottoModel({id: "nom.model.CuratedRisottoModel"})
+            },
+
+            recipe: "eggs", //may be eggs, lasagna, or risotto
             interface: "control", // control, sbs, responsive
 
             init: function(state){
@@ -24,9 +31,10 @@ define([
 
                 //recipe
                 var recipe = state.getQueryParamByName("recipe");
-                if(recipe != null){
-                    this.recipeName = recipe;
+                if(this.curatedRecipeMap.hasOwnProperty(recipe)){
+                    this.recipe = recipe;
                 }
+                this.stateModel.set("recipe", this.recipe);
 
                 //interface
                 //this.interface =
@@ -63,23 +71,16 @@ define([
 
                 this.subjectModel.set("group", this.stateModel.get("group"));
 
-                //BigOven Model
-                this.borModel = new BORModel({id: "nom.model.BORModel"});
-
-                //Parsed BigOven Model
-                this.parsedBorModel = new ParsedBORModel({id: "nom.model.ParsedBORModel"});
-
-                //Curated Model
-                this.curatedModel = new CuratedModel({id: "nom.model.CuratedModel"});
+                if(this.curatedRecipeMap.hasOwnProperty(this.recipe)){
+                    this.recipeModel = this.curatedRecipeMap[this.recipe];
+                } else {
+                    this.recipeModel = this.curatedRecipeMap["eggs"];
+                }
 
                 if (resetSession) {
-                    this.parsedBorModel.save();
-                    this.borModel.save();
-                    this.curatedModel.save();
+                    this.recipeModel.save();
                 } else {
-                    this.parsedBorModel.fetch();
-                    this.borModel.fetch();
-                    this.curatedModel.fetch();
+                    this.recipeModel.fetch();
                 }
 
             }

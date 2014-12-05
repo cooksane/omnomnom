@@ -1,11 +1,43 @@
-define([], function () {
+/* source: http://thepioneerwoman.com/cooking/2011/05/risotto-primavera/ */
 
-    var BORModel = Backbone.Model.extend({
-        localStorage: new Backbone.LocalStorage('nom.model.BORModel'),
-        defaults: function() {
-            return {
+
+define(
+    [
+        "models/curated/CuratedModelBase",
+        "core/Utils"
+    ],
+    function(CuratedModelBase, Utils) {
+
+
+        var CuratedModel = CuratedModelBase.extend({
+
+            localStorage: new Backbone.LocalStorage('nom.model.CuratedRisottoModel'),
+
+            summaries: [
+                "Chop the vegetables.",
+                "Simmer the broth.",
+                "Sauté the vegetables.",
+                "Cook the rice in broth and wine.",
+                "Add green onions and peas.",
+                "Fine-tune texture and saltiness.",
+                "Stir in cheese and remaining vegetables.",
+                "Plate and garnish."
+            ],
+
+            instructions: [
+                "Begin by peeling the carrots, cutting them into sticks, and then cutting the sticks into dice. Cut the broccoli and cauliflower into bits, and dice the yellow onion.",
+                "Pour chicken broth into a small saucepan. Heat to a simmer.",
+                "In a large pan, heat 2 tablespoons olive oil and 2 tablespoons butter. Add diced onions and diced carrots. Stir and cook for a minute or two. Add cauliflower and cook for a minute. Add broccoli and cook for 30 seconds. Add squash and cook for 30 seconds. Sprinkle in salt and stir. Remove from pan and put on a plate. Set aside.",
+                "Add 1 tablespoons olive oil and 1 tablespoon butter to the same pan. Heat over medium-low heat. Add rice and stir, cooking for 1 minute. Add half the wine and 1 1/2 teaspoons kosher salt. Stir and cook until liquid is absorbed. Over the next 30 to 45 minutes, add 1 cup of simmering broth at a time, stirring and cooking until each addition of broth has absorbed. Add other half of wine and cook until absorbed.",
+                "Add green onions and peas, stirring to combine.",
+                "Taste to make sure rice is the right texture; add another helping of broth if rice has too much bite to it. Check salt content and add more salt if necessary.",
+                "Once rice is cooked, remove from heat. Stir in goat cheese, Parmesan, and vegetables until all goat cheese is combined.",
+                "Serve on plates, and garnish each with a sprig of dill."
+            ],
+
+            recipe: {
                 "Title": "Risotto Primavera",
-                "Description": "A dish yo.",
+                "Description": "A quick risotto packed with veggies.",
                 "Category": "Mains",
                 "ImageURL": "http://farm3.static.flickr.com/2176/5701294093_0a54069b95_z.jpg",
                 "Ingredients": [
@@ -15,7 +47,7 @@ define([], function () {
                         "Quantity": 5,
                         "DisplayQuantity": " 5 ",
                         "Unit": "cups"
-                    }, 
+                    },
                     {
                         "DisplayIndex": 1,
                         "Name": "olive oil",
@@ -173,7 +205,7 @@ define([], function () {
                         "Quantity": 0.5,
                         "DisplayQuantity": " 1/2 ",
                         "Unit": "cup"
-                    },  
+                    },
                     {
                         "DisplayIndex": 14,
                         "IsHeading": false,
@@ -182,7 +214,7 @@ define([], function () {
                         "DisplayQuantity": " 1/2 ",
                         "PreparationNotes": "grated",
                         "Unit": "cup"
-                    },              
+                    },
                     {
                         "DisplayIndex": 15,
                         "IsHeading": false,
@@ -190,7 +222,7 @@ define([], function () {
                         "Quantity": 4,
                         "DisplayQuantity": " 4 ",
                         "Unit": "ounces"
-                    },                        
+                    },
                     {
                         "DisplayIndex": 16,
                         "IsHeading": false,
@@ -199,14 +231,13 @@ define([], function () {
                         "PreparationNotes": "for garnish"
                     }
                 ],
-                "Instructions": "In a large bowl, mix together flours, baking powder, baking soda, sugar, salt, and nutmeg if using.\r\nIn a medium bowl, whisk together the buttermilk, eggs, butter, and vanilla until blended.\r\nPour the wet ingredients over the dry ingredients and whisk JUST until incorporated (don’t overmix!)\r\nHeat a non-stick griddle to 325 degrees, or place a large non-stick frying pan over medium heat. Add a little butter, if desired. Scoop pancake batter by the scant 1/2 cup full onto griddle or pan. I like to use an ice cream scoop for this!\r\nSprinkle chocolate chips over the tops of the pancakes. For me it works out to about 10 to 12 chips per pancake.\r\nCook until the pancakes begin to look a little dry around the edges and start to form bubbles, about 1 to 2 minutes. Flip and cook for another minute or so until golden brown on both sides and cooked completely through (you might want to check one in the middle to be sure it’s cooked completely. If not, flip it back over and let it cook for a bit longer).\r\nServe with butter and maple syrup; sprinkle with additional chocolate chips if desired.",
                 "YieldNumber": 8,
                 "YieldUnit": "Servings",
                 "TotalMinutes": 55,
                 "ActiveMinutes": 55
-            };
-        }
-    });
+            }
 
-    return BORModel;
+        });
+
+        return CuratedModel;
 });

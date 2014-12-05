@@ -5,22 +5,25 @@ define([
 
     return Backbone.View.extend({
 
-        el: $("#main-container"),
+        className: "",
         template: nom.templates.ThankYou,
 
         events: {
+
         },
 
-        session: null,
+        appData: null,
 
         initialize: function(params){
-            this.session = params.session;
+            this.appData = params.appData;
         },
 
         render: function(){
             //var compiledTemplate = this.template(this.model.attributes);
-            var compiledTemplate = this.template({session: this.session});
+            var session = this.appData.subjectModel.get("session");
+            var compiledTemplate = this.template({session: session});
             this.$el.html(compiledTemplate);
+            $("#main-container").html(this.el);
         }
 
     });

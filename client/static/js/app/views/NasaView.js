@@ -5,8 +5,7 @@ define([
 
     return Backbone.View.extend({
 
-        el: $("#main-container"),
-
+        className: "",
         template: nom.templates.Nasa,
 
         events: {
@@ -14,11 +13,9 @@ define([
             "click #next": "nextClicked"
         },
 
-        task: null,
         data: {},
 
-        initialize: function(task){
-            this.task = task;
+        initialize: function(params){
             console.log("NasaView.initialize");
         },
 
@@ -31,6 +28,7 @@ define([
             //var compiledTemplate = this.template(this.model.attributes);
             var compiledTemplate = this.template();
             this.$el.html(compiledTemplate);
+            $("#main-container").html(this.el);
         },
 
         inputClick: function(target){

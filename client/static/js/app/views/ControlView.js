@@ -1,9 +1,10 @@
 define([
     "core/EventBus",
-    "core/Utils"
-], function(EventBus, Utils) {
+    "core/Utils",
+    "views/InterfaceViewBase"
+], function(EventBus, Utils, InterfaceViewBase) {
 
-    return Backbone.View.extend({
+    return InterfaceViewBase.extend({
 
         className: "",
         template: nom.templates.RecipeControl,
@@ -11,14 +12,19 @@ define([
         instructionTemplate: nom.templates.InstructionControl,
 
         events: {
+            "click #done": 'recipeComplete',
+            "click": "onClick"
         },
 
         initialize: function(){
             console.log("ControlView.initialize");
+            _.bindAll(this, 'onKey');
+            $(document).bind('keyup', this.onKey);
         },
 
         die: function(){
-            this.removeAllListeners();
+            $(document).unbind('keyup', this.onKey);
+            this.undelegateEvents();
             this.remove();
         },
 
@@ -36,6 +42,7 @@ define([
         },
 
         renderModel: function(){
+            this.stepIndex = -1;
             this.renderIngredients();
             this.renderInstructions();
             //this.renderInstructionsSimple();

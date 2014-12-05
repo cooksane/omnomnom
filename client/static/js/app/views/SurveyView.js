@@ -5,7 +5,7 @@ define([
 
     return Backbone.View.extend({
 
-        el: $("#main-container"),
+        className: "",
         template: nom.templates.Survey,
 
         events: {
@@ -13,11 +13,11 @@ define([
             "click #next": "nextClicked"
         },
 
-        group: 0,
+        appData: null,
         data: {},
 
         initialize: function(params){
-            this.group = params.group;
+            this.appData = params.appData;
             console.log("SurveyView.initialize");
         },
 
@@ -28,8 +28,9 @@ define([
         render: function(){
             console.log("SurveyView.render");
             //var compiledTemplate = this.template(this.model.attributes);
-            var compiledTemplate = this.template({isGroup0: this.group === 0});
+            var compiledTemplate = this.template();
             this.$el.html(compiledTemplate);
+            $("#main-container").html(this.el);
         },
 
         inputClick: function(target){

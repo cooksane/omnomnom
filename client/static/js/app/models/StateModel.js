@@ -9,7 +9,9 @@ define([], function () {
                 session: "",
                 state: "start",
                 group: 0,
-                interface: "sbs"
+                interface: "sbs",
+                recipe: "eggs" //eggs, lasagna, risotto
+
                 //this should be hidden if not set
                 //debug: false
             };

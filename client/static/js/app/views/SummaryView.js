@@ -29,7 +29,7 @@ define([
         },
 
         continueClicked: function(event){
-            EventBus.trigger("SummaryView:continue", this);
+            EventBus.trigger("summaryCompleted", this);
         }
 
     });

@@ -18,7 +18,7 @@ exports.openService = openService;
 
 function init(dbName){
     if(dbName == null){
-        dbName = "";
+        dbName = "omnomnom-test";
     }
     openService(dbName);
 }
