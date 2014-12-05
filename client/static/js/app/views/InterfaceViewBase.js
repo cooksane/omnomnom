@@ -11,6 +11,8 @@ define([
             "click #done": 'recipeComplete'
         },
 
+        appData: null,
+
         lastIndex: -1,
         stepIndex: 0,
 
@@ -103,7 +105,8 @@ define([
                 stepDelta: stepDelta, // +1, -1, 0, or something in [0, n-1]
                 step: this.stepIndex - stepDelta + 1, // step on which event occurred
                 stepDuration: stepDuration, // duration spent on stepIndex
-                totalDuration: time - this.startTime // total duration
+                totalDuration: time - this.startTime, // total duration
+                highlightIngredients: this.appData.inghi // is ingredient highlighting on or off?
             };
 
             if(stepChanged){

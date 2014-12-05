@@ -60,7 +60,7 @@ define([
                 this.startSurvey();
                 break;
             case "thankyou":
-                this.displayThankYou();
+                this.startThankYou();
                 break;
         }
     };
@@ -111,13 +111,13 @@ define([
     Controller.prototype.startBlock = function() {
         switch(this.appData.interface){
             case "control":
-                this.currentView = new ControlView({model: this.appData.recipeModel});
+                this.currentView = new ControlView({model: this.appData.recipeModel, appData: this.appData});
                 break;
             case "sbs":
-                this.currentView = new SBSView({model: this.appData.recipeModel});
+                this.currentView = new SBSView({model: this.appData.recipeModel, appData: this.appData});
                 break;
             case "responsive":
-                this.currentView = new ResponsiveView({model: this.appData.recipeModel});
+                this.currentView = new ResponsiveView({model: this.appData.recipeModel, appData: this.appData});
                 break;
         }
 
@@ -156,7 +156,8 @@ define([
         this.service.putData("nasas", session, data);
 
         this.currentView.remove();
-        this.startSurvey();
+        this.startThankYou();
+        //this.startSurvey();
     };
 
     Controller.prototype.startSurvey = function(){
@@ -183,10 +184,10 @@ define([
         this.service.putData("surveys", session, data);
 
         this.currentView.remove();
-        this.displayThankYou();
+        this.startThankYou();
     };
 
-    Controller.prototype.displayThankYou = function(){
+    Controller.prototype.startThankYou = function(){
         this.currentView = new ThankYouView({appData: this.appData});
         this.currentView.render();
 

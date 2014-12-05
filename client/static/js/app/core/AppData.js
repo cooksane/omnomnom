@@ -25,6 +25,8 @@ define([
             interface: "control", // control, sbs, responsive
             stateValue: "summary", // start, summary, interface, nasa, survey, thankyou
 
+            inghi: true,
+
             init: function(state){
 
                 //state model
@@ -50,6 +52,13 @@ define([
                     this.stateValue = stateValue;
                 }
                 this.stateModel.set("state", this.stateValue);
+
+                //Ingredient Highlighting
+                var inghi = state.getQueryParamByName("inghi");
+                if(inghi != null){
+                    this.inghi = !Boolean(inghi === "0");
+                    this.stateModel.set("inghi", inghi);
+                }
 
                 //debug flag
                 var debug = state.getQueryParamByName("debug");

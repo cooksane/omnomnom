@@ -18,7 +18,8 @@ define([
             "click": "onClick"
         },
 
-        initialize: function(){
+        initialize: function(params){
+            this.appData = params.appData;
             console.log("SBSView.initialize");
              _.bindAll(this, 'keyAction');
             $(document).bind('keyup', this.keyAction);
@@ -164,6 +165,8 @@ define([
         },
 
         highlightIngredients: function(){
+            if(!this.appData.inghi){return;}
+
             var instructions = this.model.get("CuratedInstructions");
             var instruction = instructions[this.stepIndex];
             var ingredientIndexes = instruction.ingredientIndexes;
