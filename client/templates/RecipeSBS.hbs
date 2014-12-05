@@ -8,32 +8,31 @@
                 <p class="small stats">{{TotalMinutes}} Min | {{YieldNumber}} {{YieldUnit}}</p>
             </div>
         </div>
-
-        <button id="done" type="button" class="btn btn-lg">I'm Done!</button>
+        <button id="done" type="button" class="btn btn-lg btn-full-width">Done</button>
     </div>
 
     <div id="mid" class="col-lg-4">
-        <div class="panel shadow">
-            <div class="panel-heading">Ingredients</div>
-            <div id="ingredients-container" class="panel-body">
+        <div class="panel">
+            <div class="panel-heading plain-panel-heading">Ingredients</div>
+            <div id="ingredients-container" class="panel-body plain-panel-body">
 
             </div>
         </div>
     </div>
 
     <div id="right" class="col-lg-6 full-vertical">
-        <div class="panel shadow" id="panel-instructions">
-            <div id="instruction-title" class="panel-heading">Instructions</div>
+        <div class="panel" id="panel-instructions">
+            <div id="instruction-title" class="panel-heading plain-panel-heading">Instructions</div>
             <div id="sbs-nav" class="row">
                 <div class="col-md-3 pull-left">
                     <a id="prev" type="button"><i class="fa fa-arrow-left"></i> Previous</a>
                 </div>
-                <div id="sbs-nav-step" class="col-lg-6"></div>
+                <div id="sbs-nav-step" class="col-lg-6 unselectable"></div>
                 <div class="col-lg-2 pull-right">
                     <a id="next" type="button">Next <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div id="instruction-container" class="panel-body sbs-panel-body-vertical invisible">
+            <div id="instruction-container" class="panel-body plain-panel-body sbs-panel-body-vertical invisible">
             </div>
         </div>
     </div>

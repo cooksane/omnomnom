@@ -12,6 +12,7 @@
 @pale-green: #fafffa;
 @gray: #999;
 @dark-gray: #666;
+@light-green: #C0E336;
 @fresh-green: #A0C336;
 @medium-green: #508912;
 @off-green: #3c763d;
@@ -20,11 +21,10 @@
 @scarlet: #d30a00;
 @coral: #ff9072;
 
-@color-main: @spearmint;
-@dark-main: @dark-spearmint;
+@color-main: @light-green;
+@dark-main: @fresh-green;
 @color-text-primary: @black;
 @color-background: @pale-gray;
-
 
 /* mixins */
 
@@ -32,9 +32,15 @@
   font-weight: 700;
   letter-spacing: 0;
 }
+
 .shadow-mixin(@radius: 8px, @color: @black-60) {
   -webkit-box-shadow: 0 0 @radius @color;
     box-shadow: 0 0 @radius @color;
+}
+
+.shadow-none() {
+  -webkit-box-shadow: 0 0px 0px 0px;
+  box-shadow: 0 0px 0px 0px;
 }
 
 .shadow-top(@color: @black-40) {
@@ -67,6 +73,18 @@
   transition: @style @time ease-out;
 }
 
+.unselectable() {
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none; /* From IE10 only */
+  user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+
 /*  scaffolding */
 
 html, body, #main-container {
@@ -89,6 +107,13 @@ body {
 
 #instruction-container {
   padding: 20px 0 15px 0;
+}
+
+.instruction {
+}
+
+.responsive-panel-header {
+  //padding-left: 15px;
 }
 
 strong {
@@ -121,6 +146,8 @@ strong {
 
 .panel {
   border: 0px;
+  background-color: inherit;
+  .shadow-none();
 }
 
 .label {
@@ -136,17 +163,31 @@ strong {
 }
 
 .panel-heading, .btn {
-  position: relative;
-  z-index: 100;
-  font-family: Lato, sans-serif;
-  text-transform: uppercase;
-  font-weight: 700;
   font-size: 16px;
+}
+
+.plain-panel-heading {
+  .shadow-none();
+  background-color: inherit;
+  font-size: 32px;
+}
+
+.sbs-panel-heading {
   letter-spacing: 1px;
   text-align: center;
   color: @black;
   outline: none !important;
   background-color: @white;
+  position: relative;
+  z-index: 100;
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.plain-panel-body {
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .panel-heading {
@@ -154,30 +195,53 @@ strong {
 }
 
 .btn {
+  letter-spacing: 1px;
+  text-align: center;
+  color: @white;
+  outline: none !important;
+  background-color: @dark-main;
+  position: relative;
+  z-index: 100;
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
   .transition(background-color, 200ms);
   .transition(color, 200ms);
   .shadow-mixin(3px, @black-40);
   &:hover {
-    color: @color-main;
+    color: @white;
+    background-color: @color-main;
   }
+}
+
+.btn-full-width {
+  width: 100%;
 }
 
 /*  general styles */
 
 a {
-  color: @black;
+  color: @dark-main;
   cursor: pointer;
   text-decoration: none;
   .transition(color, 100ms);
+  .unselectable();
 
   &:hover {
     color: @color-main;
+    text-decoration: none;
   }
 
   &.inactive {
     visibility: hidden;
   }
 } 
+
+.thumbnail {
+  //.shadow-none();
+  //border: 0px;
+  //background-color: inherit;
+}
 
 .invisible {
   visibility: hidden;
@@ -189,8 +253,8 @@ a {
 
 .responsive-selected {
   .border-inset();
-  .border-radius(3px);
-  border-left: 10px solid @color-main;
+  //.border-radius(3px);
+  border-left: 10px solid @dark-main;
   .shadow-mixin(10px, @black-20);
   padding: 15px 0;
   margin-bottom: 15px;
@@ -217,12 +281,17 @@ a {
 
 .title {
   font-family: raleway, sans-serif;
-  .bold();
+  //.bold();
   color: @color-text-primary;
 }
 
 .list-number {
   margin-left: 10px;
+  margin-right: -20px;
+}
+
+.list-number-control {
+  margin-left: 0px;
   margin-right: -20px;
 }
 
@@ -265,6 +334,7 @@ a {
 
 /* this makes the panel body take up full vertical space */
 .sbs-panel-body-vertical {
+  margin-left: -20px;
   height: calc(~'100% - 110px');
 }
 
