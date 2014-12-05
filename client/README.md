@@ -91,7 +91,7 @@ Data is logged whenever the user clicks the mouse anywhere on the screen or hits
 ### Groups
 
 #### Notes
-* Once someone has completed one recipe with a given browser, they **MUST** use the same browser, so that we can track them via the session id that was generated when the first visited the site.
+* Once someone has completed one recipe with a given browser, they should use the same browser, so that we can track them via the session id that was generated when they first visited the site.
 * Hitting http://50.56.219.32/?reset=1 if someone has already completed a group condition will blow away their session id. It's not the end of the world, but we will need to put in a little extra effort to figure out which data belongs to who.
 
 #### Group 1
