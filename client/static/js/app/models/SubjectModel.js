@@ -8,7 +8,7 @@ define(["core/Utils"],
                 session: Utils.getSubjectId(),
                 started: false,
                 completed: false,
-                group: 0,
+                group: 1,
                 nasa: null,
                 survey: null
             };

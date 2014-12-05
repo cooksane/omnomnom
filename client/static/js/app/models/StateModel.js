@@ -8,8 +8,8 @@ define([], function () {
             return {
                 session: "",
                 state: "start",
-                group: 0,
-                interface: "sbs",
+                group: 1,
+                interface: "control",
                 recipe: "eggs" //eggs, lasagna, risotto
 
                 //this should be hidden if not set
