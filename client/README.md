@@ -2,6 +2,7 @@
 * npm install -g grunt-cli
 * npm install -g bower
 * npm install
+* bower install
 
 ### Run
 * grunt
@@ -46,22 +47,37 @@ Data is logged whenever the user clicks the mouse anywhere on the screen or hits
 * **totalDuration**
   * Description: The total duration, in milliseconds, that has elapsed. This value is never reset. This field gives the total time that it took to cook the recipe when the *done* event is fired.
 
+#### Notes
+
+* Control Interface
+  * step == -1
+  * stepDelta == 0
+  * stepDuration == totalDuration
+  * intentSuccess = true iff intent = "done"
+
+
+### Sample log entry
+
+```
+
+```
+
 ### Group links
 
 #### Group 1
-* http://localhost:8080/?interface=control&recipe=eggs&group=1
-* http://localhost:8080/?interface=sbs&recipe=lasagna&group=1
-* http://localhost:8080/?interface=responsive&recipe=risotto&group=1
+* [control + eggs](http://localhost:8080/?interface=control&recipe=eggs&group=1)
+* [sbs + lasagna](http://localhost:8080/?interface=sbs&recipe=lasagna&group=1)
+* [responsive + risotto](http://localhost:8080/?interface=responsive&recipe=risotto&group=1)
 
 #### Group 2
-* http://localhost:8080/?interface=control&recipe=risotto&group=2
-* http://localhost:8080/?interface=sbs&recipe=eggs&group=2
-* http://localhost:8080/?interface=responsive&recipe=lasagna&group=2
+* [control + risotto](http://localhost:8080/?interface=control&recipe=risotto&group=2)
+* [sbs + eggs](http://localhost:8080/?interface=sbs&recipe=eggs&group=2)
+* [responsive + lasagna](http://localhost:8080/?interface=responsive&recipe=lasagna&group=2)
 
 #### Group 3
-* http://localhost:8080/?interface=control&recipe=lasagna&group=3
-* http://localhost:8080/?interface=sbs&recipe=risotto&group=3
-* http://localhost:8080/?interface=responsive&recipe=eggs&group=3
+* [control + lasagna](http://localhost:8080/?interface=control&recipe=lasagna&group=3)
+* [sbs + risotto](http://localhost:8080/?interface=sbs&recipe=risotto&group=3)
+* [responsive + eggs](http://localhost:8080/?interface=responsive&recipe=eggs&group=3)
 
 ### General notes on query params
 * To pick a recipe, use http://localhost:8080/?recipe=Ravioli
