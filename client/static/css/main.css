@@ -13,6 +13,7 @@ body {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.6em;
+  letter-spacing: 0.8px;
 }
 #main-container {
   padding: 30px 15px;
@@ -24,7 +25,8 @@ strong {
   color: #000000;
 }
 .highlight-text {
-  font-weight: bold;
+  font-weight: 700;
+  letter-spacing: 0;
 }
 .container {
   margin: 0 auto;
@@ -45,6 +47,7 @@ strong {
   font-family: Lato, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
+  letter-spacing: 0;
   padding: 0 5px 0 0;
   color: #000000;
 }
@@ -125,9 +128,11 @@ a.inactive {
 .responsive-selected .list-number {
   margin-left: 0;
   font-weight: 700;
+  letter-spacing: 0;
 }
 .responsive-selected .responsive-summary {
   font-weight: 700;
+  letter-spacing: 0;
 }
 .responsive-selected .responsive-text {
   display: block;
@@ -138,6 +143,7 @@ a.inactive {
 .title {
   font-family: raleway, sans-serif;
   font-weight: 700;
+  letter-spacing: 0;
   color: #000000;
 }
 .list-number {
@@ -153,6 +159,7 @@ a.inactive {
 .stats {
   color: #000000;
   font-weight: 700;
+  letter-spacing: 0;
 }
 .shadow {
   -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);

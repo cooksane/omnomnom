@@ -25,8 +25,13 @@
 @color-text-primary: @black;
 @color-background: @pale-gray;
 
+
 /* mixins */
 
+.bold() {
+  font-weight: 700;
+  letter-spacing: 0;
+}
 .shadow-mixin(@radius: 8px, @color: @black-60) {
   -webkit-box-shadow: 0 0 @radius @color;
     box-shadow: 0 0 @radius @color;
@@ -75,6 +80,7 @@ body {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.6em;
+  letter-spacing: 0.8px;
 }
 
 #main-container {
@@ -92,7 +98,7 @@ strong {
 .highlight-text {
   //background-color: @color-main;
   //color: @color-main;
-  font-weight: bold;
+  .bold();
 }
 
 .container {
@@ -120,7 +126,7 @@ strong {
 .label {
   font-family: Lato, sans-serif;
   text-transform: uppercase;
-  font-weight: 700;
+  .bold();
   padding: 0 5px 0 0;
   color: @black;
 }
@@ -193,11 +199,11 @@ a {
 
   & .list-number {
     margin-left: 0;
-    font-weight: 700;
+    .bold();
   }
 
   & .responsive-summary {
-    font-weight: 700;
+    .bold();
   }
 
   & .responsive-text {
@@ -211,7 +217,7 @@ a {
 
 .title {
   font-family: raleway, sans-serif;
-  font-weight: 700;
+  .bold();
   color: @color-text-primary;
 }
 
@@ -229,7 +235,7 @@ a {
 
 .stats {
   color: @color-text-primary;
-  font-weight: 700;
+  .bold();
 }
 
 .shadow {
