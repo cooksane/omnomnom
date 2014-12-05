@@ -23,6 +23,9 @@ body {
 strong {
   color: #000000;
 }
+.highlight-text {
+  font-weight: bold;
+}
 .container {
   margin: 0 auto;
   height: 100%;
@@ -108,6 +111,10 @@ a.inactive {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
   border-left: 10px solid #00cb8b;
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);

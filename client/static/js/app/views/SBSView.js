@@ -159,6 +159,31 @@ define([
             container.empty();
             var compiledTemplate = this.instructionTemplate(instructions[this.stepIndex]);
             container.html(compiledTemplate);
+
+            this.highlightIngredients();
+        },
+
+        highlightIngredients: function(){
+            var instructions = this.model.get("CuratedInstructions");
+            var instruction = instructions[this.stepIndex];
+            var ingredientIndexes = instruction.ingredientIndexes;
+
+            var ingredients = this.model.get("Ingredients");
+            var ingredientContainer = this.$el.find("#ingredients-container");
+
+            var $ingredient;
+            for(var i=-1;++i<ingredients.length;){
+                var ingredient = ingredients[i];
+                $ingredient = ingredientContainer.find("#ingredient_"+ingredient.DisplayIndex);
+                $ingredient.removeClass("highlight-text");
+                $ingredient.addClass("text-muted");
+            }
+            for(var j=-1;++j<ingredientIndexes.length;){
+                var iIndex = ingredientIndexes[j];
+                $ingredient = ingredientContainer.find("#ingredient_"+iIndex);
+                $ingredient.addClass("highlight-text");
+                $ingredient.removeClass("text-muted");
+            }
         }
 
     });

@@ -129,6 +129,14 @@ define([
             console.log(this.instructionHeight);
         },
 
+        selectInstruction: function(){
+            this.selectView(true, this.stepIndex);
+            if (this.lastIndex != -1){
+                this.selectView(false, this.lastIndex);
+            }
+            this.highlightIngredients();
+        },
+
         selectView: function(select, index){
             var instructions = this.model.get("CuratedInstructions");
             var targetInstruction = instructions[index];
@@ -143,10 +151,26 @@ define([
             }
         },
 
-        selectInstruction: function(){
-            this.selectView(true, this.stepIndex);
-            if (this.lastIndex != -1){
-                this.selectView(false, this.lastIndex);
+        highlightIngredients: function(){
+            var instructions = this.model.get("CuratedInstructions");
+            var instruction = instructions[this.stepIndex];
+            var ingredientIndexes = instruction.ingredientIndexes;
+
+            var ingredients = this.model.get("Ingredients");
+            var ingredientContainer = this.$el.find("#ingredients-container");
+
+            var $ingredient;
+            for(var i=-1;++i<ingredients.length;){
+                var ingredient = ingredients[i];
+                $ingredient = ingredientContainer.find("#ingredient_"+ingredient.DisplayIndex);
+                $ingredient.removeClass("highlight-text");
+                $ingredient.addClass("text-muted");
+            }
+            for(var j=-1;++j<ingredientIndexes.length;){
+                var iIndex = ingredientIndexes[j];
+                $ingredient = ingredientContainer.find("#ingredient_"+iIndex);
+                $ingredient.addClass("highlight-text");
+                $ingredient.removeClass("text-muted");
             }
         }
 

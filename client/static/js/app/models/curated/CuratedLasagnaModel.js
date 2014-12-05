@@ -12,6 +12,16 @@ define(
 
             localStorage: new Backbone.LocalStorage('nom.model.CuratedLasagnaModel'),
 
+            //[0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+            ingredientIndexes: [
+                [],
+                [0],
+                [3,12,2,7,5,9,1,8],
+                [6],
+                [4],
+                [10,11,13]
+            ],
+
             summaries: [
                 "Preheat oven.",
                 "Boil noodles.",

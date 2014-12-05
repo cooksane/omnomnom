@@ -11,6 +11,15 @@ define(
 
             localStorage: new Backbone.LocalStorage('nom.model.CuratedEggsModel'),
 
+            //[0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+            ingredientIndexes: [
+                [0,1,5],
+                [3,7,2],
+                [9,4,8],
+                [6,12,11],
+                [10,13]
+            ],
+
             summaries: [
                 "Wilt, dry, and chop spinach.",
                 "Cook mushroom-spinach mixture.",

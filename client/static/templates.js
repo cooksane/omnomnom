@@ -17,7 +17,11 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div class=\"row-fluid\">\n    <div class=\"col-lg-12\">\n        <p class=\"text-ellipsis\">";
+  buffer += "<div class=\"row-fluid\">\n    <div class=\"col-lg-12\">\n        <p id=\"ingredient_";
+  if (helper = helpers.DisplayIndex) { stack1 = helper.call(depth0, {hash:{},data:data}); }
+  else { helper = (depth0 && depth0.DisplayIndex); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
+  buffer += escapeExpression(stack1)
+    + "\" class=\"text-ellipsis\">";
   if (helper = helpers.DisplayQuantity) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.DisplayQuantity); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
