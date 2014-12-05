@@ -11,6 +11,8 @@ define([
 
         return {
 
+            debugMode: false,
+
             stateModel: null,
             subjectModel: null,
             recipeModel: null,
@@ -64,6 +66,7 @@ define([
                 var debug = state.getQueryParamByName("debug");
                 if(debug == "1"){
                     this.stateModel.set("debug", "1");
+                    this.debugMode = Boolean(debug === "1");
                 }
 
                 var initGroup = state.getQueryParamByName("group");
