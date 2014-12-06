@@ -1,0 +1,44 @@
+Study 2: Group 3: Risotto, SBS
+
+- Subject did not buy Dill, b/c subject does not like dill, and noticed it's just a garnish anyway in recipe, so subject is just skipping.
+
+- Subject said she wasn't sure whether everything in step 1 should go together, but did so anyway.
+
+- Step 1 was to chop veggies, but step 2 was to boil water: Subject reports that she could have chopped veggies while boiling water. Said: "I guess I could have just looked at step 2 to see if there was anything I could have started in the next step."
+  - She blamed herself instead of the interface.
+  - Arguably a flaw in the design of SBS interface: Limited view limits cognitive load, but does so at the expense of knowledge, hence may actually increase total cooking duration.
+
+- Realized that all the chopped stuff at beginning actually did need to be separate "aw shit, they all do have to be separate... now I've got to separate them." "Annoying b/c tons of little pieces..."
+  - Flaw in instruction.
+  - Frustration: Instructions should have said, "keep the cauliflower separate from all the other vegetables"
+
+- Realized cauliflower and brocolli also needs to be separate. Decided not to separate them out b/c the time difference for putting them in the pan was so small.
+  - Instruction error.
+
+- "Still waiting for the water to boil"
+  - Interface error.
+
+- Reading step 4: "liquid? what liquid? oh, wine. This is an involved process. This is interesting for me, never made risotto before."
+  - More clear instructions (not )
+
+- Going back and forth between executing step 4, subject looks at screen for ingredient measurements, then goes back to prepare that ingredient.
+  - It's clear that subject is making HEAVY use of ingredient highlighting. Hypothesis: Ingredient highlighting is in fact reducing cognitive load by reducing search time and allowing subject to focus on preparing ingredients.
+
+- Step 4: "Not sure whether I should be stirring this. If I had made risotto before, I would know." She notes that, since it's rice based, you don't usually stir, but since she's adding stuff, she thinks she should stir. "I'm going to stir, b/c that feels right to me."
+  - Instruction here could have been better.
+
+- "What does the next step say? I think I'm getting the hang of this." Subject looks at next step. Starts preparing ingredients for next step.
+  - She trusts the interface, despite not having global knowledge of the process.
+
+- "Ok going back to step 4 to see what I need to finish up." Looked at step 5 just to make sure "it's in my brain: it's super simple, so not like I need to read it again." Went to step 6: "It says taste to make sure rice is the right texture, add additional broth for texture." "Well, I wish would have known that I should have prepared a little extra broth."
+  - Deficit of SBS design: Lacked sufficient knowledge of step 6 to properly prepare . Deficit in ingredients too: "ingredients don't prepare you for needing any more than 5 cups." In fact, it's unclear to subject whether all 5 cups should have been used in step 1, and whether some broth should have been reserved for final step.
+
+Explicit Questions:
+- Is the ingredient highlighting helpful?
+  - Not at this point (she is on step 3). Then she said, "well because it's all at the top right now." -- "actually, it's so helpful I didn't even notice it was happening!" (SCORE!)
+
+
+
+Observed Metrics:
+- Checks:          +,+,+,+,+, 
+- Duration (mins): 3,2,1,.5,.5,5
