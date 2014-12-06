@@ -96,20 +96,20 @@ Data is logged whenever the user clicks the mouse anywhere on the screen or hits
 * Once someone has completed one recipe with a given browser, they should use the same browser, so that we can track them via the session id that was generated when they first visited the site.
 * Hitting http://50.56.219.32/?reset=1 if someone has already completed a group condition will blow away their session id. It's not the end of the world, but we will need to put in a little extra effort to figure out which data belongs to who.
 
-#### Group 1
+#### Group 1 (Miriam)
 * [control + eggs](http://50.56.219.32/?interface=control&recipe=eggs&group=1)
 * [sbs + lasagna](http://50.56.219.32/?interface=sbs&recipe=lasagna&group=1)
 * [responsive + risotto](http://50.56.219.32/?interface=responsive&recipe=risotto&group=1)
 
-#### Group 2
-* [control + risotto](http://50.56.219.32/?interface=control&recipe=risotto&group=2)
-* [sbs + eggs](http://50.56.219.32/?interface=sbs&recipe=eggs&group=2)
-* [responsive + lasagna](http://50.56.219.32/?interface=responsive&recipe=lasagna&group=2)
+#### Group 2 (Michelle)
+* [responsive + lasagna](http://50.56.219.32/?interface=control&recipe=risotto&group=2)
+* [control + risotto](http://50.56.219.32/?interface=sbs&recipe=eggs&group=2)
+* [sbs + eggs](http://50.56.219.32/?interface=responsive&recipe=lasagna&group=2)
 
-#### Group 3
-* [control + lasagna](http://50.56.219.32/?interface=control&recipe=lasagna&group=3)
-* [sbs + risotto](http://50.56.219.32/?interface=sbs&recipe=risotto&group=3)
-* [responsive + eggs](http://50.56.219.32/?interface=responsive&recipe=eggs&group=3)
+#### Group 3 (Melih)
+* [sbs + risotto](http://50.56.219.32/?interface=control&recipe=lasagna&group=3)
+* [responsive + eggs](http://50.56.219.32/?interface=sbs&recipe=risotto&group=3)
+* [control + lasagna](http://50.56.219.32/?interface=responsive&recipe=eggs&group=3)
 
 ### General notes on query params
 * To pick a recipe, use http://localhost:8080/?recipe=Ravioli
