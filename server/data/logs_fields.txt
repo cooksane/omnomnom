@@ -1,0 +1,15 @@
+interaction
+interactionDelta
+intent
+intentSuccess
+stepDelta
+step
+stepDuration
+totalDuration
+highlightIngredients
+group
+interface
+recipe
+timestamp
+session
+_id
