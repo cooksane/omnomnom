@@ -102,14 +102,14 @@ Data is logged whenever the user clicks the mouse anywhere on the screen or hits
 * [responsive + risotto](http://50.56.219.32/?interface=responsive&recipe=risotto&group=1)
 
 #### Group 2
+* [responsive + lasagna](http://50.56.219.32/?interface=responsive&recipe=lasagna&group=2)
 * [control + risotto](http://50.56.219.32/?interface=control&recipe=risotto&group=2)
 * [sbs + eggs](http://50.56.219.32/?interface=sbs&recipe=eggs&group=2)
-* [responsive + lasagna](http://50.56.219.32/?interface=responsive&recipe=lasagna&group=2)
 
 #### Group 3
-* [control + lasagna](http://50.56.219.32/?interface=control&recipe=lasagna&group=3)
 * [sbs + risotto](http://50.56.219.32/?interface=sbs&recipe=risotto&group=3)
 * [responsive + eggs](http://50.56.219.32/?interface=responsive&recipe=eggs&group=3)
+* [control + lasagna](http://50.56.219.32/?interface=control&recipe=lasagna&group=3)
 
 ### General notes on query params
 * To pick a recipe, use http://localhost:8080/?recipe=Ravioli

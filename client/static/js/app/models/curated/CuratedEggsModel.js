@@ -128,9 +128,8 @@ define(
                     {
                         "DisplayIndex": 9,
                         "Name": "finely grated parmesan",
-                        "Quantity": 6,
-                        "DisplayQuantity": " 6 ",
-                        "Unit": "tablespoons"
+                        "DisplayQuantity": " ",
+                        "Unit": ""
                     },
                     {
                         "DisplayIndex": 10,
