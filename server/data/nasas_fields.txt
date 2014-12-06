@@ -1,0 +1,12 @@
+data.mental
+data.physical
+data.temporal
+data.performance
+data.effort
+data.frustration
+group
+interface
+recipe
+timestamp
+session
+_id

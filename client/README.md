@@ -69,24 +69,48 @@ Data is logged whenever the user clicks the mouse anywhere on the screen or hits
   * stepDuration == totalDuration
   * intentSuccess = true iff intent = "done"
 
-### Sample log entry
+### Sample Data
+
+#### Log Entry
 
 ```
 {
     "interaction": "doneClick",
-    "interactionDelta": 13722,
+    "interactionDelta": 5538,
     "intent": "done",
     "intentSuccess": true,
     "stepDelta": 0,
-    "step": 0,
-    "stepDuration": 13722,
-    "totalDuration": 13722,
-    "group": 2,
-    "interface": "control",
+    "step": 8,
+    "stepDuration": 5538,
+    "totalDuration": 5172323,
+    "highlightIngredients": true,
+    "group": 3,
+    "interface": "sbs",
     "recipe": "risotto",
-    "timestamp": "2014-12-04T22:55:40.032Z",
-    "session": "24bb439908458157c6655cf200c1bde64c29f7c1",
-    "_id": "5480e66c5408f0a93cd8d55c"
+    "timestamp": "2014-12-06T22:15:11.803Z",
+    "session": "5511517ce047964b623ec6906885690eeacbda56",
+    "_id": "54837fee7f671a49094b489d"
+}
+```
+
+#### NASA Entry
+
+```
+{
+    "data": {
+        "mental": 2,
+        "physical": 1,
+        "temporal": 2,
+        "performance": 5,
+        "effort": 3,
+        "frustration": 2
+    },
+    "group": 3,
+    "interface": "sbs",
+    "recipe": "risotto",
+    "timestamp": "2014-12-06T22:15:46.226Z",
+    "session": "5511517ce047964b623ec6906885690eeacbda56",
+    "_id": "548380107f671a49094b489e"
 }
 ```
 

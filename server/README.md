@@ -34,3 +34,7 @@ Examples:
 * node tests/test-api "Ravioli Basil" any
 * node tests/test-api "French" title
 * node tests/test-api "Cookies"
+
+Dump/Restore data from db (using commands in data directory):
+* ./dump.sh omnomnom
+* ./restore.sh omnomnom
