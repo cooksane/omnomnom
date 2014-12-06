@@ -1,0 +1,28 @@
+Group 2
+
+Condition 1: Lasagna + Responsive
+
+Focus on parallelizing processes. 
+- Organization revolves around pans
+	- There’s a time limit once you start boiling liquids. But the instruction to boil was at the beginning of a large blob of text, which made him v. disoriented because he could not tell how long the rest of the step would take. 
+		- breaking it up would help
+		- do i need to prep the ingredients beforehand, or do i have enough time to do it while the milk is boiling?
+		- Doesn’t measure out everything beforehand, though, since makes prep way too long. Can parallelize way better if you don't. (when all sauces were cooking, started cutting the mushrooms.)
+	- If UI showed time or # pans you need per step, then that would be super helpful (most important). Imagine time per pan bar graph.
+	- If had meat & veggies, then a chopping block could be important.
+- With responsive interface: “I was going up and down a lot because trying to parallelize process"
+	- When first started recipe, went through all the arrows, then went back to the first step
+	- In one step, flip to next step to have a sense of what can parallelize
+	- I previewed until I figured I didn't parallelize anymore.
+	- Need all details to be able to preview.
+
+Instructions & instructions are too coarse-grained.
+- For bechamel sauce, which was new for him: it was "information overflow". never made it before - didn't know what to do first. what ingredient in what." In subsection as you're going down - maybe per line itemize it would help. Also, ruins temporal estimation.
+- Highlighting is useful but likewise too coarse. Could not figure out which ingredients to prep before others, or estimate how long each might take / temporal dependencies 
+- similarly, description of blob text is too confusng because not temporal.
+- Forgot cheese because got lost in the blob of text for assembly.
+
+Flaws in recipe content:
+- "Difficult to see that if there's an ingredient - order of ingredients doesn't match with order in the instruction."
+- Ina Garten line confused him (copy/paste error)
+- Moments of confusion because ingredients list says “8 tbsp butter”, but instructions say “1/2 cup (8 tbsp, or 1 stick)”
