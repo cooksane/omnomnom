@@ -28,7 +28,9 @@ define([
 
         this.appData = AppData;
         this.appData.init(this.state);
-        
+
+        this.service.init(this.appData);
+
         this.state.init(this.appData.stateModel);
         this.controller.init(this.service, this.appData);
 

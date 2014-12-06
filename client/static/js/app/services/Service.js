@@ -4,10 +4,12 @@ define([
 
     var Service = function(){
 
+        this.appData = null;
+
     };
 
-    Service.prototype.init = function(){
-
+    Service.prototype.init = function(appData){
+        this.appData = appData;
     };
 
     Service.prototype.search = function(query, mode, callback){
@@ -47,6 +49,10 @@ define([
     };
 
     Service.prototype.putData = function(collection, session, data){
+        if(this.appData.debugMode){
+            return;
+        }
+
         console.log("putting data", session, data);
         var url = "http://"+document.domain+":8000/"+collection+"/"+session;
 
