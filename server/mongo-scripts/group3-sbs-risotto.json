@@ -1,0 +1,172 @@
+MongoDB shell version: 2.4.6
+connecting to: test
+{
+	"interaction" : {
+		"doneClick" : {
+			"count" : 1,
+			"totalDuration" : 0.09,
+			"rate" : 0.01
+		},
+		"unknownKey" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"unknownClick" : {
+			"count" : 1,
+			"totalDuration" : 0.24,
+			"rate" : 0.01
+		},
+		"upKey" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"leftKey" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"prevClick" : {
+			"count" : 3,
+			"totalDuration" : 8.35,
+			"rate" : 0.03
+		},
+		"downKey" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"rightKey" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"nextClick" : {
+			"count" : 10,
+			"totalDuration" : 77.52,
+			"rate" : 0.12
+		},
+		"instructionClick" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		}
+	},
+	"intent" : {
+		"unknown" : {
+			"count" : 1,
+			"success" : 0,
+			"fail" : 1,
+			"rate" : 0.01,
+			"successRate" : 0,
+			"failureRate" : 0.01
+		},
+		"prevStep" : {
+			"count" : 3,
+			"success" : 3,
+			"fail" : 0,
+			"rate" : 0.03,
+			"successRate" : 0.03,
+			"failureRate" : 0
+		},
+		"nextStep" : {
+			"count" : 10,
+			"success" : 10,
+			"fail" : 0,
+			"rate" : 0.12,
+			"successRate" : 0.12,
+			"failureRate" : 0
+		},
+		"setStep" : {
+			"count" : 0,
+			"success" : 0,
+			"fail" : 0,
+			"rate" : 0,
+			"successRate" : 0,
+			"failureRate" : 0
+		},
+		"done" : {
+			"count" : 1,
+			"success" : 1,
+			"fail" : 0,
+			"rate" : 0.01,
+			"successRate" : 0.01,
+			"failureRate" : 0
+		}
+	},
+	"step" : {
+		"1" : {
+			"totalDuration" : 15.83,
+			"numViews" : 1,
+			"averageDuration" : 15.83
+		},
+		"2" : {
+			"totalDuration" : 6.76,
+			"numViews" : 1,
+			"averageDuration" : 6.76
+		},
+		"3" : {
+			"totalDuration" : 12.85,
+			"numViews" : 1,
+			"averageDuration" : 12.85
+		},
+		"4" : {
+			"totalDuration" : 19.62,
+			"numViews" : 3,
+			"averageDuration" : 6.54
+		},
+		"5" : {
+			"totalDuration" : 8.25,
+			"numViews" : 4,
+			"averageDuration" : 2.0625
+		},
+		"6" : {
+			"totalDuration" : 17.33,
+			"numViews" : 2,
+			"averageDuration" : 8.665
+		},
+		"7" : {
+			"totalDuration" : 5.46,
+			"numViews" : 1,
+			"averageDuration" : 5.46
+		},
+		"8" : {
+			"totalDuration" : 0.09,
+			"numViews" : 1,
+			"averageDuration" : 0.09
+		}
+	},
+	"highlightIngredients" : true,
+	"group" : 3,
+	"interface" : "sbs",
+	"recipe" : "risotto",
+	"session" : "5511517ce047964b623ec6906885690eeacbda56",
+	"timestampInterval" : [
+		ISODate("2014-12-06T21:04:48Z"),
+		ISODate("2014-12-06T22:15:10Z")
+	],
+	"timestampDuration" : {
+		"m" : 70.37,
+		"h" : 1.17
+	},
+	"totalDuration" : {
+		"m" : 86.21,
+		"h" : 1.44
+	},
+	"totalStepDuration" : {
+		"m" : 86.21,
+		"h" : 1.44
+	},
+	"totalStepDelta" : 13,
+	"totalStepDeltaRate" : 0.15,
+	"totalStepChange" : 14,
+	"totalStepChangeRate" : 0.16,
+	"studyErrors" : {
+		"groupChanged" : 0,
+		"highlightChanged" : 0,
+		"timeReset" : 0,
+		"stepDurationMismatch" : 0.01999999999999677,
+		"stepChangeMismatch" : 0
+	}
+}
