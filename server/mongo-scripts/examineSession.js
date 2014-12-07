@@ -1,13 +1,13 @@
 var conn = new Mongo();
 var db = conn.getDB("omnomnom");
 
-var session = "b693ab00711bf625163aa9369858a5997f0cca58";
-var recipe = "lasagna";
-var interface = "responsive";
+//var session = "b693ab00711bf625163aa9369858a5997f0cca58";
+//var recipe = "lasagna";
+//var interface = "responsive";
 
-//var session = "5511517ce047964b623ec6906885690eeacbda56";
-//var recipe = "risotto";
-//var interface = "sbs";
+var session = "5511517ce047964b623ec6906885690eeacbda56";
+var recipe = "risotto";
+var interface = "sbs";
 
 var group = null;
 var highlightIngredients = null;
@@ -113,7 +113,9 @@ var results = {
     studyErrors: {
         groupChanged: 0,
         highlightChanged: 0,
-        timeReset: 0
+        timeReset: 0,
+        stepDurationMismatch: 0,
+        stepChangeMismatch: 0
     } //counted as the number of times totalTime went to 0.
 };
 
@@ -188,8 +190,8 @@ cursor.forEach(function(item){
     }
 
     //step
-    stepData.totalDuration += item.stepDuration;
     if(item.stepDelta != 0 || item.interaction == "doneClick"){
+        stepData.totalDuration += item.stepDuration;
         stepData.numViews += 1;
     }
 
@@ -249,10 +251,14 @@ for(i in results.intent){
 }
 
 //step aggregate
+results.studyErrors.stepDurationMismatch = results.totalStepDuration.m;
+results.studyErrors.stepChangeMismatch = results.totalStepChange;
 for(i in results.step) {
     rData = results.step[i];
     rData.totalDuration = toMinutes(rData.totalDuration);
     rData.averageDuration = rData.totalDuration/rData.numViews;
+    results.studyErrors.stepDurationMismatch -= rData.totalDuration;
+    results.studyErrors.stepChangeMismatch -= rData.numViews;
 }
 
 printjson(results);

@@ -97,9 +97,9 @@ connecting to: test
 	},
 	"step" : {
 		"1" : {
-			"totalDuration" : 436.25,
+			"totalDuration" : 83.27,
 			"numViews" : 5,
-			"averageDuration" : 87.25
+			"averageDuration" : 16.654
 		},
 		"2" : {
 			"totalDuration" : 5.14,
@@ -107,9 +107,9 @@ connecting to: test
 			"averageDuration" : 1.028
 		},
 		"3" : {
-			"totalDuration" : 67.36,
+			"totalDuration" : 55.92,
 			"numViews" : 7,
-			"averageDuration" : 9.622857142857143
+			"averageDuration" : 7.988571428571428
 		},
 		"4" : {
 			"totalDuration" : 25.86,
@@ -122,9 +122,9 @@ connecting to: test
 			"averageDuration" : 0.16428571428571428
 		},
 		"6" : {
-			"totalDuration" : 36.86,
+			"totalDuration" : 17.93,
 			"numViews" : 3,
-			"averageDuration" : 12.286666666666667
+			"averageDuration" : 5.976666666666667
 		}
 	},
 	"highlightIngredients" : true,
@@ -155,6 +155,8 @@ connecting to: test
 	"studyErrors" : {
 		"groupChanged" : 1,
 		"highlightChanged" : 0,
-		"timeReset" : 14
+		"timeReset" : 14,
+		"stepDurationMismatch" : 1.4210854715202004e-14,
+		"stepChangeMismatch" : 0
 	}
 }

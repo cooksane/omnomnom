@@ -112,9 +112,9 @@ connecting to: test
 			"averageDuration" : 12.85
 		},
 		"4" : {
-			"totalDuration" : 19.86,
+			"totalDuration" : 19.62,
 			"numViews" : 3,
-			"averageDuration" : 6.62
+			"averageDuration" : 6.54
 		},
 		"5" : {
 			"totalDuration" : 8.25,
@@ -165,6 +165,8 @@ connecting to: test
 	"studyErrors" : {
 		"groupChanged" : 0,
 		"highlightChanged" : 0,
-		"timeReset" : 0
+		"timeReset" : 0,
+		"stepDurationMismatch" : 0.01999999999999677,
+		"stepChangeMismatch" : 0
 	}
 }
