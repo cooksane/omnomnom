@@ -20,6 +20,7 @@ define([
             console.log("ControlView.initialize");
             _.bindAll(this, 'onKey');
             $(document).bind('keyup', this.onKey);
+            this.updateLog("startClick", true);
         },
 
         die: function(){

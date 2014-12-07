@@ -24,6 +24,7 @@ define([
             console.log("ResponsiveView.initialize");
             _.bindAll(this, 'keyAction');
             $(document).bind('keyup', this.keyAction);
+            this.updateLog("startClick", true);
         },
 
         die: function(){

@@ -1,4 +1,5 @@
 requirejs.config({
+    urlArgs: "r="+String((new Date()).getTime())+String(Math.random()),
     baseUrl: "js/app",
     paths: {
         lib: '../../lib'

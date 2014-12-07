@@ -73,8 +73,8 @@ define([
             var stepDuration = time - this.stepTime;
             var stepDelta = stepChanged? this.stepIndex - this.lastIndex : 0;
 
-
             var intentMap = {
+                "startClick": "start",
                 "doneClick": "done",
                 "unknownKey": "unknown", "unknownClick": "unknown",
                 "upKey": "prevStep", "leftKey": "prevStep", "prevClick": "prevStep",
@@ -105,8 +105,8 @@ define([
                 stepDelta: stepDelta, // +1, -1, 0, or something in [0, n-1]
                 step: this.stepIndex - stepDelta + 1, // step on which event occurred
                 stepDuration: stepDuration, // duration spent on stepIndex
-                totalDuration: time - this.startTime, // total duration
-                highlightIngredients: this.appData.inghi // is ingredient highlighting on or off?
+                totalDuration: time - this.startTime // total duration
+                //highlightIngredients: this.appData.inghi // is ingredient highlighting on or off?
             };
 
             if(stepChanged){
