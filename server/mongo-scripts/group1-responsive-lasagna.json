@@ -1,0 +1,160 @@
+MongoDB shell version: 2.4.6
+connecting to: test
+{
+	"interaction" : {
+		"doneClick" : {
+			"count" : 2,
+			"totalDuration" : 0.04,
+			"rate" : 0.01
+		},
+		"unknownKey" : {
+			"count" : 39,
+			"totalDuration" : 98.47,
+			"rate" : 0.21
+		},
+		"unknownClick" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"upKey" : {
+			"count" : 11,
+			"totalDuration" : 18.53,
+			"rate" : 0.06
+		},
+		"leftKey" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"prevClick" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"downKey" : {
+			"count" : 22,
+			"totalDuration" : 78.97,
+			"rate" : 0.12
+		},
+		"rightKey" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"nextClick" : {
+			"count" : 0,
+			"totalDuration" : 0,
+			"rate" : 0
+		},
+		"instructionClick" : {
+			"count" : 2,
+			"totalDuration" : 0.08,
+			"rate" : 0.01
+		}
+	},
+	"intent" : {
+		"unknown" : {
+			"count" : 39,
+			"success" : 0,
+			"fail" : 39,
+			"rate" : 0.21,
+			"successRate" : 0,
+			"failureRate" : 0.21
+		},
+		"prevStep" : {
+			"count" : 11,
+			"success" : 11,
+			"fail" : 0,
+			"rate" : 0.06,
+			"successRate" : 0.06,
+			"failureRate" : 0
+		},
+		"nextStep" : {
+			"count" : 22,
+			"success" : 22,
+			"fail" : 0,
+			"rate" : 0.12,
+			"successRate" : 0.12,
+			"failureRate" : 0
+		},
+		"setStep" : {
+			"count" : 2,
+			"success" : 2,
+			"fail" : 0,
+			"rate" : 0.01,
+			"successRate" : 0.01,
+			"failureRate" : 0
+		},
+		"done" : {
+			"count" : 2,
+			"success" : 2,
+			"fail" : 0,
+			"rate" : 0.01,
+			"successRate" : 0.01,
+			"failureRate" : 0
+		}
+	},
+	"step" : {
+		"1" : {
+			"totalDuration" : 436.25,
+			"numViews" : 5,
+			"averageDuration" : 87.25
+		},
+		"2" : {
+			"totalDuration" : 5.14,
+			"numViews" : 5,
+			"averageDuration" : 1.028
+		},
+		"3" : {
+			"totalDuration" : 67.36,
+			"numViews" : 7,
+			"averageDuration" : 9.622857142857143
+		},
+		"4" : {
+			"totalDuration" : 25.86,
+			"numViews" : 8,
+			"averageDuration" : 3.2325
+		},
+		"5" : {
+			"totalDuration" : 1.15,
+			"numViews" : 7,
+			"averageDuration" : 0.16428571428571428
+		},
+		"6" : {
+			"totalDuration" : 36.86,
+			"numViews" : 3,
+			"averageDuration" : 12.286666666666667
+		}
+	},
+	"highlightIngredients" : true,
+	"group" : 2,
+	"interface" : "responsive",
+	"recipe" : "lasagna",
+	"session" : "b693ab00711bf625163aa9369858a5997f0cca58",
+	"timestampInterval" : [
+		ISODate("2014-12-06T18:54:18Z"),
+		ISODate("2014-12-06T21:21:35Z")
+	],
+	"timestampDuration" : {
+		"m" : 147.28,
+		"h" : 2.45
+	},
+	"totalDuration" : {
+		"m" : 298.17,
+		"h" : 4.97
+	},
+	"totalStepDuration" : {
+		"m" : 189.27,
+		"h" : 3.15
+	},
+	"totalStepDelta" : 33,
+	"totalStepDeltaRate" : 0.17,
+	"totalStepChange" : 35,
+	"totalStepChangeRate" : 0.18,
+	"studyErrors" : {
+		"groupChanged" : 1,
+		"highlightChanged" : 0,
+		"timeReset" : 14
+	}
+}
