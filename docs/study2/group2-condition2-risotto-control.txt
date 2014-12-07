@@ -1,0 +1,23 @@
+Subject was more rushed this time overall.
+
+Interface comments
+- "definitely much harder" - "the information overload my sensors"
+- even though it was a recipe similar to what i had made before, i was scared that i'd mess up / miss something, so i again read through the whole thing.
+	- main difference: here, sauté vegs and then mix in, whereas previous recipes had him do onions and carrots as a base for rice. didn't really affect anything. [this is sorta irrelevant to the study, but just a note anyways]
+- "difficult to follow along - never knew where he was in the recipe."
+	- for responsive, only pressed up and down when trying to read ahead, but here, every time looked back to see next semi-step, needed to scan to see where he was. "more irritating" than skipping up and down. 
+- "I mean, this wasn't much of an interface"
+
+Recipe / content comments
+- Prep work was "a lot harder" this time. After all the parts were cooked, everything straightforward - just assembly.
+- Lack of detail in ingredients panel contributed to chopping mistake:
+	- ingredients panel said need half cup broccoli, half cup cauliflower, so assumed they want you to just cut into florets - but they actually wanted dice. could not fix mistake for cauliflower because no time to fix (onions and carrots were cooking already). ingredients only say 1/2 cup, but the detailed instructions say dice.
+	- He must have skimmed the step for ingredients and then only referred to the ingredients panel for quantities after that, because ingredients panel is simpler and less overloady. This holds even for control, which lacks ingredient bolding. 
+	- Takeaways: 
+		(1) blob text really does get lost, especially when there is time pressure
+		(2) we should ensure that simple terms like "chopped" or "diced" are in the preparation notes.
+		(3) pics would have helped
+- Made one substitution: no wine since kazem can't have alcohol. a cool interface could toggle for restrictions (vegetarian, kosher, etc). removed parmesan because too cheesy - goat cheese is enough.
+- Recipe says "peas" - is this frozen or fresh? most people can't use / obtain fresh peas, but nowhere does it say dethaw. 
+
+
