@@ -1,0 +1,42 @@
+
+OVERALL SYNTHESIS: GROUP 2
+
+COMPARISONS
+- Feedback about interface design is independent from recipes
+	- If swapped recipe-interface pairings... "Probably the only difference is that if I did recipe 1 (hardest) with interface 2 (control), I would have died. I probably would have stopped making it. Too much information presented to person making food. Probably would have been biggest thing.""
+- Recipe difficulty: "the more work I put into it, more difficult I think it is. scared I am that it'll fail.""
+	- first: borderline medium-hard. required 3 pots and the oven, and anything that requires oven for long periods of time makes me nervous.
+	- second: medium. only 2 pans. 
+	= third: low. "very easy. closed eyes could do it."
+- Information content: 
+	- control was "definitely the worst. spent so much time trying to figure out where I am, what ingredient to use, " "pretty terrible experience, really difficult to use."
+	- responsive vs. sbs: 
+		- "Couldn't tell difference in how much information was presented; couldn't tell if you were changing it up."
+		- Didn't notice the summary text for responsive.
+		- "EXCEPT I really liked next and previous arrows. Somehow, that just made it more digestible."
+
+
+OTHER IMPROVEMENTS
+
+- Add images / videos.
+	- For example with the baked eggs, when I finished the bottom layer of sauce, my thing looked pretty ugly. couldn't tell if i was doing it right. 
+	- When dicing mushrooms, i was super inefficient because mushrooms were super hard to grab. would be great to have pro chef showing how to do it. i learned knife trick from watchign videos, and it saved me a lot of time.
+
+- Really liked ingredient highlighting, but should highlight ingredients used in previous steps.
+	- Him: Didn't highlight spinach that was boiled in past step. 
+	- Me: well, what about more complex things like bechamel?
+	- Him: Maybe you could have UI that shows all those ingredients turn into bechamel sauce. because by the time you make it, you don't need to know the ingredients anymore - just need to know that it's bechamel sauce.
+
+
+USER-SPECIFIC NOTES
+
+- Always skimmed details at the beginning. Then went back to follow the actual instructions. When skimming, looked for two key things:
+	- Ingredients used
+	- Amount of time per pot being used
+- Prioritize speed / parallelization. 
+	- "my cooking style is like a student cooking style. I don't beleive that cooking should be a 5-hour thing, should be quick, fun thing."
+	- Even tried to wash dishes along the way
+
+
+
+
