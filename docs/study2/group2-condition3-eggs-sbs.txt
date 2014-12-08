@@ -1,0 +1,19 @@
+group 2 condition 3 (sbs + eggs)
+
+- Having "next" and "previous" visual cues was good. 
+	- Even though knew about the arrows, instinct was to click next and it registered a visual feeling. 
+		- NOTE: When he first opened responsive, he forgot that you used up-down arrow keys to navigate, so got confused and clicked "done" to try to go to the next step. I didn't really register the salience of that mistake until he commented on the next-prev thing here.
+	- "Arrow keys is normally for power users. I actually never used arrow keys; i used it just once."
+	- "It felt more rewarding for some reason, just clicking next and previous."
+
+- Left-right transition style was good
+	- Felt more intuitive than up and down
+	- Me: what if next / prev had up and down arrows? Him: Words "next" and "previous" just have a feeling of left and right.
+
+- In terms of actual ingredients and behavior, same patterns as for responsive:
+	- Clicked next next next next at the beginning to see what I could parallelize. 
+	- I computed in my head how long it took to press for each step. BUT...
+		- Recipe ingredient list said "1 pound mushrooms" - but clearly it should be diced, so i had to inject my own mini-steps between each stated step to get to the final result. Instructions never said to cut it (or I glossed over it)."
+
+- Generally pretty easy to use. once i looked at the recipe, actually didn't go back to it because it was so straightforward. my behavior was: i read recipe, realized i needed 2 pots: one for spinach, one for mush, so I parallelized that instantly. and knew that once you finished boiling spinach, cut it, and let mushrooms finish... so didn't need to refer back to it until way later.
+

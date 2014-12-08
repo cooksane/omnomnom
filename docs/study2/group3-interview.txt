@@ -1,0 +1,41 @@
+Group 3: Final Q/A
+
+- Q: Which interface did you like the most?
+  A: The egg one: Responsive
+
+- Q: What interface did you dislike the most?
+  A: The control. I mean you could see all of it at once.
+  Q: What didn't you like about it?
+  A: It was nothing new. This is the same thing I see all the time. It was definitely helpful, with this recipe (lasagna) though, because I was doing so many different things at the same time.
+
+- Q: Would your answer change based on the recipes you cooked?
+  A: Possibly. Because I really disliked the lasagna recipe. The recipe started out on the wrong foot (missing information). Not so much of the interface, it was the recipe; requiring so many different materials, etc...
+
+- Q: What do you think could have been improved (what did you dislike?) for the SBS interface?
+  A: I didn't like not being able to see anything about the other recipes, without having to navigate backward or forward. The recipe that I was making didn't really impact this drawback of the interface, though. However, if I was doing lasagna with this interface, I would have been clicking back and forth like crazy.
+  Q: What did you like about the SBS interface?
+  A: I liked the highlighted ingredients for the step that I was on, but I like that for all of them. I like that it was broken down into chunks instead of having it all sitting there in front of me. Easier to read.
+
+- Q: What do you think could have been improved for the Responsive interface?
+  A: Some visual feedback (hover state!).
+  Q: Did you find the summaries informative?
+  A: Yes. It was a nice way of conceptualizing what I was about to read as a whole; so I didn't have to read all the details. Otherwise I would have to skim through the steps to get the main idea of the step.
+  Q: Could the information of the summaries be improved?
+  A: No, I don't recall thinking that.
+  Q: For instance, if it contained information that helped you parallelize (do multiple steps at the same time, clarification needed) the lasagna recipe, if you had to make that recipe using that interface?
+  A: It depends on how it would be presented. I guess there's a lot of different ways to do it. I'm tempted to say no because I think it would complicate the summaries more. The simplicity of the summaries was nice. There's nothing stopping me from just navigating to the next step and just start that one...
+  Q: What if the interface just contained the full description of the instruction steps instead of the summaries, and just highlighted the step you're on?
+  A: No, because it wouldn't have the summary. I like the summary. Because it contextualizes where I'm at within the recipe in a whole in a very brief and easy to understand way.
+
+- Q: What made ingredient highlighting useful?
+  A: When you're at a certain step, you can look straight at what is bolded, you don't have to look at all the other stuff.
+
+  Q: Would it have been helpful to have something list out all the materials you needed?
+  A: Yea, like right from the get-go. Just to make sure I had the stuff, you know? Luckily I do, but what if I had gotten mid way through the recipe, you know?
+
+
+  Q: Would it have been helpful to have something like ingredient highlighting for materials used for each step?
+  A: No, it's really just a matter of making sure you have the equipment you need, before you even start. You're not referring back to that list like you are with quantities.
+
+  Q: Do you think having materials listed / paired / associated with ingredients would be helpful?
+  A: I don't know, I don't think so. I think that'd be unecessary. Just having them listed would be enough.

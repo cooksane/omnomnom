@@ -1,0 +1,39 @@
+(Need to talk about different types of cognitive load and how existing recipe design can be improved by reducing extraneous cognitive load; shifting focus to germane cognitive load; so cooks more easily develop a schema for cooking recipes)
+
+We believe the instructional design of recipes can be improved. From a cognitive load point-of-view, our examination of popular recipes (citations) showed such recipes are typically geared toward people who have sufficient experience cooking. The typical recipe lists out ingredients needed and either gives a paragraph describing what needs to be done, or a coarse list of steps that need to be carried out. Our initial intuition led us to believe that the design of such instructions could be improved by reducing the amount of information displayed at any given time. Based on cognitive-load-theoretic principles, we believed this would make the cooking process easier. We also believed that allowing the user to maintain some global sense of progress was also important.
+
+The observational results of our studies led us to model the process of cooking as follows. The three main components of cooking are materials, ingredients, and instruction steps. There are X ways to decrease extraneous cognitive load and increase germane cognitive load.
+
+Much of the process involved in cooking is inherently step-by-step (procedural/sequential). In general, for each step, a process is carried out using a set of materials and ingredients. Some processes carried out by each step may be parallelized: Such steps that they do not depend on each other (they have no topological relation). We view these as advanced techniques that complicate the cooking process. In turn, we believe an examination of parallelization goes beyond the scope of this paper and contributes little to effective improvements in the instructional design of recipes for people who lack sufficient cooking experience.
+
+Given the aforementioned model, it's clear that a set of materials and ingredients are needed for each step, and each step is ordered temporally. There is also a relation between the set of materials and ingredients used in each step. These relations illustrate a schema for the process of cooking. Based on this schema, we can improve the instruction of recipes by focusing on the development of the aforementioned relationships, and in turn, enable new cooks to learn the same structures associated with cooking that enable experts to rapidly organize and execute recipes they've never cooked before.
+
+---------------------------------
+
+Our final design embodies these results.
+
+In existing recipes, These relations are all established in the instructions of the recipe. We believe that the relation between ingredients, materials, and instructions may be 
+
+if emphasized, will increase the germane cognitive load of cooking a new recipe.
+
+If instruction steps are constructed such that the current step depends exactly on only the previous steps having been completed, and future steps cannot be completed without steps leading up to them being completed, then such an exact structure can be used to reduce extraneous cognitive load by chunking the amount of instruction actually needed for a given step.
+
+
+
+we establish key relations among materials, ingredients, and steps. 
+
+there exists a temporal relation among the materials and ingredients needed for each discrete step, as well as the typical process involved in executing cooking sub-processes for such material/ingredient combinations.
+
+ are typically  needs to be done with such materials and ingredients over 
+
+Our studies indicate that experienced cooks have developed a strong sense of the temporal relation among ingredients and materials, as well as how these elements 
+
+thus enabling them to quickly assimilate new ingredients and 
+
+Consequently, recipes are naturally written as temporally ordered step-by-step instructions. We believe the step-by-step nature of cooking is the primary structure that may be used to improve the instructional design of recipes.
+
+While learning a new recipe, having a schema into which such 
+
+Given the inherent nature of 
+ This relation is a key element in schema construction
+
