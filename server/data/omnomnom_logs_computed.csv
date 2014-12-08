@@ -1,0 +1,10 @@
+group,interface,recipe,totalDuration.m,timestampDuration.m,totalStepDuration.m,totalStepChange
+1.0,"control","eggs",63.49,62.65,63.49,2.0
+1.0,"sbs","lasagna",170.63,117.25,117.73,37.0
+1.0,"responsive","risotto",63.52,56.65,63.52,80.0
+2.0,"responsive","lasagna",290.79,145.15,181.88,34.0
+2.0,"control","risotto",94.54000000000001,0.0,94.54000000000001,1.0
+2.0,"sbs","eggs",160.32,79.95,80.17,25.0
+3.0,"sbs","risotto",86.20999999999999,70.37,86.20999999999999,14.0
+3.0,"responsive","eggs",76.93000000000001,76.58,76.93000000000001,10.0
+3.0,"control","lasagna",112.71,112.27,112.71,2.0
