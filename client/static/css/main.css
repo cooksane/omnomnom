@@ -283,6 +283,24 @@ a.inactive {
   margin-bottom: 15px;
 }
 /* column */
+.supplies-heading {
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #000000;
+  padding-bottom: 10px;
+}
+.supplies-section {
+  padding: 20px 10px;
+}
+#supplies-column {
+  padding-top: 70px;
+}
+.supply {
+  padding-bottom: 5px;
+}
 .tools-simple:before {
   content: 'Tools: ';
 }

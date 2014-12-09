@@ -8,9 +8,10 @@ define([
 
         className: "",
         template: nom.templates.RecipeColumn,
-        ingredientTemplate: nom.templates.Ingredient,
+        ingredientTemplate: nom.templates.IngredientSimple,
         stagesTemplate: nom.templates.Stage,
         instructionTemplate: nom.templates.InstructionSBS,
+        toolsTemplate: nom.templates.Tool,
 
         events: {
             "click #done": 'recipeComplete',
@@ -49,7 +50,7 @@ define([
         renderModel: function(){
             this.renderStages();
             this.renderIngredients();
-            this.renderTools();
+            this.renderToolsVertical();
 
             // compute height
             var container = this.$el.find("#instruction-container");
@@ -73,7 +74,7 @@ define([
             this.updateButtons();
         },
 
-        renderTools: function() {
+        renderToolsSimple: function() {
             if (this.model.tools) {
                 var toolsContainer = this.$el.find("#tools-container");
 
@@ -83,6 +84,17 @@ define([
                 }
 
                 toolsContainer.html(tools);
+            }
+        },
+
+        renderToolsVertical: function() {
+            if (this.model.tools) {
+                var toolsContainer = this.$el.find("#tools-container");
+
+                for (var i=-1; ++i<this.model.tools.length; ) {
+                    var compiledTemplate = this.toolsTemplate(this.model.tools[i]);
+                    toolsContainer.append(compiledTemplate);
+                }
             }
         },
 
