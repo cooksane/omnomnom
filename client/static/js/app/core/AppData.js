@@ -3,11 +3,12 @@ define([
     "models/SubjectModel",
     "models/curated/CuratedEggsModel",
     "models/curated/CuratedLasagnaModel",
-    "models/curated/CuratedRisottoModel"
+    "models/curated/CuratedRisottoModel",
+    "models/curated/ExtendedCuratedRisottoModel"
 ],
 
     function (StateModel, SubjectModel,
-              CuratedEggsModel, CuratedLasagnaModel, CuratedRisottoModel) {
+              CuratedEggsModel, CuratedLasagnaModel, CuratedRisottoModel, ExtendedCuratedRisottoModel) {
 
         return {
 
@@ -20,10 +21,14 @@ define([
             curatedRecipeMap: {
                 "eggs": new CuratedEggsModel({id: "nom.model.CuratedEggsModel"}),
                 "lasagna": new CuratedLasagnaModel({id: "nom.model.CuratedLasagnaModel"}),
-                "risotto": new CuratedRisottoModel({id: "nom.model.CuratedRisottoModel"})
+                "risotto": new CuratedRisottoModel({id: "nom.model.CuratedRisottoModel"}),
             },
 
-            recipe: "eggs", //eggs, lasagna, risotto
+            extendedCuratedRecipeMap: {
+                "risotto": new ExtendedCuratedRisottoModel({id: "nom.model.ExtendedCuratedRisottoModel"}),
+            },
+
+            recipe: "risotto", //eggs, lasagna, risotto
             interface: "control", // control, sbs, responsive
             stateValue: "summary", // start, summary, interface, nasa, survey, thankyou
 
@@ -34,19 +39,19 @@ define([
                 //state model
                 this.stateModel = new StateModel({id: "nom.model.StateModel"});
 
-                //recipe
-                var recipe = state.getQueryParamByName("recipe");
-                if(this.curatedRecipeMap.hasOwnProperty(recipe)){
-                    this.recipe = recipe;
-                }
-                this.stateModel.set("recipe", this.recipe);
-
                 //interface
                 var interface = state.getQueryParamByName("interface");
                 if(interface != null){
                     this.interface = interface;
                 }
                 this.stateModel.set("interface", this.interface);
+
+                //recipe
+                var recipe = state.getQueryParamByName("recipe");
+                if (this.curatedRecipeMap.hasOwnProperty(recipe)){
+                    this.recipe = recipe;
+                }
+                this.stateModel.set("recipe", this.recipe);
 
                 //state
                 var stateValue = state.getQueryParamByName("state");
@@ -90,10 +95,18 @@ define([
 
                 this.subjectModel.set("group", this.stateModel.get("group"));
 
-                if(this.curatedRecipeMap.hasOwnProperty(this.recipe)){
-                    this.recipeModel = this.curatedRecipeMap[this.recipe];
+                if (interface == "col") {
+                    if (this.extendedCuratedRecipeMap.hasOwnProperty(this.recipe)){
+                        this.recipeModel = this.extendedCuratedRecipeMap[this.recipe];
+                    } else {
+                        this.recipeModel = this.extendedCuratedRecipeMap["risotto"];
+                    }
                 } else {
-                    this.recipeModel = this.curatedRecipeMap["eggs"];
+                    if (this.curatedRecipeMap.hasOwnProperty(this.recipe)){
+                        this.recipeModel = this.curatedRecipeMap[this.recipe];
+                    } else {
+                        this.recipeModel = this.curatedRecipeMap["risotto"];
+                    }
                 }
 
                 if (resetSession) {

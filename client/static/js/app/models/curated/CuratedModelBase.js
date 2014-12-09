@@ -15,6 +15,9 @@ define(
 
             // Map index of an instruction to recipes used in that instruction.
             ingredientIndexes: [],
+            stageIndexes: [],
+
+            imageURLs: [],
 
             recipe: {},
 
@@ -31,12 +34,16 @@ define(
             },
 
             curateRecipe: function(data){
+                console.log(data);
+                data.Stages = this.stages;
                 data.CuratedInstructions = [];
                 for (var i=-1; ++i < this.instructions.length; ){
                     var instruction = {
                         index: i+1,
                         text: this.instructions[i],
                         summary: this.summaries[i],
+                        stage: this.stageIndexes[i],
+                        imageURL: this.imageURLs[i],
                         ingredientIndexes: this.ingredientIndexes[i]
                     };
                     data.CuratedInstructions.push(instruction);

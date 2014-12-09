@@ -1,25 +1,43 @@
 /* variables */
 /* mixins */
 /*  scaffolding */
+.nav-button {
+  color: #c0e336;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 auto;
+}
+.nav-button:hover {
+  cursor: pointer;
+  color: #a0c336;
+}
+.nav-button.inactive {
+  visibility: hidden;
+}
 html,
 body,
 #main-container {
+  overflow: hidden;
   height: 100%;
   background-color: #fafafa;
+}
+#main-container > div {
+  height: 100%;
+}
+.stat {
+  font-style: italic;
+}
+.column {
+  height: 100%;
 }
 body {
   padding-top: 0px;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
-  font-size: 16px;
-  line-height: 1.6em;
-  letter-spacing: 0.8px;
-}
-#main-container {
-  padding: 30px 15px;
-}
-#instruction-container {
-  padding: 20px 0 15px 0;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  letter-spacing: 0.6px;
 }
 strong {
   color: #000000;
@@ -41,7 +59,18 @@ strong {
   margin: 0 auto;
 }
 .panel {
+  margin: 15px 0;
   border: 0px;
+}
+#current-container {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 5px 0;
+}
+#summary-thumbnail {
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 0;
 }
 .label {
   font-family: "Lato", sans-serif;
@@ -50,9 +79,6 @@ strong {
   letter-spacing: 0;
   padding: 0 5px 0 0;
   color: #000000;
-}
-.panel-body {
-  padding-top: 20px;
 }
 .panel-heading,
 .btn {
@@ -63,14 +89,14 @@ strong {
   font-weight: 700;
   font-size: 16px;
   letter-spacing: 1px;
-  text-align: center;
   color: #000000;
+  padding: 5px 15px;
+  text-align: center;
   outline: none !important;
   background-color: #ffffff;
 }
 .panel-heading {
-  -webkit-box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
+  padding-top: 20px;
 }
 .btn {
   letter-spacing: 1px;
@@ -102,6 +128,27 @@ strong {
   width: 100%;
 }
 /*  general styles */
+.vertical-center-content {
+  position: absolute;
+  top: 50%;
+}
+.addPadding {
+  padding: 10px;
+}
+.unselectable {
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -moz-user-select: none;
+  /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  /* From IE10 only */
+  user-select: none;
+  /* Not valid CSS yet, as of July 2012 */
+  -webkit-user-drag: none;
+  /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
 a {
   color: #a0c336;
   cursor: pointer;
@@ -138,36 +185,6 @@ a.inactive {
 }
 .invisible {
   visibility: hidden;
-}
-.responsive-text {
-  display: none;
-}
-.responsive-selected {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  border-left: 10px solid #a0c336;
-  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 15px 0;
-  margin-bottom: 15px;
-  position: relative;
-  z-index: 99;
-}
-.responsive-selected .list-number {
-  margin-left: 0;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.responsive-selected .responsive-summary {
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.responsive-selected .responsive-text {
-  display: block;
-}
-.responsive-selected:last-child {
-  margin-bottom: 15px;
 }
 .title {
   font-family: "Raleway", sans-serif;
@@ -220,68 +237,96 @@ a.inactive {
   font-size: 14px;
   text-align: center;
   padding: 8px 0 5px 0;
-  margin: 0;
-  -webkit-box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
+  margin: 0 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-.sbs-instruction-text {
-  padding: 15px 20px;
-  font-size: 20px;
+.sbs-instruction {
+  padding: 10px 20px;
 }
-.vertical-center-content {
-  position: absolute;
-  top: 50%;
+.sbs-instruction p {
+  padding-bottom: 10px;
 }
-.addPadding {
-  padding: 10px;
+.sbs-instruction img {
+  height: 250px;
+  width: auto;
 }
-/*
-
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
-.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
-.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
-.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
-.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
-.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
-.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
-.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
-.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
-.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
-.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
-.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-    padding: 0;
+/* responsive */
+.responsive-text {
+  display: none;
 }
-
-.horizontal-center-item {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: -10px;
+.responsive-selected {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border-left: 10px solid #a0c336;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 15px 0;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 99;
 }
-
-
-#layoutColumn {
-    float: left;
+.responsive-selected .list-number {
+  margin-left: 0;
+  font-weight: 700;
+  letter-spacing: 0;
 }
-
-#layoutImg {
+.responsive-selected .responsive-summary {
+  font-weight: 700;
+  letter-spacing: 0;
 }
-
-#infoColumn {
-    padding: 10px;
+.responsive-selected .responsive-text {
+  display: block;
 }
-*/
-.unselectable {
-  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
-  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
-  -moz-user-select: none;
-  /* These user-select properties are inheritable, used to prevent text selection */
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  /* From IE10 only */
-  user-select: none;
-  /* Not valid CSS yet, as of July 2012 */
-  -webkit-user-drag: none;
-  /* Prevents dragging of images/divs etc */
-  user-drag: none;
+.responsive-selected:last-child {
+  margin-bottom: 15px;
+}
+/* column */
+.tools-simple:before {
+  content: 'Tools: ';
+}
+#instructions-column .btn {
+  margin-top: 10px;
+  background-color: #ffffff;
+  color: #c0e336;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+}
+#instructions-column .btn:hover {
+  color: #a0c336;
+}
+#instructions-column {
+  min-height: 650px;
+  padding-top: 20px;
+  background: #ffffff;
+  text-align: center;
+}
+#stages-column {
+  padding-right: 0;
+  padding-left: 100px;
+}
+#stages-container {
+  position: relative;
+  top: 160px;
+  text-align: right;
+}
+.stage {
+  padding: 10px 20px;
+}
+.stage .stage-name {
+  text-transform: lowercase;
+  font-family: raleway, sans-serif;
+  font-size: 1.5em;
+  padding-bottom: 5px;
+}
+.stage.active {
+  font-weight: 700 !important;
+}
+.stage:not(:first-child) {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+.stage:not(.active) {
+  letter-spacing: 1px;
 }

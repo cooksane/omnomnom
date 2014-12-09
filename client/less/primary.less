@@ -29,6 +29,13 @@
 
 /* mixins */
 
+.border-radius(@radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
 .bold() {
   font-weight: 700;
   letter-spacing: 0;
@@ -50,6 +57,11 @@
 .shadow-bottom(@color: @black-20) {
   -webkit-box-shadow: 0 5px 6px -5px @color;
     box-shadow: 0 5px 6px -5px @color;
+}
+
+.shadow-top(@color: @black-20) {
+  -webkit-box-shadow: 0 -5px 6px 5px @color;
+    box-shadow: 0 -5px 6px 5px @color;
 }
 
 .border-radius(@radius) {
@@ -83,28 +95,59 @@
   -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
   user-drag: none;
 }
+
 /*  scaffolding */
 
+.nav-button {
+ // .border-radius(15px);
+ // height: 30px;
+ // width: 30px;
+ // border: 1px solid @black-20;
+  color: @color-main;
+//  background: @white;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 auto;
+  &:hover {
+    cursor: pointer;
+    color: @dark-main;
+  }
+
+    &.inactive {
+    visibility: hidden;
+  }
+}
+
 html, body, #main-container {
+  overflow: hidden;
   height: 100%;
   background-color: @color-background;
+}
+
+#main-container > div {
+  height: 100%;
+}
+
+.stat {
+  font-style: italic;
+}
+
+.column {
+  height: 100%;
 }
 
 body {
   padding-top: 0px;
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
-  font-size: 16px;
-  line-height: 1.6em;
-  letter-spacing: 0.8px;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  letter-spacing: 0.6px;
 }
 
 #main-container {
-  padding: 30px 15px;
-}
-
-#instruction-container {
-  padding: 20px 0 15px 0;
+  //padding: 30px 15px;
 }
 
 strong {
@@ -136,7 +179,20 @@ strong {
 }
 
 .panel {
+  margin: 15px 0;
   border: 0px;
+}
+
+#current-container {
+  border-top: 1px solid @black-20;
+  border-bottom: 1px solid @black-20;
+  margin: 5px 0;
+}
+
+#summary-thumbnail {
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 0;
 }
 
 .label {
@@ -147,26 +203,29 @@ strong {
   color: @black;
 }
 
-.panel-body {
-  padding-top: 20px;
-}
-
-.panel-heading, .btn {
-  position: relative;
-  z-index: 100;
+.header-text() {
   font-family: Lato, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 16px;
   letter-spacing: 1px;
-  text-align: center;
   color: @black;
+}
+
+.panel-heading, .btn {
+  position: relative;
+  z-index: 100;
+  .header-text();
+  padding: 5px 15px;
+  text-align: center;
   outline: none !important;
   background-color: @white;
 }
 
 .panel-heading {
-  .shadow-bottom();
+  padding-top: 20px;
+  //border-bottom: 1px solid @black-20;
+  //.shadow-bottom();
 }
 
 .btn {
@@ -195,6 +254,26 @@ strong {
 
 /*  general styles */
 
+.vertical-center-content {
+  position:absolute; top:50%;
+}
+
+.addPadding {
+  padding: 10px;
+}
+
+.unselectable {
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none; /* From IE10 only */
+  user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+
 a {
   color: @dark-main;
   cursor: pointer;
@@ -216,39 +295,8 @@ a {
   visibility: hidden;
 }
 
-.responsive-text {
-  display: none;
-}
-
-.responsive-selected {
-  .border-inset();
-  //.border-radius(3px);
-  border-left: 10px solid @dark-main;
-  .shadow-mixin(10px, @black-20);
-  padding: 15px 0;
-  margin-bottom: 15px;
-  position: relative;
-  z-index: 99;
-
-  & .list-number {
-    margin-left: 0;
-    .bold();
-  }
-
-  & .responsive-summary {
-    .bold();
-  }
-
-  & .responsive-text {
-    display: block;
-  }
-
-  &:last-child {
-    margin-bottom: 15px;
-  }
-}
-
 .title {
+
   font-family: "Raleway", sans-serif;
   //.bold();
   color: @color-text-primary;
@@ -301,6 +349,7 @@ a {
   height: calc(~'100% - 110px');
 }
 
+
 /* sbs */
 
 #sbs-nav {
@@ -311,67 +360,121 @@ a {
   font-size: 14px;
   text-align: center;
   padding: 8px 0 5px 0;
-  margin: 0;
-  .shadow-bottom();
+  margin: 0 10px;
+
+  border-top: 1px solid @black-20;
+  border-bottom: 1px solid @black-20;
+  //.shadow-bottom();
 }
 
-.sbs-instruction-text {
-  padding: 15px 20px;
-  font-size: 20px;
-}
-.vertical-center-content {
-  position:absolute; top:50%;
-}
+.sbs-instruction {
+  padding: 10px 20px;
 
-.addPadding {
-  padding: 10px;
-}
-
-/*
-
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
-.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
-.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
-.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
-.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
-.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
-.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
-.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
-.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
-.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
-.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
-.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
-    padding: 0;
+  & p {
+    padding-bottom: 10px;
+  }
+  & img {
+    height: 250px;
+    width: auto;
+  }
 }
 
-.horizontal-center-item {
+
+/* responsive */
+
+.responsive-text {
+  display: none;
+}
+
+.responsive-selected {
+  .border-inset();
+  //.border-radius(3px);
+  border-left: 10px solid @dark-main;
+  .shadow-mixin(10px, @black-20);
+  padding: 15px 0;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 99;
+
+  & .list-number {
+    margin-left: 0;
+    .bold();
+  }
+
+  & .responsive-summary {
+    .bold();
+  }
+
+  & .responsive-text {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: -10px;
+  }
+
+  &:last-child {
+    margin-bottom: 15px;
+  }
 }
 
+/* column */
 
-#layoutColumn {
-    float: left;
+.tools-simple {
+  &:before {
+    content: 'Tools: ';
+    //font-weight: 700;
+  }
 }
 
-#layoutImg {
+#instructions-column {
+  .btn {
+    margin-top: 10px;
+    background-color: @white;
+    color: @color-main;
+    border: 1px solid @black-20;
+    .shadow-mixin(0, @black-20);
+
+    &:hover {
+      color: @dark-main;
+    }
+  }
 }
 
-#infoColumn {
-    padding: 10px;
+#instructions-column {
+  min-height: 650px;
+  padding-top: 20px;
+  background: @white;
+  text-align: center;
 }
-*/
 
-.unselectable {
-  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
-  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
-  -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
-  -webkit-user-select: none;
-  -ms-user-select: none; /* From IE10 only */
-  user-select: none; /* Not valid CSS yet, as of July 2012 */
-
-  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
-  user-drag: none;
+#stages-column {
+  padding-right: 0;
+  padding-left: 100px;
 }
+
+#stages-container {
+  position: relative;
+  top: 160px;
+  text-align: right;
+}
+
+.stage {
+  padding: 10px 20px;
+  
+  & .stage-name {
+    text-transform: lowercase;
+    font-family: raleway, sans-serif;
+    font-size: 1.5em;
+    padding-bottom: 5px;
+  }
+
+  &.active {
+    font-weight: 700 !important;
+  }
+
+  &:not(:first-child) {
+    border-top: 1px solid @black-20;
+  }
+
+  &:not(.active) {
+    letter-spacing: 1px;
+  }
+}
+
