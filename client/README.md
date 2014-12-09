@@ -152,3 +152,12 @@ Data is logged whenever the user clicks the mouse anywhere on the screen or hits
   * survey
   * thankyou
 
+
+
+### Post Study 2 changes to responsive:
+
+Things to use:
+* http://getbootstrap.com/components/#media
+  * Good for giving each de-emphasized step a thumbnail.
+* http://getbootstrap.com/javascript/#affix
+  * Use browser vertical nav to scroll through recipe, and just affix left/right columns (ingredients, cookware, etc.)

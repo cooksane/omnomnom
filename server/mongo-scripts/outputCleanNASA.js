@@ -1,0 +1,23 @@
+var conn = new Mongo();
+var db = conn.getDB("omnomnom");
+
+var collection = "nasas";
+var collHandle = db[collection];
+
+var query = {};
+var project = {};
+
+var cursor = collHandle.find(query, project).sort({_id: 1});
+
+function outputDurations(cursor){
+    cursor.forEach(function(item){
+        printjson([
+            item.group,
+            item.interface,
+            item.recipe,
+            item.data,
+        ]);
+    });
+}
+
+outputDurations(cursor);

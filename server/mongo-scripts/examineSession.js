@@ -3,9 +3,11 @@ var db = conn.getDB("omnomnom");
 
 function aggregateSessionResults(session, recipe, interface, excludeUnknown){
 
-    var session = "5511517ce047964b623ec6906885690eeacbda56";
-    var recipe = "risotto";
-    var interface = "sbs";
+    /*
+     var session = "5511517ce047964b623ec6906885690eeacbda56";
+     var recipe = "risotto";
+     var interface = "sbs";
+     */
 
     var group = null;
     var highlightIngredients = null;
@@ -22,9 +24,13 @@ function aggregateSessionResults(session, recipe, interface, excludeUnknown){
         query['intent'] = {$ne: "unknown"};
     }
 
+    printjson(collHandle.count(query));
+
     var cursor = collHandle
         .find(query)
         .sort({_id: 1});
+
+    //printjson(cursor);
 
     //fields:
     /*
@@ -76,6 +82,7 @@ function aggregateSessionResults(session, recipe, interface, excludeUnknown){
 
     var results = {
         interaction: {
+            "startClick": interactionM(),
             "doneClick": interactionM(),
             "unknownKey": interactionM(),
             "unknownClick": interactionM(),
@@ -92,6 +99,7 @@ function aggregateSessionResults(session, recipe, interface, excludeUnknown){
             "prevStep": intentM(),
             "nextStep": intentM(),
             "setStep": intentM(),
+            "start": intentM(),
             "done": intentM()
         },
         step: {},
@@ -267,6 +275,11 @@ function aggregateSessionResults(session, recipe, interface, excludeUnknown){
     return results;
 }
 
+var result = aggregateSessionResults("b693ab00711bf625163aa9369858a5997f0cca58", "risotto", "control");
+
+printjson(result);
+
+/*
 var cl = [];
 
 //group 1
@@ -278,7 +291,7 @@ cl[2] = aggregateSessionResults("a7eb5180f2e6e2f4d49d743114520acff26d4c7e", "ris
 //group 2
 var group2 = [];
 cl[3] = aggregateSessionResults("b693ab00711bf625163aa9369858a5997f0cca58", "lasagna", "responsive");
-cl[4] = aggregateSessionResults("b693ab00711bf625163aa9369858a5997f0cca58", "control", "risotto");
+cl[4] = aggregateSessionResults("b693ab00711bf625163aa9369858a5997f0cca58", "risotto", "control");
 cl[5] = aggregateSessionResults("b693ab00711bf625163aa9369858a5997f0cca58", "eggs", "sbs");
 
 //group 3
@@ -286,5 +299,4 @@ var group3 = [];
 cl[6] = aggregateSessionResults("5511517ce047964b623ec6906885690eeacbda56", "risotto", "sbs");
 cl[7] = aggregateSessionResults("5511517ce047964b623ec6906885690eeacbda56", "eggs", "responsive");
 cl[8] = aggregateSessionResults("5511517ce047964b623ec6906885690eeacbda56", "lasagna", "control");
-
-printjson(cl);
+*/
