@@ -198,8 +198,8 @@ define([
             //$document.bind('touchcancel', _.bind(this.touchCancel, this));
 
             try {
-                if(requestAnimationFrame != null){
-                    this.animationSupported = false;
+                if(window.requestAnimationFrame != null){
+                    this.animationSupported = true;
                 } else {
                     this.animationSupported = false;
                 }
@@ -384,7 +384,7 @@ define([
             }
 
             if(rendering){
-                requestAnimationFrame(_.bind(this.renderLoop, this));
+                window.requestAnimationFrame(_.bind(this.renderLoop, this));
             }
         },
 
