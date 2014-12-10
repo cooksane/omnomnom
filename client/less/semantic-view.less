@@ -8,6 +8,7 @@
   margin-right: 260px; // = sidebar width + some white space
 }
 */
+
 /*
 #overlay {
   position: fixed;
@@ -23,7 +24,7 @@
 .top-fade {
   background-image: linear-gradient(to top, transparent 0px, rgba(255, 255, 255, 1) 100%);
   position: absolute;
-  height: 10px;
+  height: 15px;
   width: 100%;
   z-index: 10;
   .unselectable();
@@ -32,7 +33,7 @@
 .bottom-fade {
   background-image: linear-gradient(to bottom, transparent 0px, rgba(255, 255, 255, 1) 100%);
   position: absolute;
-  height: 10px;
+  height: 15px;
   width: 100%;
   bottom: 0;
   z-index: 10;
@@ -40,7 +41,7 @@
 }
 
 .i-viewport(){
-  margin: 10px 0 0px 0;
+  margin: 0px 0 0px 0;
   padding: 0px 5px 0px 5px;
   position: relative;
   overflow: hidden;
@@ -54,6 +55,7 @@
 
 #instruction-viewport {
   .i-viewport();
+  margin: 1px 0 1px 0;
   .border-inset();
   //.border-radius(3px);
   border-left: 10px solid @dark-main;
@@ -80,20 +82,45 @@
   .i-container();
 }
 
+.semantic-column-title {
+  margin-top: 0;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  .shadow-bottom();
+}
+
+.semantic-column-title-instructions {
+  margin-top: 0;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  .shadow-bottom();
+}
+
 .semantic-view-wrapper {
   margin: 0 !important;
   padding: 0 !important;
 }
 
+.semantic-summary {
+  margin: 0;
+}
+
+.semantic-ingredient {
+  margin-bottom: 5px;
+}
+
 .semantic-summary-instruction {
-  margin-top: 5px;
+  //padding-top: 15px;
+  //padding-bottom: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .semantic-selected {
   padding: 15px 0 15px 0;
   margin: 15px 0 30px 0;
   position: relative;
-  z-index: 99;
+  z-index: 9;
 
   & .list-number {
     margin-left: 0;

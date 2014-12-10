@@ -28,6 +28,18 @@ strong {
 .highlight-text {
   font-weight: 700;
   letter-spacing: 0;
+  color: #000000;
+  -webkit-transition: color 500ms ease-out;
+  -moz-transition: color 500ms ease-out;
+  -o-transition: color 500ms ease-out;
+  transition: color 500ms ease-out;
+}
+.ingredient {
+  color: #999999;
+  -webkit-transition: color 200ms ease-out;
+  -moz-transition: color 200ms ease-out;
+  -o-transition: color 200ms ease-out;
+  transition: color 200ms ease-out;
 }
 .container {
   margin: 0 auto;
@@ -103,6 +115,40 @@ strong {
   width: 100%;
 }
 /*  general styles */
+#summary-instruction-link {
+  color: #000000;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-transition: color 50ms ease-out;
+  -moz-transition: color 50ms ease-out;
+  -o-transition: color 50ms ease-out;
+  transition: color 50ms ease-out;
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  /* These user-select properties are inheritable, used to prevent text selection */
+  /* From IE10 only */
+  /* Not valid CSS yet, as of July 2012 */
+  /* Prevents dragging of images/divs etc */
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -moz-user-select: none;
+  /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  /* From IE10 only */
+  user-select: none;
+  /* Not valid CSS yet, as of July 2012 */
+  -webkit-user-drag: none;
+  /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+#summary-instruction-link:hover {
+  color: #a0c336;
+  text-decoration: none;
+}
+#summary-instruction-link.inactive {
+  visibility: hidden;
+}
 a {
   color: #a0c336;
   cursor: pointer;
@@ -310,7 +356,7 @@ a.inactive {
 .top-fade {
   background-image: linear-gradient(to top, transparent 0px, #ffffff 100%);
   position: absolute;
-  height: 10px;
+  height: 15px;
   width: 100%;
   z-index: 10;
   /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
@@ -335,7 +381,7 @@ a.inactive {
 .bottom-fade {
   background-image: linear-gradient(to bottom, transparent 0px, #ffffff 100%);
   position: absolute;
-  height: 10px;
+  height: 15px;
   width: 100%;
   bottom: 0;
   z-index: 10;
@@ -359,11 +405,12 @@ a.inactive {
   user-drag: none;
 }
 #instruction-viewport {
-  margin: 10px 0 0px 0;
+  margin: 0px 0 0px 0;
   padding: 0px 5px 0px 5px;
   position: relative;
   overflow: hidden;
   height: 200px;
+  margin: 1px 0 1px 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -372,14 +419,14 @@ a.inactive {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 #pre-instruction-viewport {
-  margin: 10px 0 0px 0;
+  margin: 0px 0 0px 0;
   padding: 0px 5px 0px 5px;
   position: relative;
   overflow: hidden;
   height: 200px;
 }
 #post-instruction-viewport {
-  margin: 10px 0 0px 0;
+  margin: 0px 0 0px 0;
   padding: 0px 5px 0px 5px;
   position: relative;
   overflow: hidden;
@@ -394,18 +441,39 @@ a.inactive {
 #post-instruction-container {
   position: relative;
 }
+.semantic-column-title {
+  margin-top: 0;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  -webkit-box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
+}
+.semantic-column-title-instructions {
+  margin-top: 0;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  -webkit-box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
+}
 .semantic-view-wrapper {
   margin: 0 !important;
   padding: 0 !important;
 }
+.semantic-summary {
+  margin: 0;
+}
+.semantic-ingredient {
+  margin-bottom: 5px;
+}
 .semantic-summary-instruction {
-  margin-top: 5px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 .semantic-selected {
   padding: 15px 0 15px 0;
   margin: 15px 0 30px 0;
   position: relative;
-  z-index: 99;
+  z-index: 9;
 }
 .semantic-selected .list-number {
   margin-left: 0;

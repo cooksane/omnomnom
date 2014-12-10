@@ -10,6 +10,7 @@
 @dark-spearmint: #0fae7b;
 @pale-gray: #fafafa;
 @pale-green: #fafffa;
+@light-gray: #BBB;
 @gray: #999;
 @dark-gray: #666;
 @light-green: #C0E336;
@@ -124,7 +125,17 @@ strong {
 .highlight-text {
   //background-color: @color-main;
   //color: @color-main;
+  //.bold();
   .bold();
+  color: @black;
+  .transition(color, 500ms);
+}
+
+.ingredient {
+  //.bold();
+  color: @gray;
+  .transition(color, 200ms);
+  //.transition(font-weight, 200ms);
 }
 
 .container {
@@ -205,6 +216,23 @@ strong {
 
 /*  general styles */
 
+#summary-instruction-link {
+  color: @black;
+  cursor: pointer;
+  text-decoration: none;
+  .transition(color, 50ms);
+  .unselectable();
+
+  &:hover {
+    color: @dark-main;
+    text-decoration: none;
+  }
+
+  &.inactive {
+    visibility: hidden;
+  }
+}
+
 a {
   color: @dark-main;
   cursor: pointer;
@@ -220,7 +248,7 @@ a {
   &.inactive {
     visibility: hidden;
   }
-} 
+}
 
 .invisible {
   visibility: hidden;
