@@ -197,12 +197,15 @@ define([
             //$document.bind('touchend', _.bind(this.touchEnd, this));
             //$document.bind('touchcancel', _.bind(this.touchCancel, this));
 
-            if(requestAnimationFrame != null){
-                this.animationSupported = false;
-            } else {
+            try {
+                if(requestAnimationFrame != null){
+                    this.animationSupported = false;
+                } else {
+                    this.animationSupported = false;
+                }
+            } catch(e){
                 this.animationSupported = false;
             }
-
         },
 
         mouseDown: function(event){
@@ -216,10 +219,10 @@ define([
         },
 
         touchStart: function(event) {console.log(event);},
+        touchMove: function(event) {console.log(event);},
         touchEnd: function(event) {
             this.snapToNearest();
         },
-        touchMove: function(event) {console.log(event);},
         touchCancel: function(event) {console.log(event);},
 
         snapToNearest: function() {
@@ -271,12 +274,14 @@ define([
         },
 
         onResize: function(event){
+            /*
             var targetIndex = this.stepIndex;
             this.computeDimensions();
             setTimeout(_.bind(function(){
                 console.log("setTimeout");
                 this.setItemByIndex(targetIndex);
             }, this), 300);
+            */
             //this.updateNearestIndex();
         },
 
