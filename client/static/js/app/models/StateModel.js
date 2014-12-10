@@ -8,7 +8,7 @@ define([], function () {
                 session: "",
                 group: 1,
                 state: "summary", // start, summary, interface, nasa, survey, thankyou
-                interface: "control", // control, sbs, responsive
+                interface: "semantic", // control, sbs, responsive, semantic
                 recipe: "eggs" // eggs, lasagna, risotto
 
                 // this should be hidden if not set

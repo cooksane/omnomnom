@@ -1,0 +1,387 @@
+/* variables */
+
+@white: #fff;
+@black: #000;
+@black-20: rgba(0, 0, 0, 0.2);
+@black-40: rgba(0, 0, 0, 0.4);
+@black-60: rgba(0, 0, 0, 0.6);
+@pale-green: #faf9f5;
+@spearmint: #00cb8b;
+@dark-spearmint: #0fae7b;
+@pale-gray: #fafafa;
+@pale-green: #fafffa;
+@gray: #999;
+@dark-gray: #666;
+@light-green: #C0E336;
+@fresh-green: #A0C336;
+@medium-green: #508912;
+@off-green: #3c763d;
+@aqua: #39d6ed;
+@violet: #397ee4;
+@scarlet: #d30a00;
+@coral: #ff9072;
+
+@color-main: @light-green;
+@dark-main: @fresh-green;
+@color-text-primary: @black;
+@color-background: @pale-gray;
+
+
+/* mixins */
+
+.bold() {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.shadow-mixin(@radius: 8px, @color: @black-60) {
+  -webkit-box-shadow: 0 0 @radius @color;
+  box-shadow: 0 0 @radius @color;
+}
+
+.inner-shadow-mixin(@radius: 8px, @color: @black-60) {
+  -webkit-box-shadow: 0 0 @radius @color inset;
+  box-shadow: 0 0 @radius @color inset;
+}
+
+.shadow-none() {
+  -webkit-box-shadow: 0 0px 0px 0px;
+  box-shadow: 0 0px 0px 0px;
+}
+.shadow-top(@color: @black-40) {
+  -webkit-box-shadow: 0 -5px 10px -5px @color;
+    box-shadow: 0 -5px 10px -5px @color;
+}
+
+.shadow-bottom(@color: @black-20) {
+  -webkit-box-shadow: 0 5px 6px -5px @color;
+    box-shadow: 0 5px 6px -5px @color;
+}
+
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+      -ms-border-radius: @radius;
+          border-radius: @radius;
+}
+
+.border-inset() {
+  -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+      box-sizing:border-box;
+}
+
+.transition(@style, @time) {
+  -webkit-transition: @style @time ease-out;
+  -moz-transition: @style @time ease-out;
+  -o-transition: @style @time ease-out;
+  transition: @style @time ease-out;
+}
+
+.unselectable() {
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none; /* From IE10 only */
+  user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
+/*  scaffolding */
+
+html, body, #main-container {
+  height: 100%;
+  background-color: @color-background;
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6em;
+  letter-spacing: 0.8px;
+}
+
+#main-container {
+  padding: 30px 15px;
+}
+
+#instruction-container {
+  //padding: 20px 0 15px 0;
+}
+
+strong {
+  color: @color-text-primary;
+}
+
+.highlight-text {
+  //background-color: @color-main;
+  //color: @color-main;
+  .bold();
+}
+
+.container {
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+
+  //display: table;
+  //vertical-align: middle;
+}
+
+.row {
+  margin: 0 auto;
+}
+
+.panel {
+  border: 0px;
+}
+
+.label {
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  .bold();
+  padding: 0 5px 0 0;
+  color: @black;
+}
+
+.panel-body {
+  padding-top: 20px;
+}
+
+.panel-heading, .btn {
+  position: relative;
+  z-index: 100;
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-align: center;
+  color: @black;
+  outline: none !important;
+  background-color: @white;
+}
+
+.panel-heading {
+  .shadow-bottom();
+}
+
+.btn {
+  letter-spacing: 1px;
+  text-align: center;
+  color: @white;
+  outline: none !important;
+  background-color: @dark-main;
+  position: relative;
+  z-index: 100;
+  font-family: "Lato", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  .transition(background-color, 200ms);
+  .transition(color, 200ms);
+  .shadow-mixin(3px, @black-40);
+  &:hover {
+    color: @white;
+    background-color: @color-main;
+  }
+}
+
+.btn-full-width {
+  width: 100%;
+}
+
+/*  general styles */
+
+a {
+  color: @dark-main;
+  cursor: pointer;
+  text-decoration: none;
+  .transition(color, 100ms);
+  .unselectable();
+
+  &:hover {
+    color: @color-main;
+    text-decoration: none;
+  }
+
+  &.inactive {
+    visibility: hidden;
+  }
+} 
+
+.invisible {
+  visibility: hidden;
+}
+
+.responsive-text {
+  display: none;
+}
+
+.responsive-selected {
+  .border-inset();
+  //.border-radius(3px);
+  border-left: 10px solid @dark-main;
+  .shadow-mixin(10px, @black-20);
+  padding: 15px 0 15px 0;
+  margin: 15px 0 30px 0;
+  position: relative;
+  z-index: 99;
+
+  & .list-number {
+    margin-left: 0;
+    .bold();
+  }
+
+  & .responsive-summary {
+    .bold();
+  }
+
+  & .responsive-text {
+    display: block;
+  }
+
+  &:last-child {
+    margin-bottom: 15px;
+  }
+}
+
+.title {
+  font-family: "Raleway", sans-serif;
+  //.bold();
+  color: @color-text-primary;
+}
+
+.list-number {
+  margin-left: 10px;
+  margin-right: -20px;
+}
+
+.description {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #999;
+  padding: 10px 0 7px;
+}
+
+.stats {
+  color: @color-text-primary;
+  .bold();
+}
+
+.shadow {
+  -moz-box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+  -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+  box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+
+/* intro page */
+
+.header-image {
+  padding: 20px 0 30px 0;
+}
+
+#panel-start {
+  padding: 20px 40px;
+}
+
+/* this makes the panel body take up full vertical space */
+.sbs-panel-body-vertical {
+  height: calc(~'100% - 110px');
+}
+
+/* sbs */
+
+#sbs-nav {
+  font-family: "Lato", sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  padding: 8px 0 5px 0;
+  margin: 0;
+  .shadow-bottom();
+}
+
+.sbs-instruction-text {
+  padding: 15px 20px;
+  font-size: 20px;
+}
+.vertical-center-content {
+  position:absolute; top:50%;
+}
+
+.addPadding {
+  padding: 10px;
+}
+
+/*
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
+.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
+.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
+.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
+.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
+.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
+.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
+.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
+.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
+.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
+.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding: 0;
+}
+
+.horizontal-center-item {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: -10px;
+}
+
+
+#layoutColumn {
+    float: left;
+}
+
+#layoutImg {
+}
+
+#infoColumn {
+    padding: 10px;
+}
+*/
+
+.unselectable {
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -moz-user-select: none; /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none; /* From IE10 only */
+  user-select: none; /* Not valid CSS yet, as of July 2012 */
+
+  -webkit-user-drag: none; /* Prevents dragging of images/divs etc */
+  user-drag: none;
+}
