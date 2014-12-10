@@ -34,6 +34,7 @@ define([
         iContentHeight: 0,
 
         suppressScroll: false,
+        animationSupported: false,
 
         initialize: function(params){
             this.appData = params.appData;
@@ -46,7 +47,6 @@ define([
             _.bindAll(this, 'keyAction');
             $(document).bind('keyup', this.keyAction);
             this.updateLog("startClick", true);
-            setInterval(_.bind(this.renderLoop, this), 10);
         },
 
         die: function(){
@@ -71,7 +71,7 @@ define([
         renderModel: function(){
             this.renderIngredients();
             this.renderInstructions();
-            this.selectInstruction();
+            //this.selectInstruction();
         },
 
         renderIngredients: function(){
@@ -131,8 +131,6 @@ define([
             }
         },
 
-        /*
-         */
         instructionClicked: function(event) {
             event.stopImmediatePropagation();
             var index = $(event.currentTarget).data('index') - 1;
@@ -191,11 +189,20 @@ define([
             $window.bind('mouseup', _.bind(this.mouseUp, this));
              */
 
+
+            // Wanted to get a sort of "snap to nearest" effect when
             var $document = $(document);
             //$document.bind('touchstart', _.bind(this.touchStart, this));
             //$document.bind('touchmove', _.bind(this.touchMove, this));
-            $document.bind('touchend', _.bind(this.touchEnd, this));
+            //$document.bind('touchend', _.bind(this.touchEnd, this));
             //$document.bind('touchcancel', _.bind(this.touchCancel, this));
+
+            if(requestAnimationFrame != null){
+                this.animationSupported = true;
+            } else {
+                this.animationSupported = false;
+            }
+
         },
 
         mouseDown: function(event){
@@ -205,16 +212,15 @@ define([
         mouseUp: function(event){
             //console.log("mouseup", event);
             //console.log('mouseUp');
-            this.snapToNearest();
+            //this.snapToNearest();
         },
 
         touchStart: function(event) {console.log(event);},
-        touchMove: function(event) {console.log(event);},
-        touchCancel: function(event) {console.log(event);},
-
         touchEnd: function(event) {
             this.snapToNearest();
         },
+        touchMove: function(event) {console.log(event);},
+        touchCancel: function(event) {console.log(event);},
 
         snapToNearest: function() {
             var discreteIndex = this.updateNearestIndex();
@@ -236,6 +242,12 @@ define([
             var approxIndex = iscrollPosition / this.iViewportHeight;
 
             var discreteIndex = Math.round(approxIndex);
+            /*
+            console.log('updateNearest', this.stepIndex, discreteIndex);
+            console.log('window', wvpHeight, wscrollPosition);
+            console.log('content', wcontentHeight, iscrollPosition);
+            */
+
             if(discreteIndex != this.stepIndex){
                 console.log('updateNearest', this.stepIndex, discreteIndex);
                 this.lastIndex = this.stepIndex;
@@ -254,17 +266,13 @@ define([
             //this.suppressScroll = true;
             $window.scrollTop(wPosition);
 
-            this.computeDetailInstructions();
-            this.computePreInstructions();
-            this.computePostInstructions();
+            this.updatePositions();
+
         },
 
         onResize: function(event){
             var targetIndex = this.stepIndex;
             this.computeDimensions();
-            this.computeDetailInstructions();
-            this.computePreInstructions();
-            this.computePostInstructions();
             setTimeout(_.bind(function(){
                 console.log("setTimeout");
                 this.setItemByIndex(targetIndex);
@@ -278,10 +286,8 @@ define([
                 this.snapToNearest();
                 return;
             }
-            this.computeDetailInstructions();
-            this.computePreInstructions();
-            this.computePostInstructions();
             this.updateNearestIndex();
+            this.updatePositions();
             //console.log('onScroll', event);
         },
 
@@ -297,10 +303,25 @@ define([
         currentInstructionPosition: null,
         targetPreHeight: null,
         currentPreHeight: null,
-        targetPostHeight: null,
-        currentPostHeight: null,
+        targetPreScaleY: null,
+        currentPreScaleY: null,
+        targetPostScaleY: null,
+        currentPostScaleY: null,
         targetPostPosition: null,
         currentPostPosition: null,
+
+        updatePositions: function(){
+            this.computeDetailInstructions();
+            this.computePreInstructions();
+            this.computePostInstructions();
+
+            if(this.animationSupported){
+                this.renderLoop();
+            } else {
+                this.setPositions();
+                //setInterval(_.bind(this.renderLoop, this), 10);
+            }
+        },
 
         renderLoop: function(){
             if(!this.renderOk){
@@ -310,40 +331,137 @@ define([
             var factor = 0.3;
             var delta = 0;
             var maxDelta = 0.01;
+            var rendering = false;
+
             //mid
             delta = factor*(this.targetInstructionPosition-this.currentInstructionPosition);
             if(Math.abs(delta) > maxDelta){
                 this.currentInstructionPosition += delta;
-                //this.currentInstructionPosition = this.targetInstructionPosition;
-                this.$instructionContainer.css("top", this.currentInstructionPosition);
+                //this.$instructionContainer.css("top", this.currentInstructionPosition);
+                this.$instructionContainer.css("transform", "translateY("+this.currentInstructionPosition+"px)");
+                rendering = true;
             }
 
             //pre
             delta = factor*(this.targetPreHeight-this.currentPreHeight);
             if(Math.abs(delta) > maxDelta){
-                //this.currentPreHeight = this.targetPreHeight;
                 this.currentPreHeight += delta;
+                this.currentPreScaleY += factor*(this.targetPreScaleY-this.currentPreScaleY);
                 this.$preViewport.height(this.currentPreHeight);
+                //this.$preViewport.css("transform", "scaleY("+this.currentPreScaleY+")");
+                rendering = true;
             }
 
             //post
             delta = factor*(this.targetPostHeight-this.currentPostHeight);
             if(Math.abs(delta) > maxDelta) {
                 this.currentPostHeight += delta;
-                //this.currentPostHeight = this.targetPostHeight;
+                this.currentPostScaleY += factor*(this.targetPostScaleY - this.currentPostScaleY);
+                //this.$postViewport.css("transform", "scaleY("+this.currentPostScaleY+")");
                 this.$postViewport.height(this.currentPostHeight);
+                rendering = true;
             }
 
             delta = factor*(this.targetPostPosition-this.currentPostPosition);
             if(Math.abs(delta) > maxDelta) {
                 this.currentPostPosition += delta;
-                //this.currentPostPosition = this.targetPostPosition;
-                this.$postContainer.css("top", this.currentPostPosition);
+                //this.$postContainer.css("top", this.currentPostPosition);
+                this.$postContainer.css("transform", "translateY("+this.currentPostPosition+"px)");
+                rendering = true;
+            }
 
+            if(rendering){
+                requestAnimationFrame(_.bind(this.renderLoop, this));
             }
         },
 
+        setPositions: function(){
+            this.currentInstructionPosition = this.targetInstructionPosition;
+            this.currentPreHeight = this.targetPreHeight;
+            this.currentPostHeight = this.targetPostHeight;
+            this.currentPostPosition = this.targetPostPosition;
+
+            ///*
+            if(this.animationSupported){
+                this.$instructionContainer.css("transform", "translateY("+this.currentInstructionPosition+"px)");
+                this.$preViewport.height(this.currentPreHeight);
+                this.$postViewport.height(this.currentPostHeight);
+                this.$postContainer.css("transform", "translateY("+this.currentPostPosition+"px)");
+            } else {
+                this.$instructionContainer.css("top", this.currentInstructionPosition);
+                this.$preViewport.height(this.currentPreHeight);
+                this.$postViewport.height(this.currentPostHeight);
+                this.$postContainer.css("top", this.currentPostPosition);
+            }
+            //*/
+        },
+
+        computeDetailInstructions: function(){
+            var $window = $(window);
+            var $container = this.$el.find("#instruction-container");
+            var $instructionViewport = this.$el.find("#instruction-viewport");
+
+            var wvpHeight = $window.height();
+            var wcontentHeight = this.$el.height();
+
+
+            var wscrollPosition = $window.scrollTop();
+            var iscrollPosition = wscrollPosition/wcontentHeight*this.iContentHeight;
+            this.targetInstructionPosition = -iscrollPosition;
+            //console.log(wscrollPosition);
+        },
+
+        computePreInstructions: function(){
+            var $window = $(window);
+            var $container = this.$el.find("#pre-instruction-container");
+            var $instructionViewport = this.$el.find("#pre-instruction-viewport");
+
+            var iSample = this.$el.find("#summary_instruction_1");
+            var iMargins = parseInt(iSample.css("marginTop")) + parseInt(iSample.css("marginBottom"))/2;
+            var iPaddings = parseInt(iSample.css("paddingTop")) + parseInt(iSample.css("paddingBottom"));
+            var iHeight = iSample.height();
+            var itemHeight = iMargins + iPaddings + iHeight;
+            var numItems = this.viewPreLookup.length;
+
+            //compute position
+            var wscrollPosition = $window.scrollTop();
+            var wvpHeight = $window.height();
+            var wcontentHeight = this.$el.height();
+
+            var maxHeight = itemHeight*(numItems-1);
+            this.targetPreHeight = maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
+            this.targetPreScaleY = wscrollPosition/(wcontentHeight-wvpHeight);
+        },
+
+        computePostInstructions: function(){
+            var $window = $(window);
+            var $container = this.$el.find("#post-instruction-container");
+            var $instructionViewport = this.$el.find("#post-instruction-viewport");
+
+            var iSample = this.$el.find("#summary_instruction_1");
+            var iMargins = parseInt(iSample.css("marginTop")) + parseInt(iSample.css("marginBottom"))/2;
+            var iPaddings = parseInt(iSample.css("paddingTop")) + parseInt(iSample.css("paddingBottom"));
+            var iHeight = iSample.height();
+            var itemHeight = iMargins + iPaddings + iHeight;
+            var numItems = this.viewPostLookup.length;
+
+            //compute position
+            var wscrollPosition = $window.scrollTop();
+            var wvpHeight = $window.height();
+            var wcontentHeight = this.$el.height();
+
+            var maxHeight = itemHeight*(numItems);
+
+            var targetPosition = -(itemHeight - iPaddings + maxHeight*wscrollPosition/wcontentHeight);
+            this.targetPostPosition = targetPosition;
+
+            var targetHeight = maxHeight - maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
+            this.targetPostHeight = targetHeight;
+            this.targetPostScaleY = 1 - wscrollPosition/(wcontentHeight-wvpHeight);
+        },
+
         renderInstructions: function() {
+
             this.renderDetailedInstructions();
             this.renderPreSummaryInstructions();
             this.renderPostSummaryInstructions();
@@ -352,6 +470,22 @@ define([
             this.$preViewport = this.$el.find("#pre-instruction-viewport");
             this.$postViewport = this.$el.find("#post-instruction-viewport");
             this.$postContainer = this.$el.find("#post-instruction-container");
+
+            this.$el.find('#semantic-container').affix({
+                offset: {
+                    top: -10
+                    /*
+                     , bottom: function () {
+                     return 0;
+                     }
+                     */
+                },
+                target: window
+            });
+
+            this.snapToNearest();
+            this.setPositions();
+
             this.renderOk = true;
         },
 
@@ -368,7 +502,6 @@ define([
 
             this.computeDimensions();
             this.computeDetailInstructions();
-            this.currentInstructionPosition = this.targetInstructionPosition;
         },
 
         computeDimensions: function(){
@@ -428,7 +561,6 @@ define([
             }
 
             this.computePreInstructions();
-            this.currentPreHeight = this.targetPreHeight;
 
         },
 
@@ -446,70 +578,7 @@ define([
             }
 
             this.computePostInstructions();
-            this.currentPostHeight = this.targetPostHeight;
-            this.currentPostPosition = this.targetPostPosition;
 
-        },
-
-        computeDetailInstructions: function(){
-            var $window = $(window);
-            var $container = this.$el.find("#instruction-container");
-            var $instructionViewport = this.$el.find("#instruction-viewport");
-
-            var wvpHeight = $window.height();
-            var wcontentHeight = this.$el.height();
-
-
-            var wscrollPosition = $window.scrollTop();
-            var iscrollPosition = wscrollPosition/wcontentHeight*this.iContentHeight;
-            this.targetInstructionPosition = -iscrollPosition;
-            //console.log(wscrollPosition);
-        },
-
-        computePreInstructions: function(){
-            var $window = $(window);
-            var $container = this.$el.find("#pre-instruction-container");
-            var $instructionViewport = this.$el.find("#pre-instruction-viewport");
-
-            var iSample = this.$el.find("#summary_instruction_1");
-            var iMargins = parseInt(iSample.css("marginTop")) + parseInt(iSample.css("marginBottom"))/2;
-            var iPaddings = parseInt(iSample.css("paddingTop")) + parseInt(iSample.css("paddingBottom"));
-            var iHeight = iSample.height();
-            var itemHeight = iMargins + iPaddings + iHeight;
-            var numItems = this.viewPreLookup.length;
-
-            //compute position
-            var wscrollPosition = $window.scrollTop();
-            var wvpHeight = $window.height();
-            var wcontentHeight = this.$el.height();
-
-            var maxHeight = itemHeight*(numItems-1);
-            this.targetPreHeight = maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
-        },
-
-        computePostInstructions: function(){
-            var $window = $(window);
-            var $container = this.$el.find("#post-instruction-container");
-            var $instructionViewport = this.$el.find("#post-instruction-viewport");
-
-            var iSample = this.$el.find("#summary_instruction_1");
-            var iMargins = parseInt(iSample.css("marginTop")) + parseInt(iSample.css("marginBottom"))/2;
-            var iPaddings = parseInt(iSample.css("paddingTop")) + parseInt(iSample.css("paddingBottom"));
-            var iHeight = iSample.height();
-            var itemHeight = iMargins + iPaddings + iHeight;
-            var numItems = this.viewPostLookup.length;
-
-            //compute position
-            var wscrollPosition = $window.scrollTop();
-            var wvpHeight = $window.height();
-            var wcontentHeight = this.$el.height();
-
-            var maxHeight = itemHeight*(numItems);
-            var targetHeight = maxHeight - maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
-            var targetPosition = -(itemHeight - iPaddings + maxHeight*wscrollPosition/wcontentHeight);
-
-            this.targetPostHeight = targetHeight;
-            this.targetPostPosition = targetPosition;
         }
 
     });

@@ -48,24 +48,34 @@ define([
         });
     };
 
-    Service.prototype.putData = function(collection, session, data){
-        if(this.appData.debugMode){
+    Service.prototype.putData = function(collection, session, data) {
+        if (this.appData.debugMode) {
             return;
         }
 
         console.log("putting data", session, data);
-        var url = "http://"+document.domain+":8000/"+collection+"/"+session;
-
-        $.ajax({
-            type: "POST",
-            url: url,
-            processData: false,
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-            success: function(data){
-                console.log(data);
-            }
-        });
+        var url = "http://" + document.domain + ":8000/" + collection + "/" + session;
+        try {
+            $.ajax({
+                type: "POST",
+                url: url,
+                processData: false,
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (data) {
+                    console.log(data);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    //do nothing.
+                },
+                statusCode: {
+                    "404": function () {
+                        //alert( "page not found" );
+                    }
+                }
+            });
+        } catch(e){
+        }
     };
 
     return Service;
