@@ -34,6 +34,7 @@ define([
         iContentHeight: 0,
 
         suppressScroll: false,
+        renderOk: false,
 
         initialize: function(params){
             this.appData = params.appData;
@@ -46,6 +47,7 @@ define([
             _.bindAll(this, 'keyAction');
             $(document).bind('keyup', this.keyAction);
             this.updateLog("startClick", true);
+            setInterval(_.bind(this.renderLoop, this), 10);
         },
 
         die: function(){
@@ -246,7 +248,7 @@ define([
             //this.suppressScroll = true;
             $window.scrollTop(wPosition);
 
-            this.computeInstructionsPosition();
+            this.computeDetailInstructions();
             this.computePreInstructions();
             this.computePostInstructions();
         },
@@ -257,14 +259,47 @@ define([
                 this.snapToNearest();
                 return;
             }
-            this.computeInstructionsPosition();
+            this.computeDetailInstructions();
             this.computePreInstructions();
             this.computePostInstructions();
             this.updateNearestIndex();
             //console.log('onScroll', event);
         },
 
-        computeInstructionsPosition: function(){
+        renderLoop: function(){
+            if(!this.renderOk){
+                return;
+            }
+
+            var factor = 0.3;
+
+            //mid
+            var $instructionContainer = this.$el.find("#instruction-container");
+            this.currentInstructionPosition += factor*(this.targetInstructionPosition-this.currentInstructionPosition);
+            //this.currentInstructionPosition = this.targetInstructionPosition;
+            $instructionContainer.css("top", this.currentInstructionPosition);
+
+            //pre
+            var $preViewport = this.$el.find("#pre-instruction-viewport");
+            //this.currentPreHeight = this.targetPreHeight;
+            this.currentPreHeight += factor*(this.targetPreHeight-this.currentPreHeight);
+            $preViewport.height(this.currentPreHeight);
+
+            //post
+            var $postContainer = this.$el.find("#post-instruction-container");
+            var $postViewport = this.$el.find("#post-instruction-viewport");
+            this.currentPostHeight += factor*(this.targetPostHeight-this.currentPostHeight);
+            //this.currentPostHeight = this.targetPostHeight;
+            $postViewport.height(this.currentPostHeight);
+
+            this.currentPostPosition += factor*(this.targetPostPosition-this.currentPostPosition);
+            //this.currentPostPosition = this.targetPostPosition;
+            $postContainer.css("top", this.currentPostPosition);
+            //console.log("renderLoop", this.currentInstructionPosition);
+        },
+
+
+        computeDetailInstructions: function(){
             var $window = $(window);
             var $container = this.$el.find("#instruction-container");
             var $instructionViewport = this.$el.find("#instruction-viewport");
@@ -275,8 +310,7 @@ define([
 
             var wscrollPosition = $window.scrollTop();
             var iscrollPosition = wscrollPosition/wcontentHeight*this.iContentHeight;
-
-            $container.css("top", -iscrollPosition);
+            this.targetInstructionPosition = -iscrollPosition;
             //console.log(wscrollPosition);
         },
 
@@ -298,9 +332,7 @@ define([
             var wcontentHeight = this.$el.height();
 
             var maxHeight = itemHeight*(numItems-1);
-            var targetHeight = maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
-
-            $instructionViewport.height(targetHeight);
+            this.targetPreHeight = maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
         },
 
         computePostInstructions: function(){
@@ -324,14 +356,15 @@ define([
             var targetHeight = maxHeight - maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
             var targetPosition = -(itemHeight - iPaddings + maxHeight*wscrollPosition/wcontentHeight);
 
-            $instructionViewport.height(targetHeight);
-            $container.css("top", targetPosition);
+            this.targetPostHeight = targetHeight;
+            this.targetPostPosition = targetPosition;
         },
 
         renderInstructions: function() {
             this.renderDetailedInstructions();
             this.renderPreSummaryInstructions();
             this.renderPostSummaryInstructions();
+            this.renderOk = true;
         },
 
         renderPreSummaryInstructions: function(){
@@ -348,6 +381,8 @@ define([
             }
 
             this.computePreInstructions();
+            this.currentPreHeight = this.targetPreHeight;
+
         },
 
         renderPostSummaryInstructions: function(){
@@ -364,6 +399,9 @@ define([
             }
 
             this.computePostInstructions();
+            this.currentPostHeight = this.targetPostHeight;
+            this.currentPostPosition = this.targetPostPosition;
+
         },
 
         renderDetailedInstructions: function(){
@@ -419,6 +457,8 @@ define([
 
             this.$el.height(wcontentHeight);
 
+            this.computeDetailInstructions();
+            this.currentInstructionPosition = this.targetInstructionPosition;
         }
 
     });
