@@ -28,6 +28,7 @@
         "require",
         "requirejs",
         "define",
-        "requestAnimationFrame"
+        "Modernizr"
+
     ]
 }

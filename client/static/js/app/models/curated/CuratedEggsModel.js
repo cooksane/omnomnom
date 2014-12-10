@@ -16,7 +16,7 @@ define(
                 [1,2,3,4,5,6,7],
                 [],
                 [8],
-                [9,10,11],
+                [9,10,11]
             ],
 
             summaries: [
@@ -146,7 +146,7 @@ define(
                         "DisplayQuantity": "",
                         "Unit": "",
                         "PreparationNotes": "to taste"
-                    },
+                    }
                 ],
                 "YieldNumber": 12,
                 "YieldUnit": "Servings",

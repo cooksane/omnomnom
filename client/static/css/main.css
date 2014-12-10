@@ -18,9 +18,11 @@ body {
   font-size: 16px;
   line-height: 1.6em;
   letter-spacing: 0.8px;
+  position: relative;
 }
 #main-container {
   padding: 30px 15px;
+  position: relative;
 }
 strong {
   color: #000000;
@@ -240,13 +242,6 @@ a.inactive {
   -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
-.text-ellipsis {
-  overflow: hidden;
-  -ms-text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  display: block;
-}
 /* intro page */
 .header-image {
   padding: 20px 0 30px 0;
@@ -455,38 +450,111 @@ a.inactive {
   -webkit-box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
   box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
 }
+#main-container {
+  position: absolute;
+}
 .semantic-view-wrapper {
   margin: 0 !important;
   padding: 0 !important;
 }
+.semantic-ingredient {
+  font-size: 12px;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+@media (min-width: 992px) {
+  .semantic-ingredient {
+    font-size: 16px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+  }
+}
 .semantic-summary {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
   margin: 0;
 }
-.semantic-ingredient {
-  margin-bottom: 5px;
-}
 .semantic-summary-instruction {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  font-size: 12px;
+  padding: 0px 0 0px 0;
+  margin: 5px 0 10px 5px;
 }
-.semantic-selected {
-  padding: 15px 0 15px 0;
-  margin: 15px 0 30px 0;
+.semantic-summary-instruction .semantic-summary-column {
+  margin: 0px 15px 0px 10px;
+  padding: 0px 15px 0px 10px;
+}
+@media (min-width: 992px) {
+  .semantic-summary-instruction {
+    font-size: 16px;
+    padding: 0px 0 0px 0;
+    margin: 10px 0 20px 5px;
+  }
+  .semantic-summary-instruction .semantic-summary-column {
+    margin: 0px 15px 0px 10px;
+    padding: 0px 15px 0px 10px;
+  }
+}
+.semantic-detail-instruction {
+  font-size: 12px;
+  padding: 10px 0 10px 0;
+  margin: 0px 0 0px 0;
   position: relative;
   z-index: 9;
 }
-.semantic-selected .list-number {
+.semantic-detail-instruction .list-number {
   margin-left: 0;
+  width: auto;
   font-weight: 700;
   letter-spacing: 0;
 }
-.semantic-selected .semantic-summary {
-  font-weight: 700;
-  letter-spacing: 0;
-}
-.semantic-selected .semantic-text {
+.semantic-detail-instruction .semantic-text {
+  margin-left: -5px;
   display: block;
 }
-.semantic-selected:last-child {
-  margin-bottom: 15px;
+.semantic-detail-instruction .semantic-column-body {
+  margin: 0px 15px 0px 5px;
+  padding: 0px 15px 0px 10px;
+}
+.semantic-detail-instruction .dl-horizontal {
+  margin-bottom: 0px;
+}
+@media (min-width: 992px) {
+  .semantic-detail-instruction {
+    font-size: 16px;
+    padding: 10px 0 10px 0;
+    margin: 0px 0 0px 0;
+    position: relative;
+    z-index: 9;
+  }
+  .semantic-detail-instruction .list-number {
+    margin-left: 0;
+    width: auto;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .semantic-detail-instruction .semantic-text {
+    margin-left: 0px;
+    display: block;
+  }
+  .semantic-detail-instruction .semantic-column-body {
+    margin: 0px 15px 0px 10px;
+    padding: 0px 15px 0px 10px;
+  }
+  .semantic-detail-instruction .dl-horizontal {
+    margin-bottom: 0px;
+  }
 }

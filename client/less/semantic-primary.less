@@ -108,10 +108,12 @@ body {
   font-size: 16px;
   line-height: 1.6em;
   letter-spacing: 0.8px;
+  position: relative;
 }
 
 #main-container {
   padding: 30px 15px;
+  position: relative;
 }
 
 #instruction-container {
@@ -315,14 +317,14 @@ a {
   box-shadow: 0px 0px 5px rgba(0,0,0,.3);
 }
 
-.text-ellipsis {
+.text-ellipsis() {
+  display: block;
   overflow: hidden;
+  white-space: nowrap;
   -ms-text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  display: block;
 }
-
 
 /* intro page */
 

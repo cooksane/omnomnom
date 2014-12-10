@@ -96,46 +96,122 @@
   .shadow-bottom();
 }
 
+#main-container {
+  position: absolute;
+}
+
 .semantic-view-wrapper {
   margin: 0 !important;
   padding: 0 !important;
 }
 
-.semantic-summary {
-  margin: 0;
+.md-font(){
+  font-size: 12px;
+}
+
+.lg-font(){
+  font-size: 16px;
 }
 
 .semantic-ingredient {
-  margin-bottom: 5px;
+  .md-font();
+  .text-ellipsis();
+  margin-bottom: 2px;
+
+  @media (min-width: @screen-md-min) {
+    .lg-font();
+    .text-ellipsis();
+    margin-bottom: 4px;
+  }
+}
+
+.semantic-summary {
+  .text-ellipsis();
+  margin: 0;
 }
 
 .semantic-summary-instruction {
   //padding-top: 15px;
   //padding-bottom: 15px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  .md-font();
+  padding: 0px 0 0px 0;
+  margin: 5px 0 10px 5px;
+
+  & .semantic-summary-column {
+    margin: 0px 15px 0px 10px;
+    padding: 0px 15px 0px 10px;
+  }
+
+  @media (min-width: @screen-md-min) {
+    .lg-font();
+    padding: 0px 0 0px 0;
+    margin: 10px 0 20px 5px;
+
+    & .semantic-summary-column {
+      margin: 0px 15px 0px 10px;
+      padding: 0px 15px 0px 10px;
+    }
+
+  }
+
 }
 
-.semantic-selected {
-  padding: 15px 0 15px 0;
-  margin: 15px 0 30px 0;
+.semantic-detail-instruction {
+
+  .md-font();
+  padding: 10px 0 10px 0;
+  margin: 0px 0 0px 0;
   position: relative;
   z-index: 9;
 
   & .list-number {
     margin-left: 0;
-    .bold();
-  }
-
-  & .semantic-summary {
+    width: auto;
     .bold();
   }
 
   & .semantic-text {
+    margin-left: -5px;
     display: block;
   }
 
-  &:last-child {
-    margin-bottom: 15px;
+  & .semantic-column-body {
+    margin: 0px 15px 0px 5px;
+    padding: 0px 15px 0px 10px;
   }
+
+  & .dl-horizontal {
+    margin-bottom: 0px;
+  }
+
+  @media (min-width: @screen-md-min) {
+
+    .lg-font();
+    padding: 10px 0 10px 0;
+    margin: 0px 0 0px 0;
+    position: relative;
+    z-index: 9;
+
+    & .list-number {
+      margin-left: 0;
+      width: auto;
+      .bold();
+    }
+
+    & .semantic-text {
+      margin-left: 0px;
+      display: block;
+    }
+
+    & .semantic-column-body {
+      margin: 0px 15px 0px 10px;
+      padding: 0px 15px 0px 10px;
+    }
+
+    & .dl-horizontal {
+      margin-bottom: 0px;
+    }
+
+  }
+
 }

@@ -1,5 +1,8 @@
 <div class="row-fluid">
     <div class="col-xs-12 col-lg-12">
-        <div id="ingredient_{{DisplayIndex}}" class="ingredient semantic-ingredient">{{DisplayQuantity}} {{Unit}} {{Name}} {{#if PreparationNotes}} <small>({{PreparationNotes}})</small>{{/if}}</div>
+        <div id="ingredient_{{DisplayIndex}}" class="ingredient">
+        <div class="hidden-sm semantic-ingredient">{{DisplayQuantity}} {{Unit}} {{Name}} {{#if PreparationNotes}} <small>({{PreparationNotes}})</small>{{/if}}</div>
+        <div class="visible-sm semantic-ingredient">{{DisplayQuantity}} {{Unit}} {{Name}} </div>
+        </div>
     </div>
 </div>

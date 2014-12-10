@@ -14,11 +14,11 @@ define([
         instructionDetailsTemplate: nom.templates.InstructionSemanticDetails,
 
         events: {
-            'mouseup .instruction': 'instructionClicked'
+            'click .instruction': 'instructionClicked'
             ,"click #done": 'recipeComplete'
 
-            ,'mouseup': 'mouseUp'
-            ,'mousedown': 'mouseDown'
+            //,'mouseup': 'mouseUp'
+            //,'mousedown': 'mouseDown'
             //,'scroll': 'onScroll'
 
             //,"click": "onClick"
@@ -173,36 +173,60 @@ define([
         selectInstruction: function(){
             this.suppressScroll = true;
             this.setItemByIndex(this.stepIndex);
-            this.highlightIngredients();
         },
 
         /**
          * Most of the interesting interaction code...
          */
 
+        // https://developer.mozilla.org/en-US/docs/Web/API/window.scrollY?redirectlocale=en-US&redirectslug=DOM/window.scrollY
+        getPageYOffset: function(){
+            var supportPageOffset = window.pageYOffset !== undefined;
+            var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+            return supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+            /*
+            if(Modernizr.prefixed("pageYOffset", window)){
+                return window.pageYOffset;
+            } else if(Modernizr.prefixed("scrollTop", document.scrollTop)){
+                return document.scrollTop;
+            } else {
+                return $(window).scrollTop();
+            }
+            */
+        },
+
+        isMouseDown: false,
+
         initInteraction: function(){
             var $window = $(window);
             $window.scroll(_.bind(this.onScroll, this));
             $window.resize(_.bind(this.onResize, this));
-            /*
-            $window.bind('mousedown', _.bind(this.mouseDown, this));
-            $window.bind('mouseup', _.bind(this.mouseUp, this));
-             */
-
 
             // Wanted to get a sort of "snap to nearest" effect when
             var $document = $(document);
-            //$document.bind('touchstart', _.bind(this.touchStart, this));
-            //$document.bind('touchmove', _.bind(this.touchMove, this));
-            //$document.bind('touchend', _.bind(this.touchEnd, this));
-            //$document.bind('touchcancel', _.bind(this.touchCancel, this));
+            if(Modernizr.touch){
+                $document.bind('touchstart', _.bind(this.touchStart, this));
+                $document.bind('touchmove', _.bind(this.touchMove, this));
+                $document.bind('touchend', _.bind(this.touchEnd, this));
+                $document.bind('touchcancel', _.bind(this.touchCancel, this));
+            } else {
+                $window.bind('mousedown', _.bind(function(){
+                    this.isMouseDown = true;
+                }, this));
+                $window.bind('mousemove', _.bind(function(){
+                    //console.log('this.isMouseDown', this.isMouseDown);
+                    if(this.isMouseDown || true){
+                        this.updateNearestIndex();
+                        this.updatePositions();
+                    }
+                }, this));
+                $window.bind('mouseup', _.bind(function(){
+                    this.isMouseDown = false;
+                }, this));
+            }
 
             try {
-                if(window.requestAnimationFrame != null){
-                    this.animationSupported = true;
-                } else {
-                    this.animationSupported = false;
-                }
+                this.animationSupported = Modernizr.prefixed('requestAnimationFrame', window);
             } catch(e){
                 this.animationSupported = false;
             }
@@ -218,12 +242,29 @@ define([
             //this.snapToNearest();
         },
 
-        touchStart: function(event) {console.log(event);},
-        touchMove: function(event) {console.log(event);},
-        touchEnd: function(event) {
-            this.snapToNearest();
+        touchStart: function(event) {
+            this.updateNearestIndex();
+            this.updatePositions();
+            //console.log(event);
         },
-        touchCancel: function(event) {console.log(event);},
+
+        touchMove: function(event) {
+            this.updateNearestIndex();
+            this.updatePositions();
+            //console.log(event);
+        },
+
+        touchEnd: function(event) {
+            this.updateNearestIndex();
+            this.updatePositions();
+            //this.snapToNearest();
+        },
+
+        touchCancel: function(event) {
+            this.updateNearestIndex();
+            this.updatePositions();
+            //console.log(event);
+        },
 
         snapToNearest: function() {
             var discreteIndex = this.updateNearestIndex();
@@ -239,7 +280,7 @@ define([
             var wvpHeight = $window.height();
             var wcontentHeight = this.$el.height();
 
-            var wscrollPosition = $window.scrollTop();
+            var wscrollPosition = this.getPageYOffset(); //$window.scrollTop();
             var iscrollPosition = wscrollPosition / wcontentHeight * this.iContentHeight;
 
             var approxIndex = iscrollPosition / this.iViewportHeight;
@@ -261,6 +302,7 @@ define([
         },
 
         setItemByIndex: function(index){
+            this.highlightIngredients();
             console.log('setItemByIndex', index);
             var $window = $(window);
             var wcontentHeight = this.$el.height();
@@ -274,14 +316,16 @@ define([
         },
 
         onResize: function(event){
-            /*
-            var targetIndex = this.stepIndex;
-            this.computeDimensions();
-            setTimeout(_.bind(function(){
-                console.log("setTimeout");
-                this.setItemByIndex(targetIndex);
-            }, this), 300);
-            */
+            try{
+                var targetIndex = this.stepIndex;
+                this.computeDimensions();
+                setTimeout(_.bind(function(){
+                    console.log("setTimeout");
+                    this.setItemByIndex(targetIndex);
+                }, this), 300);
+            }catch(e){
+
+            }
             //this.updateNearestIndex();
         },
 
@@ -418,7 +462,8 @@ define([
             var wcontentHeight = this.$el.height();
 
 
-            var wscrollPosition = $window.scrollTop();
+            //var wscrollPosition = $window.scrollTop();
+            var wscrollPosition = this.getPageYOffset();
             var iscrollPosition = wscrollPosition/wcontentHeight*this.iContentHeight;
             this.targetInstructionPosition = -iscrollPosition;
             //console.log(wscrollPosition);
@@ -437,7 +482,7 @@ define([
             var numItems = this.viewPreLookup.length;
 
             //compute position
-            var wscrollPosition = $window.scrollTop();
+            var wscrollPosition = this.getPageYOffset(); //$window.scrollTop();
             var wvpHeight = $window.height();
             var wcontentHeight = this.$el.height();
 
@@ -459,7 +504,7 @@ define([
             var numItems = this.viewPostLookup.length;
 
             //compute position
-            var wscrollPosition = $window.scrollTop();
+            var wscrollPosition = this.getPageYOffset(); //$window.scrollTop();
             var wvpHeight = $window.height();
             var wcontentHeight = this.$el.height();
 
@@ -549,7 +594,7 @@ define([
             var wvpHeight = $window.height();
 
             this.iViewportHeight = $instructionViewport.height();
-            this.iContentHeight = $container.height() + parseInt(iSample.css("marginTop"));
+            this.iContentHeight = $container.height() - parseInt(iSample.css("paddingBottom")) - parseInt(iSample.css("marginBottom")); // parseInt(iSample.css("marginTop"));
 
             var wcontentHeight = wvpHeight*(this.iContentHeight/this.iViewportHeight);
 
