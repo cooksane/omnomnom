@@ -198,7 +198,7 @@ define([
             //$document.bind('touchcancel', _.bind(this.touchCancel, this));
 
             if(requestAnimationFrame != null){
-                this.animationSupported = true;
+                this.animationSupported = false;
             } else {
                 this.animationSupported = false;
             }
@@ -323,6 +323,14 @@ define([
             }
         },
 
+        setTransform: function($target, value){
+            $target.css({
+                "transform": value, /* Firefox */
+                "-ms-transform": value, /* IE 9 */
+                "-webkit-transform": value /* Chrome, Safari, Opera */
+            });
+        },
+
         renderLoop: function(){
             if(!this.renderOk){
                 return;
@@ -338,7 +346,7 @@ define([
             if(Math.abs(delta) > maxDelta){
                 this.currentInstructionPosition += delta;
                 //this.$instructionContainer.css("top", this.currentInstructionPosition);
-                this.$instructionContainer.css("transform", "translateY("+this.currentInstructionPosition+"px)");
+                this.setTransform(this.$instructionContainer, "translateY("+this.currentInstructionPosition+"px)");
                 rendering = true;
             }
 
@@ -366,7 +374,7 @@ define([
             if(Math.abs(delta) > maxDelta) {
                 this.currentPostPosition += delta;
                 //this.$postContainer.css("top", this.currentPostPosition);
-                this.$postContainer.css("transform", "translateY("+this.currentPostPosition+"px)");
+                this.setTransform(this.$postContainer, "translateY("+this.currentPostPosition+"px)");
                 rendering = true;
             }
 
@@ -383,10 +391,10 @@ define([
 
             ///*
             if(this.animationSupported){
-                this.$instructionContainer.css("transform", "translateY("+this.currentInstructionPosition+"px)");
+                this.setTransform(this.$instructionContainer, "translateY("+this.currentInstructionPosition+"px)");
                 this.$preViewport.height(this.currentPreHeight);
                 this.$postViewport.height(this.currentPostHeight);
-                this.$postContainer.css("transform", "translateY("+this.currentPostPosition+"px)");
+                this.setTransform(this.$postContainer, "translateY("+this.currentPostPosition+"px)");
             } else {
                 this.$instructionContainer.css("top", this.currentInstructionPosition);
                 this.$preViewport.height(this.currentPreHeight);
