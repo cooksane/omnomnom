@@ -119,22 +119,22 @@ The vast majority of novice chefs learn to cook using printed cookbooks and webs
 
 For this work, we design a user interface for a machine assisted cooking application. The interface is improved upon series of detailed observations of novice chefs cooking. The goal of our interface is reducing unnecessary cognitive load thorough effective recipe presentation. Our design focuses on the curation of instructions and ingredients. 
 
-Prior to our work, little research has been devoted to understand the ideal curation of a recipe. 
+%Prior to our work, little research has been devoted to understand the ideal curation of a recipe. 
 
-*************** Write intro at the end****************
+*************** Please skip Introduction for now. We will write it at the end****************
 
-Getting your first meal right is challenging without help, and failure may discourage people from trying again. There are few resources that currently exist which help mitigate the cognitive load experienced by first-time cooks. For instance, printed cookbooks increase cognitive load, because ingredients and instructions must be memorized in order to cook without interruption. Cooking blogs (e.g., \cite{cooking_classy, allrecipes}) provide plenty of recipes and guides, but these sources are merely digital versions of printed cookbooks. Cook Assistant Lite is one cellphone application that has made cooking interactive \cite{cook_lite}, but the application requires the user to continually interact with the application, which leads to even more interruptions while cooking.
-
-In this paper, we propose a digital cooking assistant design for novice cooks. Our design focuses on the following points:
-\begin{itemize}
-\item	Mitigate interruptions that are due to overutilization of visual input (necessary visual observations while cooking and having to continually read something to determine what to do next) and motor functions (hands are used for cooking and clicking through applications or scrolling on a blog).
-\item Mitigate cognitive overload that is due to the physical and temporal demands of cooking, which are exacerbated by the memorization of ingredients and instructions.
-\item Make instructions in recipes more accessible, teach users new cooking techniques, and help users decide what to make with the ingredients they already have at home.
-\end{itemize}
-
-Features of our design include text-to-speech instruction; timers for managing multiple simultaneous tasks; reminders to check oven and stove temperatures; easy-to-read interfaces that display one step at a time with large pictorial, audio, and/or video aids, somewhat reminiscent of turn-by-turn navigation of a GPS; and lifelines to contact other users who have previously tried the recipe.
-
-Our approach is user-centered. We survey both novice and expert cooks in order to identify key differences between skill levels. For instance: What do novice cooks find most difficult about cooking? What prevents them from cooking more often? What motivates experts to cook? Survey results inform our design of several paper-based interfaces. We then conduct a round of in-person questionnaires to obtain feedback on multiple paper-based designs, which help to identify prominent features and issues with each design. We show multiple designs in parallel to each participant. After incorporating feedback on paper prototypes, we implement the digital design leveraging the recipe API BigOven \cite{api_oven}. To assess the quality of our digital prototype(s), we conduct a within-subject experiment, comparing user performance on cooking recipes with and without our prototype(s). During the performance phase, we collect qualitative data by observation. After each cooking session, we ask the user to assess their cooking experience based on the following factors (NASA Task Load Index): mental demand, physical demand, temporal demand, performance, effort, and frustration. Finally, through further user testing and design/development iteration, our final product embodies the features that help first-time and novice cooks succeed in their cooking adventures.
+%Getting your first meal right is challenging without help, and failure may discourage people from trying again. There are few resources that currently exist which help mitigate the cognitive load experienced by first-time cooks. For instance, printed cookbooks increase cognitive load, because ingredients and instructions must be memorized in order to cook without interruption. Cooking blogs (e.g., \cite{cooking_classy, allrecipes}) provide plenty of recipes and guides, but these sources are merely digital versions of printed cookbooks. Cook Assistant Lite is one cellphone application that has made cooking interactive \cite{cook_lite}, but the application requires the user to continually interact with the application, which leads to even more interruptions while cooking.
+%
+%In this paper, we propose a digital cooking assistant design for novice cooks. Our design focuses on the following points:
+%\begin{itemize}
+%\item	Mitigate interruptions that are due to overutilization of visual input (necessary visual observations while cooking and having to continually read something to determine what to do next) and motor functions (hands are used for cooking and clicking through applications or scrolling on a blog).
+%\item Mitigate cognitive overload that is due to the physical and temporal demands of cooking, which are exacerbated by the memorization of ingredients and instructions.
+%\item Make instructions in recipes more accessible, teach users new cooking techniques, and help users decide what to make with the ingredients they already have at home.
+%\end{itemize}
+%
+%Features of our design include text-to-speech instruction; timers for managing multiple simultaneous tasks; reminders to check oven and stove temperatures; easy-to-read interfaces that display one step at a time with large pictorial, audio, and/or video aids, somewhat reminiscent of turn-by-turn navigation of a GPS; and lifelines to contact other users who have previously tried the recipe.
+%
+%Our approach is user-centered. We survey both novice and expert cooks in order to identify key differences between skill levels. For instance: What do novice cooks find most difficult about cooking? What prevents them from cooking more often? What motivates experts to cook? Survey results inform our design of several paper-based interfaces. We then conduct a round of in-person questionnaires to obtain feedback on multiple paper-based designs, which help to identify prominent features and issues with each design. We show multiple designs in parallel to each participant. After incorporating feedback on paper prototypes, we implement the digital design leveraging the recipe API BigOven \cite{api_oven}. To assess the quality of our digital prototype(s), we conduct a within-subject experiment, comparing user performance on cooking recipes with and without our prototype(s). During the performance phase, we collect qualitative data by observation. After each cooking session, we ask the user to assess their cooking experience based on the following factors (NASA Task Load Index): mental demand, physical demand, temporal demand, performance, effort, and frustration. Finally, through further user testing and design/development iteration, our final product embodies the features that help first-time and novice cooks succeed in their cooking adventures.
 
 \section{Related Work}
 
@@ -154,7 +154,7 @@ We used an iterative process to develop our design. We began with preliminary pa
 \begin{figure}[tbh]
   \centering
   \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=60mm]{IMG_4156.JPG}\\
-  \caption{Observing Subject \#1}
+  \caption{Observing Subject 1}
   \label{fig:subject1}
 \end{figure}
 
@@ -286,11 +286,11 @@ Based on these observations, we decided to focus on the curation of recipe instr
 \begin{figure*}[tbh]
   \centering
   \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=180mm]{ours.png}\\
-  \caption{Example view of our proposed interface}
+  \caption{Example view of our proposed Responsive interface}
   \label{fig:ours}
 \end{figure*}
 
-After gaining this background knowledge, we developed a new interactive prototype that focused on curation of recipe instructions. From the user study, we found the difficulties of identifying current step in traditional recipe design. In our proposed interface, we included a feature that highlights the current step. We expect highlighting the current step will reduce the cognitive load of users, because they no longer need to scan the entire recipe to identify the step they have just completed. The position of the highlighted box remains consistent throughout the instructions. We further discuss the details of this feature in the later section. While highlighting the current step, our interface also presents the summary of previous and next steps. We have found that reviewing previous and future instructions are important for successful cooking but the traditional recipe design makes it difficult to quickly review the steps. For that, we design our interface to only include the summary. An example view of our proposed interface is shown in Figure \ref{fig:ours}.
+After gaining this background knowledge, we developed a new interactive prototype that focused on curation of recipe instructions. From the user study, we found the difficulties of identifying current step in traditional recipe design. In our proposed interface, we included a feature that highlights the current step. We expect highlighting the current step will reduce the cognitive load of users, because they no longer need to scan the entire recipe to identify the step they have just completed. The position of the highlighted box remains consistent throughout the instructions. We further discuss the details of this feature in the later section. While highlighting the current step, our interface also presents the summary of previous and next steps. We have found that reviewing previous and future instructions is important for successful cooking but the traditional recipe design makes it difficult to quickly review the steps. For that, we design our interface to only include the summary. An example view of our proposed interface is shown in Figure \ref{fig:ours}.
 
 In order to compare effectiveness of different recipe interfaces, we developed three interactive web-based interfaces: traditional recipe interface, step-by-step interface, and our proposed interface. Figure \ref{fig:control} shows the traditional recipe interface curated as a list. Step-by-step interface is commonly used for cellphone-based recipe interface. As shown in Figure \ref{fig:stepbystep}, it presents a single step at a time and allows user to click next or previous to navigate the instruction. 
 
@@ -304,29 +304,72 @@ In order to compare effectiveness of different recipe interfaces, we developed t
 \begin{figure}[tbh]
   \centering
   \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=85mm]{stepbystep.png}\\
-  \caption{Step-by-step interface that is commonly adopted for cellphone application}
+  \caption{Step-by-step interface that is commonly adopted for cellphone applications}
   \label{fig:stepbystep}
 \end{figure}
 
 \section{User Study \#2}
-Three subjects are observed and interviewed for this study. Each subject was asked to test three interfaces (traditional, step-by-step, and our proposed interface). We curated three recipes (risotto primavera, mushroom lasagna, and baked eggs with spinach and mushrooms) that the subjects did not have prior experience making. Subject 1 tested traditional interface with risotto primavera, step-by-step interface with baked eggs, and our interface with mushroom lasagna. Subject 2 tested traditional interface with mushroom lasagna, step-by-step interface with risotto primavera, and our interface with baked eggs. Subject 3 tested traditional interface with baked eggs, step-by-step interface with mushroom lasagna, and our interface with risotto primavera. Similar to user study \#1, subjects narratively described the process that they were taking and the subjects' responses, behaviors, and surroundings were documented.
+Three subjects are observed and interviewed for this study. Each subject was asked to test three interfaces (Control, Step-by-step, and our proposed Responsive interface). We curated three recipes (risotto primavera, mushroom lasagna, and baked eggs with spinach and mushrooms) that the subjects did not have prior experience making. Subject 1 tested traditional interface with risotto primavera, step-by-step interface with baked eggs, and our interface with mushroom lasagna. Subject 2 tested traditional interface with mushroom lasagna, step-by-step interface with risotto primavera, and our interface with baked eggs. Subject 3 tested traditional interface with baked eggs, step-by-step interface with mushroom lasagna, and our interface with risotto primavera. We measured time spent on completing individual steps as well as the entire instructions. Similar to user study \#1, subjects narratively described the process that they were taking and the subjects' responses, behaviors, and surroundings were documented. Subjects completed NASA-TLX \cite{nasa_tlx} worksheet after each interface, and at the end of the experiment they selected their most preferred interface. 
 
-\subsection{Subject \#1}
-\subsection{Subject \#2}
-\subsection{Subject \#3}
+\subsection{Subject 1}
+Subject 1 tested Control, Step-by-step, and Responsive (our interface), respectively. The first recipe for Subject 1 was baked eggs with spinach and mushrooms using the traditional interface. Similar to User Study \#1, the subject accurately measured the ingredients in the beginning and estimated amount of ingredients used in each step while cooking. The subject stumbled on couple jargons such as `indentation' and `baking eggs.' The subject said his insecurity kicked in when he read the instruction, ``If baking eggs in this skillet, make 12 large indentations in mixture ... " because he did not know what baking eggs or making indentations mean. The subject said that the traditional interface presents too much material at the same time and remarked: ``This interface seemed like an essay.''
+
+The second recipe was mushroom lasagna using Step-by-step interface. This interface also included ingredient highlighting feature that emphasizes active ingredients in a step. We describe this feature in detail in the following Section. When the subject first saw the interface, he expressed excitement because ``clear separation of steps made for easier digestion and awareness of what he needed to do without worrying too much of overall picture.'' He also stated: ``Even though the second interface was also in paragraph format just like the first one, it didn't have as daunting of a feel since it was just one." The subject also suggested that it would be nice to the paragraphs even smaller with more steps, although it would make it more challenging to go back and forth when doing simultaneous procedures. Throughout cooking the subject had difficulty interacting with the interface because Step-by-step interface only showed a heap of information and was not easy to figure out intermediate steps. We found that ingredient highlighting made important information salient and removed extraneous information. The subject found ingredient highlighting very helpful. He remarked ``the highlighting of ingredients list as I went through the steps was wonderful because I could just focus on the few on table that I needed at the moment."
+
+The third recipe was risotto using Responsive interface. This interface emphasized instructions for current step and highlighted ingredients for current step. The subject has much easier time multitasking using this interface. The subject said ``I liked that each step was clearly spaced out just like in second interface. But what made the third interface even better was I could see all the steps in one place rather than having to click back and forth multiple times to go from say step 2 to step 5 with interface 3. I could look at step 5 and then go back to step 2 with just one click." Because the subject was able to see summary view of the recipe, he said ``it sort of offered a little blurb/summary of what was being achieved in that step."
+
+\subsection{Subject 2}
+Subject 2 tested Responsive, Control, and Step-by-step, respectively. The first recipe for Subject 2 was lasagna using Responsive interface. 
+
+The second recipe was risotto using the traditional interface. 
+
+The third recipe was baked eggs with spinach and mushrooms using Step-by-step interface. 
+
+\subsection{Subject 3}
+Subject 3 tested Step-by-step, Responsive, and Control, respectively. 
+
+Subject 3 first made risotto using Step-by-step interface. 
+
+The second dish was baked eggs with spinach and mushrooms using Responsive interface.
+
+The final recipe was lasagna using the control interface. 
 
 \section {Evaluation}
+From User Study \#2, we found that most subjects preferred Responsive Interface over Step-by-step and Control. Compared to Step-by-step interface that only showed a single step at a time, we found that presenting the summary view of the recipe in Responsive interface provided users a sense of control. All subjects expressed that ingredient highlighting in Step-by-step and Responsive helpful in keeping track of ingredients per step while staying out of their way. From the observation, we identified that Responsive interface reduced load of extraneous information presented at any given step. This observation is further corroborated with our quantitative data shown in Table 1. For each recipe, the number of times a step has changed can be interpreted as the amount of cognitive load the recipe demands. Table 1 shows the number of times user has switched between steps. For each recipe, Responsive interface led to smaller number of step changes than Step-by-step interface.
 
-...Compared to step-by-step interface that only showed a single step at a time, we found that presenting the entire view of the recipe provided users a sense of control. ...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+  \centering
+  \caption{Number of times user has switched between steps}
+\begin{tabular}{|l|c|c|c|c|}
+  \hline
+                        & Risotto    & Egg  	    & Lasagna \\ \hline\hline
+  Control        &   -  &    -   &   -   \\ \hline
+  Responsive                   &   6  &    10   &  34   \\ \hline
+  Step-by-step           &   14  &    25   &   37   \\
+  \hline
+\end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+User feedback indicated that Step-by-step interface chunked information and missed important future steps that slowed subject down. On average, subjects took 94.5 minutes to cook a recipe using Step-by-step interface compared to 89.8 minutes using Control interface. For a given recipe, we  expected Responsive interface to take least total cooking time compared to Control and Step-by-Step, but this was not evident from data as Responsive took 92.7 minutes on average. 
+
+Initially, we included NASA TLX survey to get user feedback on different interfaces. However, we later realized that the survey ended up reflecting reactions to recipe, not interface. We observed that subjects had most difficult time making lasagna. As expected, lasagna had the highest rating for mental demand (risotto: 2.67; eggs: 3; lasagna: 3.67) and frustration (risotto: 2; eggs: 3; lasagna: 3.67) in NASA TLX survey. Referring back to Table 1, the number of times a step has changed indicated the amount of cognitive load the recipe demands. As lasagna was identified as the most difficult dish, it had the highest number of clicks, eggs had the second highest, and then risotto for both Responsive and Step-by-step interfaces. 
+
 
 \section {Design Observations}
 
 In this section, we describe added features of our final design, and some factors that led to its relative success. 
 
+\subsection{Instruction Highlighting}
+
+\subsection{Summary View}
+
 \subsection{Ingredient Highlighting}
 
 
-\subsection{}
+\section {Final Design Iteration}
 
 \section{Conclusions and Future Work}
 

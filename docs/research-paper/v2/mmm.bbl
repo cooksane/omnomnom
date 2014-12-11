@@ -1,9 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{api_oven}
-{Big Oven}.
-\newblock \url{http://api.bigoven.com/}.
-
 \bibitem{goodfoodstories}
 {Good Food Stories}.
 \newblock \url{http://www.goodfoodstories.com/2012/10/11/homemade-ravioli}.
@@ -42,6 +38,11 @@ Brunken, R., Plass, J.~L., and Leutner, D.
 \bibitem{freyne_2010}
 Freyne, J., and Berkovsky, S.
 \newblock Intelligent food planning: personalized recipe (2010).
+
+\bibitem{nasa_tlx}
+Hart, S., and Staveland, L.
+\newblock Development of nasa-tlx.
+\newblock In {\em Human Mental Workload} (1988), 139–183.
 
 \bibitem{khacharem_2014}
 Khacharem, A., Zoudji, B., Spanjers, I., and Kalyuga, S.

@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex mmm"] 1417765541 "mmm.aux" "mmm.bbl" "mmm" 1417765542
+["bibtex mmm"] 1418262214 "mmm.aux" "mmm.bbl" "mmm" 1418262217
   "./acm-sigchi.bst" 1416520859 20072 e6117c8e1df770982b2669fe3a5732f1 ""
-  "mmm.aux" 1417765502 5018 655bf9230345ea5de55951f41987ddbc ""
+  "mmm.aux" 1418262216 5113 a4d6eca8c8ad5942ec8075c847fd27a0 ""
   "mmm.bcf" 0 -1 0 ""
-  "sample1.bib" 1417765540 4558 68d68e203277d0ef0d8358135649781d ""
+  "sample1.bib" 1418262204 4746 2a6d235a5a735d46fce7e59a471a66d1 ""
   (generated)
   "mmm.blg"
   "mmm.bbl"
-["pdflatex"] 1417765500 "mmm.tex" "mmm.pdf" "mmm" 1417765542
+["pdflatex"] 1418262214 "mmm.tex" "mmm.pdf" "mmm" 1418262217
   "/usr/local/texlive/2014/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2014/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2014/texmf-dist/fonts/tfm/adobe/courier/pcrb7t.tfm" 1136768653 960 4ab65358b8406f30ef5496c8c096d22b ""
@@ -44,7 +44,6 @@
   "/usr/local/texlive/2014/texmf-dist/fonts/tfm/public/latex-fonts/lasy6.tfm" 1136768653 520 4889cce2180234b97cad636b6039c722 ""
   "/usr/local/texlive/2014/texmf-dist/fonts/tfm/public/latex-fonts/lasy7.tfm" 1136768653 520 a74c6ed8cb48679fdc3ea874d9d34a7e ""
   "/usr/local/texlive/2014/texmf-dist/fonts/tfm/public/latex-fonts/lasy8.tfm" 1136768653 520 7bb3abb160b19e0ed6ac404bb59052b7 ""
-  "/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1248133631 32716 08e384dc442464e7285e891af9f45947 ""
   "/usr/local/texlive/2014/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb" 1136849748 50493 4ed1f7e9eba8f1f3e1ec25195460190d ""
   "/usr/local/texlive/2014/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb" 1136849748 35941 f27169cc74234d5bd5e4cca5abafaabb ""
@@ -106,9 +105,10 @@
   "IMG_4156.JPG" 1416520859 499836 fcc97a7ed0081855ebfc557923dfc640 ""
   "IMG_4173.JPG" 1417464117 551105 b3245fad0134ab77f1a943d39abce360 ""
   "control.png" 1417759758 483492 2b9f20e837d882b665d111117118f0d3 ""
-  "mmm.bbl" 1417765542 3707 7ed9f94817a8ba796ce0c2184073158b "bibtex mmm"
-  "mmm.out" 1417765502 1118 d938ee00412a1931631f33006eff4515 ""
-  "mmm.tex" 1417764997 31941 f38161cefedc68e75285ac32b6e6d79e ""
+  "mmm.aux" 1418262216 5113 a4d6eca8c8ad5942ec8075c847fd27a0 ""
+  "mmm.bbl" 1418262214 3777 88370cd0245876ff5e25f063c151ec3a "bibtex mmm"
+  "mmm.out" 1418262216 1228 2e96a312bbb75d20ce6294f69c287ee3 ""
+  "mmm.tex" 1418262202 33931 85c914431bf631b90e9025b68259a784 ""
   "ours.png" 1417759919 384679 a01d967168144730dbd8f4f005bbe8dc ""
   "recipe-overview.jpg" 1416520858 1555193 8f47ca28b54c8bb4a5f572166513a4e1 ""
   "recipe-step.jpg" 1416520858 1060168 fa1c9169030f2d962d6cd46c143d7c0e ""
