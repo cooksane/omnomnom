@@ -1,25 +1,6 @@
 /*
-.wrapper {
-  min-width: 500px;
-  max-width: 700px;
-  margin: 0 auto;
-}
-#content {
-  margin-right: 260px; // = sidebar width + some white space
-}
-*/
-
-/*
-#overlay {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-#overlay .wrapper {
-  height: 100%;
-}
-*/
+ * Container / viewport styles
+ */
 
 .top-fade {
   background-image: linear-gradient(to top, transparent 0px, rgba(255, 255, 255, 1) 100%);
@@ -64,10 +45,14 @@
 
 #pre-instruction-viewport {
   .i-viewport();
+  padding-left: 20px;
+  .transformX(-15px);
 }
 
 #post-instruction-viewport {
   .i-viewport();
+  padding-left: 20px;
+  .transformX(-15px);
 }
 
 #instruction-container {
@@ -82,31 +67,28 @@
   .i-container();
 }
 
-#recipe-details {
-  //position: absolute;
-  //top: 0px;
-}
-
-#instruction-list {
-  //position: absolute;
-  //top: 0px;
-}
-
-#semantic-container {
-  height: 100%;
-}
 
 #left {
   height: 100%;
 }
 
+#mid {}
+
 #right {
   height: 100%;
 }
 
+#recipe-details {
+}
+
+#instruction-list {
+}
+
 #ingredients-container {
-  //position: absolute;
-  //top: 0;
+}
+
+#semantic-container {
+  height: 100%;
 }
 
 .semantic-column-title {
@@ -124,12 +106,63 @@
 }
 
 #main-container {
-  position: absolute;
+  position: relative;
 }
 
 .semantic-view-wrapper {
   margin: 0 !important;
   padding: 0 !important;
+}
+
+/*
+ * Transition variables / functions
+ */
+
+@duration: 200ms;
+
+.transformX(@x: 0px, @duration: 100ms){
+  transform: translateX(@x); /* Firefox */
+  -ms-transform: translateX(@x); /* IE 9 */
+  -webkit-transform: translateX(@x); /* Chrome, Safari, Opera */
+}
+
+/*
+//not sure how to get this to work.
+.transition-macro(@styles-times, @ease-func: ease-in-out) {
+  -webkit-transition: @styles-times @ease-func;
+  -moz-transition: @styles-times @ease-func;
+  -o-transition: @styles-times @ease-func;
+  transition: @styles-times @ease-func;
+}
+*/
+
+.single-transition(@style, @time, @ease-func: ease-in-out) {
+  -webkit-transition: @style @time @ease-func;
+  -moz-transition: @style @time @ease-func;
+  -o-transition: @style @time @ease-func;
+  transition: @style @time @ease-func;
+}
+
+.select-indicator-transition(@time, @ease-func: ease-in-out) {
+  -webkit-transition: color @time, transform @time, -ms-transform @time, -webkit-transform @time @ease-func;
+  -moz-transition: color @time, transform @time, -ms-transform @time, -webkit-transform @time @ease-func;
+  -o-transition: color @time, transform @time, -ms-transform @time, -webkit-transform @time @ease-func;
+  transition: color @time, transform @time, -ms-transform @time, -webkit-transform @time @ease-func;
+}
+
+.color-bold-transition(@time, @ease-func: ease-in-out) {
+  -webkit-transition: color @time, font-weight @time @ease-func;
+  -moz-transition: color @time, font-weight @time @ease-func;
+  -o-transition: color @time, font-weight @time @ease-func;
+  transition: color @time, font-weight @duration @ease-func;
+}
+
+/*
+ * Media query functions
+ */
+
+.sm-font(){
+  font-size: 12px;
 }
 
 .md-font(){
@@ -140,79 +173,84 @@
   font-size: 16px;
 }
 
+/*
+ * Ingredient
+ */
+
+.semantic-ingredient-item-column {
+  padding: 0;
+}
+
 .semantic-ingredient {
+  margin-bottom: 2px;
   .md-font();
   .text-ellipsis();
-  margin-bottom: 2px;
 
   @media (min-width: @screen-md-min) {
+    margin-bottom: 4px;
     .lg-font();
     .text-ellipsis();
-    margin-bottom: 4px;
   }
 }
 
-.semantic-summary {
-  .text-ellipsis();
-  margin: 0;
+.mute-ingredient {
+  color: @gray;
+  font-weight: 400;
+  .single-transition(color, @duration, ease-out);
+  //.color-bold-transition(@duration, ease-in);
 }
+
+.highlight-ingredient {
+  color: @black;
+  font-weight: 400;
+  //.color-bold-transition(@duration, ease-out);
+  .single-transition(color, @duration, ease-out);
+}
+
+/*
+ * Instruction Summary
+ */
 
 #summary-instruction-link {
 
   .unselectable();
-  .transition(color, 50ms);
-
-  color: @black;
   cursor: pointer;
-  text-decoration: underline;
 
-  & .glyphicon {
-    z-index: -1;
-    //margin-left: 0px;
+  color: @gray;
+  font-weight: 400;
+  .single-transition(color, @duration, ease-out);
+
+  & #summary-select-indicator {
     margin-right: -12px;
-    //.transition(color, 50ms);
+    position: relative;
     color: @color-background;
-  }
-
-  & #step-num {
-    z-index: 1;
-    //.transition(color, 50ms);
-    color: @black;
+    .transformX(-38px);
+    .select-indicator-transition(300ms, ease-in);
   }
 
   &:hover {
+    color: @black;
+    //font-weight: 400;
+    .single-transition(color, @duration, ease-out);
+    //.color-bold-transition(@duration, ease-out);
 
-    & .glyphicon {
-      z-index: 1;
-      //margin-left: -20px;
-      //.transition(color, 50ms);
-      color: @medium-green;
+    & #summary-select-indicator {
+      color: @dark-main;
+      .transformX(-28px);
+      .select-indicator-transition(300ms, ease-out);
     }
-
-    & #step-num {
-      z-index: -1;
-      //.transition(color, 50ms);
-      color: @color-background;
-    }
-
-    color: @medium-green;
-    text-decoration: underline;
   }
 
-  &.inactive {
-    visibility: hidden;
-  }
 }
 
 .semantic-summary-instruction {
-  //padding-top: 15px;
-  //padding-bottom: 15px;
+
   .md-font();
   margin: 0px 0 0px 0;
-  padding: 10px 0 10px 5px;
+  padding: 5px 0 5px 6px;
 
   & .semantic-summary-column {
-    margin: 0px 15px 0px 10px;
+    margin: 0px 15px 0px 6px;
     padding: 0px 15px 0px 10px;
   }
 
@@ -230,11 +268,15 @@
 
 }
 
+/*
+ * Instruction Detail
+ */
+
 .semantic-detail-instruction {
 
   .md-font();
-  padding: 10px 0 10px 0;
-  margin: 0px 0 0px 0;
+  margin: 0px 0 0px -4px;
+  padding: 10px 0 10px 1px;
   position: relative;
   z-index: 9;
 
@@ -244,8 +286,14 @@
     .bold();
   }
 
+  & .semantic-detail-summary {
+    font-weight: 700;
+    margin-left: -2px;
+    margin-bottom: 5px;
+  }
+
   & .semantic-text {
-    margin-left: -5px;
+    margin-left: -2px;
     margin-bottom: 0px;
   }
 
@@ -254,37 +302,38 @@
     padding: 0px 15px 0px 10px;
   }
 
-  & .dl-horizontal {
-    margin-bottom: 0px;
-  }
-
   @media (min-width: @screen-md-min) {
 
-    .lg-font();
-    padding: 10px 0 10px 0;
-    margin: 0px 0 0px 0;
-    position: relative;
-    z-index: 9;
+      .lg-font();
+      padding: 10px 0 10px 0;
+      margin: 0px 0 0px 0;
+      position: relative;
+      z-index: 9;
 
-    & .list-number {
-      margin-left: 0;
-      width: auto;
-      .bold();
-    }
+      & .list-number {
+        margin-left: 0;
+        width: auto;
+        .bold();
+      }
 
-    & .semantic-text {
-      margin-left: 0px;
-      margin-bottom: 0px;
-    }
+      & .semantic-detail-summary {
+        margin-left: 0px;
+        margin-bottom: 0px;
+      }
 
-    & .semantic-column-body {
-      margin: 0px 15px 0px 10px;
-      padding: 0px 15px 0px 10px;
-    }
+      & .semantic-text {
+        margin-left: 0px;
+        margin-bottom: 0px;
+      }
 
-    & .dl-horizontal {
-      margin-bottom: 0px;
-    }
+      & .semantic-column-body {
+        margin: 0px 15px 0px 10px;
+        padding: 0px 15px 0px 10px;
+      }
+
+      & .dl-horizontal {
+        margin-bottom: 0px;
+      }
 
   }
 

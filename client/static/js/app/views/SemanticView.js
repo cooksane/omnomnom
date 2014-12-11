@@ -8,7 +8,7 @@ define([
 
         className: "semantic-view-wrapper",
         template: nom.templates.RecipeSemantic,
-        ingredientTemplate: nom.templates.Ingredient,
+        ingredientTemplate: nom.templates.IngredientSemantic,
 
         instructionSummaryTemplate: nom.templates.InstructionSemanticSummary,
         instructionDetailsTemplate: nom.templates.InstructionSemanticDetails,
@@ -110,18 +110,14 @@ define([
             for(var i=-1;++i<ingredients.length;){
                 var ingredient = ingredients[i];
                 $ingredient = ingredientContainer.find("#ingredient_"+ingredient.DisplayIndex);
-                //$ingredient.removeClass("ingredient");
-                $ingredient.removeClass("highlight-text");
-                //$ingredient.addClass("text-muted");
-                $ingredient.addClass("ingredient");
+                $ingredient.removeClass("highlight-ingredient");
+                $ingredient.addClass("mute-ingredient");
             }
             for(var j=-1;++j<ingredientIndexes.length;){
                 var iIndex = ingredientIndexes[j];
                 $ingredient = ingredientContainer.find("#ingredient_"+iIndex);
-                $ingredient.removeClass("ingredient");
-                $ingredient.addClass("highlight-text");
-                //$ingredient.removeClass("text-muted");
-                //$ingredient.addClass("ingredient");
+                $ingredient.addClass("highlight-ingredient");
+                $ingredient.removeClass("mute-ingredient");
             }
         },
 
@@ -391,9 +387,9 @@ define([
                 return;
             }
 
-            var factor = 0.1;
+            var factor = 0.2;
             var delta = 0;
-            var maxDelta = 0.01;
+            var maxDelta = 0.4;
             var rendering = false;
 
             //mid

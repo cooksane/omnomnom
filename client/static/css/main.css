@@ -27,17 +27,17 @@ strong {
   font-weight: 700;
   letter-spacing: 0;
   color: #000000;
-  -webkit-transition: color 500ms ease-out;
-  -moz-transition: color 500ms ease-out;
-  -o-transition: color 500ms ease-out;
-  transition: color 500ms ease-out;
+  -webkit-transition: color 500ms ease-in-out;
+  -moz-transition: color 500ms ease-in-out;
+  -o-transition: color 500ms ease-in-out;
+  transition: color 500ms ease-in-out;
 }
 .ingredient {
   color: #999999;
-  -webkit-transition: color 200ms ease-out;
-  -moz-transition: color 200ms ease-out;
-  -o-transition: color 200ms ease-out;
-  transition: color 200ms ease-out;
+  -webkit-transition: color 200ms ease-in-out;
+  -moz-transition: color 200ms ease-in-out;
+  -o-transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
 }
 .container {
   margin: 0 auto;
@@ -94,14 +94,14 @@ strong {
   font-family: "Lato", sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  -webkit-transition: background-color 200ms ease-out;
-  -moz-transition: background-color 200ms ease-out;
-  -o-transition: background-color 200ms ease-out;
-  transition: background-color 200ms ease-out;
-  -webkit-transition: color 200ms ease-out;
-  -moz-transition: color 200ms ease-out;
-  -o-transition: color 200ms ease-out;
-  transition: color 200ms ease-out;
+  -webkit-transition: background-color 200ms ease-in-out;
+  -moz-transition: background-color 200ms ease-in-out;
+  -o-transition: background-color 200ms ease-in-out;
+  transition: background-color 200ms ease-in-out;
+  -webkit-transition: color 200ms ease-in-out;
+  -moz-transition: color 200ms ease-in-out;
+  -o-transition: color 200ms ease-in-out;
+  transition: color 200ms ease-in-out;
   -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
 }
@@ -117,10 +117,10 @@ a {
   color: #a0c336;
   cursor: pointer;
   text-decoration: none;
-  -webkit-transition: color 100ms ease-out;
-  -moz-transition: color 100ms ease-out;
-  -o-transition: color 100ms ease-out;
-  transition: color 100ms ease-out;
+  -webkit-transition: color 100ms ease-in-out;
+  -moz-transition: color 100ms ease-in-out;
+  -o-transition: color 100ms ease-in-out;
+  transition: color 100ms ease-in-out;
   /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
   /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
   /* These user-select properties are inheritable, used to prevent text selection */
@@ -290,26 +290,8 @@ a.inactive {
   user-drag: none;
 }
 /*
-.wrapper {
-  min-width: 500px;
-  max-width: 700px;
-  margin: 0 auto;
-}
-#content {
-  margin-right: 260px; // = sidebar width + some white space
-}
-*/
-/*
-#overlay {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-#overlay .wrapper {
-  height: 100%;
-}
-*/
+ * Container / viewport styles
+ */
 .top-fade {
   background-image: linear-gradient(to top, transparent 0px, #ffffff 100%);
   position: absolute;
@@ -381,6 +363,13 @@ a.inactive {
   position: relative;
   overflow: hidden;
   height: 200px;
+  padding-left: 20px;
+  transform: translateX(-15px);
+  /* Firefox */
+  -ms-transform: translateX(-15px);
+  /* IE 9 */
+  -webkit-transform: translateX(-15px);
+  /* Chrome, Safari, Opera */
 }
 #post-instruction-viewport {
   margin: 0px 0 0px 0;
@@ -388,6 +377,13 @@ a.inactive {
   position: relative;
   overflow: hidden;
   height: 200px;
+  padding-left: 20px;
+  transform: translateX(-15px);
+  /* Firefox */
+  -ms-transform: translateX(-15px);
+  /* IE 9 */
+  -webkit-transform: translateX(-15px);
+  /* Chrome, Safari, Opera */
 }
 #instruction-container {
   position: relative;
@@ -398,13 +394,13 @@ a.inactive {
 #post-instruction-container {
   position: relative;
 }
-#semantic-container {
-  height: 100%;
-}
 #left {
   height: 100%;
 }
 #right {
+  height: 100%;
+}
+#semantic-container {
   height: 100%;
 }
 .semantic-column-title {
@@ -422,13 +418,35 @@ a.inactive {
   box-shadow: 0 5px 6px -5px rgba(0, 0, 0, 0.2);
 }
 #main-container {
-  position: absolute;
+  position: relative;
 }
 .semantic-view-wrapper {
   margin: 0 !important;
   padding: 0 !important;
 }
+/*
+ * Transition variables / functions
+ */
+/*
+//not sure how to get this to work.
+.transition-macro(@styles-times, @ease-func: ease-in-out) {
+  -webkit-transition: @styles-times @ease-func;
+  -moz-transition: @styles-times @ease-func;
+  -o-transition: @styles-times @ease-func;
+  transition: @styles-times @ease-func;
+}
+*/
+/*
+ * Media query functions
+ */
+/*
+ * Ingredient
+ */
+.semantic-ingredient-item-column {
+  padding: 0;
+}
 .semantic-ingredient {
+  margin-bottom: 2px;
   font-size: 12px;
   display: block;
   overflow: hidden;
@@ -436,10 +454,10 @@ a.inactive {
   -ms-text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  margin-bottom: 2px;
 }
 @media (min-width: 992px) {
   .semantic-ingredient {
+    margin-bottom: 4px;
     font-size: 16px;
     display: block;
     overflow: hidden;
@@ -447,18 +465,27 @@ a.inactive {
     -ms-text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
-    margin-bottom: 4px;
   }
 }
-.semantic-summary {
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
-  -ms-text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  margin: 0;
+.mute-ingredient {
+  color: #999999;
+  font-weight: 400;
+  -webkit-transition: color 200ms ease-out;
+  -moz-transition: color 200ms ease-out;
+  -o-transition: color 200ms ease-out;
+  transition: color 200ms ease-out;
 }
+.highlight-ingredient {
+  color: #000000;
+  font-weight: 400;
+  -webkit-transition: color 200ms ease-out;
+  -moz-transition: color 200ms ease-out;
+  -o-transition: color 200ms ease-out;
+  transition: color 200ms ease-out;
+}
+/*
+ * Instruction Summary
+ */
 #summary-instruction-link {
   /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
   /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
@@ -478,45 +505,56 @@ a.inactive {
   -webkit-user-drag: none;
   /* Prevents dragging of images/divs etc */
   user-drag: none;
-  -webkit-transition: color 50ms ease-out;
-  -moz-transition: color 50ms ease-out;
-  -o-transition: color 50ms ease-out;
-  transition: color 50ms ease-out;
-  color: #000000;
   cursor: pointer;
-  text-decoration: underline;
+  color: #999999;
+  font-weight: 400;
+  -webkit-transition: color 200ms ease-out;
+  -moz-transition: color 200ms ease-out;
+  -o-transition: color 200ms ease-out;
+  transition: color 200ms ease-out;
 }
-#summary-instruction-link .glyphicon {
-  z-index: -1;
+#summary-instruction-link #summary-select-indicator {
   margin-right: -12px;
+  position: relative;
   color: #fafafa;
-}
-#summary-instruction-link #step-num {
-  z-index: 1;
-  color: #000000;
+  transform: translateX(-38px);
+  /* Firefox */
+  -ms-transform: translateX(-38px);
+  /* IE 9 */
+  -webkit-transform: translateX(-38px);
+  /* Chrome, Safari, Opera */
+  -webkit-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-in;
+  -moz-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-in;
+  -o-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-in;
+  transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-in;
 }
 #summary-instruction-link:hover {
-  color: #508912;
-  text-decoration: underline;
+  color: #000000;
+  -webkit-transition: color 200ms ease-out;
+  -moz-transition: color 200ms ease-out;
+  -o-transition: color 200ms ease-out;
+  transition: color 200ms ease-out;
 }
-#summary-instruction-link:hover .glyphicon {
-  z-index: 1;
-  color: #508912;
-}
-#summary-instruction-link:hover #step-num {
-  z-index: -1;
-  color: #fafafa;
-}
-#summary-instruction-link.inactive {
-  visibility: hidden;
+#summary-instruction-link:hover #summary-select-indicator {
+  color: #a0c336;
+  transform: translateX(-28px);
+  /* Firefox */
+  -ms-transform: translateX(-28px);
+  /* IE 9 */
+  -webkit-transform: translateX(-28px);
+  /* Chrome, Safari, Opera */
+  -webkit-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-out;
+  -moz-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-out;
+  -o-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-out;
+  transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-out;
 }
 .semantic-summary-instruction {
   font-size: 12px;
   margin: 0px 0 0px 0;
-  padding: 10px 0 10px 5px;
+  padding: 5px 0 5px 6px;
 }
 .semantic-summary-instruction .semantic-summary-column {
-  margin: 0px 15px 0px 10px;
+  margin: 0px 15px 0px 6px;
   padding: 0px 15px 0px 10px;
 }
 @media (min-width: 992px) {
@@ -530,10 +568,13 @@ a.inactive {
     padding: 0px 15px 0px 10px;
   }
 }
+/*
+ * Instruction Detail
+ */
 .semantic-detail-instruction {
   font-size: 12px;
-  padding: 10px 0 10px 0;
-  margin: 0px 0 0px 0;
+  margin: 0px 0 0px -4px;
+  padding: 10px 0 10px 1px;
   position: relative;
   z-index: 9;
 }
@@ -543,16 +584,18 @@ a.inactive {
   font-weight: 700;
   letter-spacing: 0;
 }
+.semantic-detail-instruction .semantic-detail-summary {
+  font-weight: 700;
+  margin-left: -2px;
+  margin-bottom: 5px;
+}
 .semantic-detail-instruction .semantic-text {
-  margin-left: -5px;
+  margin-left: -2px;
   margin-bottom: 0px;
 }
 .semantic-detail-instruction .semantic-column-body {
   margin: 0px 15px 0px 5px;
   padding: 0px 15px 0px 10px;
-}
-.semantic-detail-instruction .dl-horizontal {
-  margin-bottom: 0px;
 }
 @media (min-width: 992px) {
   .semantic-detail-instruction {
@@ -567,6 +610,10 @@ a.inactive {
     width: auto;
     font-weight: 700;
     letter-spacing: 0;
+  }
+  .semantic-detail-instruction .semantic-detail-summary {
+    margin-left: 0px;
+    margin-bottom: 0px;
   }
   .semantic-detail-instruction .semantic-text {
     margin-left: 0px;
