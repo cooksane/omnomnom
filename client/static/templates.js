@@ -17,7 +17,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  buffer += "<div class=\"row-fluid\">\n    <div class=\"col-xs-12 col-lg-12\">\n        <div id=\"ingredient_";
+  buffer += "<div class=\"row\">\n    <div class=\"col-xs-12 col-lg-12\">\n        <div id=\"ingredient_";
   if (helper = helpers.DisplayIndex) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.DisplayIndex); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -154,7 +154,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div id=\"summary_instruction_";
+  buffer += "<a id=\"summary-instruction-link\">\n    <div id=\"summary_instruction_";
   if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -162,15 +162,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\">\n    <a id=\"summary-instruction-link\">\n        <div class=\"col-xs-12 semantic-summary-column\">\n            <div class=\"semantic-summary\">";
+    + "\">\n        <div class=\"col-xs-12 semantic-summary-column\">\n            <div class=\"semantic-summary\"><span class=\"glyphicon glyphicon-circle-arrow-right\" aria-hidden=\"true\"></span><span id=\"step-num\">";
   if (helper = helpers.index) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.index); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + ". ";
+    + ".</span> ";
   if (helper = helpers.summary) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.summary); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</div>\n        </div>\n    </a>\n</div>";
+    + "</div>\n        </div>\n    </div>\n</a>\n";
   return buffer;
   });
 
@@ -279,15 +279,15 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   var buffer = "", stack1, helper, functionType="function", escapeExpression=this.escapeExpression;
 
 
-  buffer += "<div id=\"semantic-container\" data-spy=\"affix\" data-offset-top=\"0\" data-offset-bottom=\"0\">\n    <div id=\"semantic-row\" class=\"row\">\n\n        <div id=\"left\" class=\"hidden-xs hidden-sm hidden-md col-lg-2 text-center\">\n            <div class=\"thumbnail shadow\">\n                <img id=\"recipeImage\" class=\"unselectable img-responsive img-rounded\" src=\"";
+  buffer += "<div id=\"semantic-container\" class=\"invisible\" data-spy=\"affix\" data-offset-top=\"0\" data-offset-bottom=\"0\">\n    <div id=\"semantic-row\" class=\"row\">\n\n        <div id=\"left\" class=\"hidden-xs hidden-sm hidden-md col-lg-2 text-center\">\n            <div id=\"recipe-details\">\n                <div class=\"thumbnail shadow\">\n                    <img id=\"recipeImage\" class=\"unselectable img-responsive img-rounded\" src=\"";
   if (helper = helpers.ImageURL) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.ImageURL); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "\" >\n                <div class=\"caption\">\n                    <h4 class=\"title\">";
+    + "\" >\n                    <div class=\"caption\">\n                        <h4 class=\"title\">";
   if (helper = helpers.Title) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.Title); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</h4>\n                    <p class=\"small stats\">";
+    + "</h4>\n                        <p class=\"small stats\">";
   if (helper = helpers.TotalMinutes) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.TotalMinutes); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
@@ -299,7 +299,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
   if (helper = helpers.YieldUnit) { stack1 = helper.call(depth0, {hash:{},data:data}); }
   else { helper = (depth0 && depth0.YieldUnit); stack1 = typeof helper === functionType ? helper.call(depth0, {hash:{},data:data}) : helper; }
   buffer += escapeExpression(stack1)
-    + "</p>\n                </div>\n            </div>\n            <button id=\"done\" type=\"button\" class=\"btn btn-lg btn-full-width\">Done</button>\n        </div>\n\n        <div id=\"mid\" class=\"col-xs-12 col-sm-9 col-md-8 col-lg-6\">\n            <!-- <h1 class=\"semantic-column-title-instructions\">Instructions</h1> -->\n            <div id=\"pre-instruction-viewport\">\n                <!-- <div class=\"bottom bottom-fade\"></div> -->\n                <div id=\"pre-instruction-container\" class=\"\"></div>\n            </div>\n            <div id=\"instruction-viewport\" data-spy=\"scroll\">\n                <!-- <div class=\"top top-fade\"></div> -->\n                <!-- <div class=\"bottom bottom-fade\"></div> -->\n                <div id=\"instruction-container\" class=\"invisible\">\n                </div>\n            </div>\n            <div id=\"post-instruction-viewport\">\n                <!-- <div class=\"top top-fade\"></div> -->\n                <div id=\"post-instruction-container\" class=\"\">\n                </div>\n            </div>\n        </div>\n\n        <div id=\"right\" class=\"hidden-xs col-sm-3 col-md-4 col-lg-4\">\n            <!-- <h1 class=\"semantic-column-title\">Ingredients</h1> -->\n            <div id=\"ingredients-container\">\n\n            </div>\n        </div>\n\n    </div>\n</div>\n";
+    + "</p>\n                    </div>\n                </div>\n                <button id=\"done\" type=\"button\" class=\"btn btn-lg btn-full-width\">Done</button>\n            </div>\n        </div>\n\n        <div id=\"mid\" class=\"col-xs-12 col-sm-9 col-md-8 col-lg-6\">\n            <!-- div id=\"mid-filler\"></div -->\n            <div id=\"instruction-list\">\n                <!-- <h1 class=\"semantic-column-title-instructions\">Instructions</h1> -->\n                <div id=\"pre-instruction-viewport\">\n                    <!-- <div class=\"bottom bottom-fade\"></div> -->\n                    <div id=\"pre-instruction-container\" class=\"\"></div>\n                </div>\n                <div id=\"instruction-viewport\" data-spy=\"scroll\">\n                    <!-- <div class=\"top top-fade\"></div> -->\n                    <!-- <div class=\"bottom bottom-fade\"></div> -->\n                    <div id=\"instruction-container\">\n                    </div>\n                </div>\n                <div id=\"post-instruction-viewport\">\n                    <!-- <div class=\"top top-fade\"></div> -->\n                    <div id=\"post-instruction-container\" class=\"\">\n                    </div>\n                </div>\n            </div>\n        </div>\n\n        <div id=\"right\" class=\"hidden-xs col-sm-3 col-md-4 col-lg-4\">\n            <div id=\"right-filler\"></div>\n            <!-- <h1 class=\"semantic-column-title\">Ingredients</h1> -->\n            <div id=\"ingredients-container\">\n\n            </div>\n        </div>\n\n    </div>\n</div>\n";
   return buffer;
   });
 

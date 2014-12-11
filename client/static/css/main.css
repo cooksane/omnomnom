@@ -18,7 +18,7 @@ body {
   font-size: 16px;
 }
 #main-container {
-  padding: 10px 10px;
+  padding: 0px 0px;
 }
 strong {
   color: #000000;
@@ -113,40 +113,6 @@ strong {
   width: 100%;
 }
 /*  general styles */
-#summary-instruction-link {
-  color: #000000;
-  cursor: pointer;
-  text-decoration: none;
-  -webkit-transition: color 50ms ease-out;
-  -moz-transition: color 50ms ease-out;
-  -o-transition: color 50ms ease-out;
-  transition: color 50ms ease-out;
-  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
-  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
-  /* These user-select properties are inheritable, used to prevent text selection */
-  /* From IE10 only */
-  /* Not valid CSS yet, as of July 2012 */
-  /* Prevents dragging of images/divs etc */
-  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
-  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
-  -moz-user-select: none;
-  /* These user-select properties are inheritable, used to prevent text selection */
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  /* From IE10 only */
-  user-select: none;
-  /* Not valid CSS yet, as of July 2012 */
-  -webkit-user-drag: none;
-  /* Prevents dragging of images/divs etc */
-  user-drag: none;
-}
-#summary-instruction-link:hover {
-  color: #a0c336;
-  text-decoration: none;
-}
-#summary-instruction-link.inactive {
-  visibility: hidden;
-}
 a {
   color: #a0c336;
   cursor: pointer;
@@ -432,6 +398,15 @@ a.inactive {
 #post-instruction-container {
   position: relative;
 }
+#semantic-container {
+  height: 100%;
+}
+#left {
+  height: 100%;
+}
+#right {
+  height: 100%;
+}
 .semantic-column-title {
   margin-top: 0;
   padding-bottom: 15px;
@@ -484,10 +459,61 @@ a.inactive {
   text-overflow: ellipsis;
   margin: 0;
 }
+#summary-instruction-link {
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  /* These user-select properties are inheritable, used to prevent text selection */
+  /* From IE10 only */
+  /* Not valid CSS yet, as of July 2012 */
+  /* Prevents dragging of images/divs etc */
+  /* For Opera and <= IE9, we need to add unselectable="on" attribute onto each element */
+  /* Check this site for more details: http://help.dottoro.com/lhwdpnva.php */
+  -moz-user-select: none;
+  /* These user-select properties are inheritable, used to prevent text selection */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  /* From IE10 only */
+  user-select: none;
+  /* Not valid CSS yet, as of July 2012 */
+  -webkit-user-drag: none;
+  /* Prevents dragging of images/divs etc */
+  user-drag: none;
+  -webkit-transition: color 50ms ease-out;
+  -moz-transition: color 50ms ease-out;
+  -o-transition: color 50ms ease-out;
+  transition: color 50ms ease-out;
+  color: #000000;
+  cursor: pointer;
+  text-decoration: underline;
+}
+#summary-instruction-link .glyphicon {
+  z-index: -1;
+  margin-right: -12px;
+  color: #fafafa;
+}
+#summary-instruction-link #step-num {
+  z-index: 1;
+  color: #000000;
+}
+#summary-instruction-link:hover {
+  color: #508912;
+  text-decoration: underline;
+}
+#summary-instruction-link:hover .glyphicon {
+  z-index: 1;
+  color: #508912;
+}
+#summary-instruction-link:hover #step-num {
+  z-index: -1;
+  color: #fafafa;
+}
+#summary-instruction-link.inactive {
+  visibility: hidden;
+}
 .semantic-summary-instruction {
   font-size: 12px;
-  padding: 0px 0 0px 0;
-  margin: 5px 0 10px 5px;
+  margin: 0px 0 0px 0;
+  padding: 10px 0 10px 5px;
 }
 .semantic-summary-instruction .semantic-summary-column {
   margin: 0px 15px 0px 10px;
@@ -496,8 +522,8 @@ a.inactive {
 @media (min-width: 992px) {
   .semantic-summary-instruction {
     font-size: 16px;
-    padding: 0px 0 0px 0;
-    margin: 10px 0 20px 5px;
+    margin: 0px 0 0px 0;
+    padding: 10px 0 10px 0px;
   }
   .semantic-summary-instruction .semantic-summary-column {
     margin: 0px 15px 0px 10px;

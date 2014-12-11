@@ -82,6 +82,33 @@
   .i-container();
 }
 
+#recipe-details {
+  //position: absolute;
+  //top: 0px;
+}
+
+#instruction-list {
+  //position: absolute;
+  //top: 0px;
+}
+
+#semantic-container {
+  height: 100%;
+}
+
+#left {
+  height: 100%;
+}
+
+#right {
+  height: 100%;
+}
+
+#ingredients-container {
+  //position: absolute;
+  //top: 0;
+}
+
 .semantic-column-title {
   margin-top: 0;
   padding-bottom: 15px;
@@ -130,12 +157,59 @@
   margin: 0;
 }
 
+#summary-instruction-link {
+
+  .unselectable();
+  .transition(color, 50ms);
+
+  color: @black;
+  cursor: pointer;
+  text-decoration: underline;
+
+  & .glyphicon {
+    z-index: -1;
+    //margin-left: 0px;
+    margin-right: -12px;
+    //.transition(color, 50ms);
+    color: @color-background;
+  }
+
+  & #step-num {
+    z-index: 1;
+    //.transition(color, 50ms);
+    color: @black;
+  }
+
+  &:hover {
+
+    & .glyphicon {
+      z-index: 1;
+      //margin-left: -20px;
+      //.transition(color, 50ms);
+      color: @medium-green;
+    }
+
+    & #step-num {
+      z-index: -1;
+      //.transition(color, 50ms);
+      color: @color-background;
+    }
+
+    color: @medium-green;
+    text-decoration: underline;
+  }
+
+  &.inactive {
+    visibility: hidden;
+  }
+}
+
 .semantic-summary-instruction {
   //padding-top: 15px;
   //padding-bottom: 15px;
   .md-font();
-  padding: 0px 0 0px 0;
-  margin: 5px 0 10px 5px;
+  margin: 0px 0 0px 0;
+  padding: 10px 0 10px 5px;
 
   & .semantic-summary-column {
     margin: 0px 15px 0px 10px;
@@ -144,8 +218,8 @@
 
   @media (min-width: @screen-md-min) {
     .lg-font();
-    padding: 0px 0 0px 0;
-    margin: 10px 0 20px 5px;
+    margin: 0px 0 0px 0;
+    padding: 10px 0 10px 0px;
 
     & .semantic-summary-column {
       margin: 0px 15px 0px 10px;
