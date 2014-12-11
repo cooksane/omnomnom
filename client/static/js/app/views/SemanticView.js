@@ -230,6 +230,12 @@ define([
             } catch(e){
                 this.animationSupported = false;
             }
+
+            //throttle handlers
+            var rate = 10;
+            this._throttledUpdateNearestIndex = _.throttle(_.bind(this._updateNearestIndex, this), rate);
+            this._throttledUpdatePositions = _.throttle(_.bind(this._updatePositions, this), rate);
+            
         },
 
         mouseDown: function(event){
@@ -272,25 +278,15 @@ define([
         },
 
         updateNearestIndex: function() {
-            var $window = $(window);
-            var $container = this.$el.find("#instruction-container");
-            var $instructionViewport = this.$el.find("#instruction-viewport");
+            this._throttledUpdateNearestIndex();
+        },
 
-
-            var wvpHeight = $window.height();
+        _updateNearestIndex: function(){
             var wcontentHeight = this.$el.height();
-
-            var wscrollPosition = this.getPageYOffset(); //$window.scrollTop();
+            var wscrollPosition = this.getPageYOffset();
             var iscrollPosition = wscrollPosition / wcontentHeight * this.iContentHeight;
-
             var approxIndex = iscrollPosition / this.iViewportHeight;
-
             var discreteIndex = Math.round(approxIndex);
-            /*
-            console.log('updateNearest', this.stepIndex, discreteIndex);
-            console.log('window', wvpHeight, wscrollPosition);
-            console.log('content', wcontentHeight, iscrollPosition);
-            */
 
             if(discreteIndex != this.stepIndex){
                 console.log('updateNearest', this.stepIndex, discreteIndex);
@@ -298,6 +294,7 @@ define([
                 this.stepIndex = discreteIndex;
                 this.highlightIngredients();
             }
+
             return discreteIndex;
         },
 
@@ -360,6 +357,10 @@ define([
         currentPostPosition: null,
 
         updatePositions: function(){
+            this._throttledUpdatePositions();
+        },
+
+        _updatePositions: function(){
             this.computeDetailInstructions();
             this.computePreInstructions();
             this.computePostInstructions();
@@ -454,47 +455,38 @@ define([
         },
 
         computeDetailInstructions: function(){
-            var $window = $(window);
-            var $container = this.$el.find("#instruction-container");
-            var $instructionViewport = this.$el.find("#instruction-viewport");
-
-            var wvpHeight = $window.height();
             var wcontentHeight = this.$el.height();
-
-
-            //var wscrollPosition = $window.scrollTop();
             var wscrollPosition = this.getPageYOffset();
             var iscrollPosition = wscrollPosition/wcontentHeight*this.iContentHeight;
             this.targetInstructionPosition = -iscrollPosition;
-            //console.log(wscrollPosition);
         },
 
-        computePreInstructions: function(){
-            var $window = $(window);
-            var $container = this.$el.find("#pre-instruction-container");
-            var $instructionViewport = this.$el.find("#pre-instruction-viewport");
-
+        getSummaryItemHeight: function(){
             var iSample = this.$el.find("#summary_instruction_1");
             var iMargins = parseInt(iSample.css("marginTop")) + parseInt(iSample.css("marginBottom"))/2;
             var iPaddings = parseInt(iSample.css("paddingTop")) + parseInt(iSample.css("paddingBottom"));
             var iHeight = iSample.height();
-            var itemHeight = iMargins + iPaddings + iHeight;
+            return iMargins + iPaddings + iHeight;
+        },
+
+        computePreInstructions: function(){
+            var $window = $(window);
+
+            var itemHeight = this.getSummaryItemHeight();
             var numItems = this.viewPreLookup.length;
+            var maxHeight = itemHeight*(numItems-1);
 
             //compute position
             var wscrollPosition = this.getPageYOffset(); //$window.scrollTop();
             var wvpHeight = $window.height();
             var wcontentHeight = this.$el.height();
 
-            var maxHeight = itemHeight*(numItems-1);
-            this.targetPreHeight = maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
             this.targetPreScaleY = wscrollPosition/(wcontentHeight-wvpHeight);
+            this.targetPreHeight = maxHeight*this.targetPreScaleY;
         },
 
         computePostInstructions: function(){
             var $window = $(window);
-            var $container = this.$el.find("#post-instruction-container");
-            var $instructionViewport = this.$el.find("#post-instruction-viewport");
 
             var iSample = this.$el.find("#summary_instruction_1");
             var iMargins = parseInt(iSample.css("marginTop")) + parseInt(iSample.css("marginBottom"))/2;
@@ -502,19 +494,15 @@ define([
             var iHeight = iSample.height();
             var itemHeight = iMargins + iPaddings + iHeight;
             var numItems = this.viewPostLookup.length;
+            var maxHeight = itemHeight*(numItems);
 
             //compute position
             var wscrollPosition = this.getPageYOffset(); //$window.scrollTop();
             var wvpHeight = $window.height();
             var wcontentHeight = this.$el.height();
 
-            var maxHeight = itemHeight*(numItems);
-
-            var targetPosition = -(itemHeight - iPaddings + maxHeight*wscrollPosition/wcontentHeight);
-            this.targetPostPosition = targetPosition;
-
-            var targetHeight = maxHeight - maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
-            this.targetPostHeight = targetHeight;
+            this.targetPostPosition = -(itemHeight - iPaddings + maxHeight*wscrollPosition/wcontentHeight);
+            this.targetPostHeight = maxHeight - maxHeight*wscrollPosition/(wcontentHeight-wvpHeight);
             this.targetPostScaleY = 1 - wscrollPosition/(wcontentHeight-wvpHeight);
         },
 
