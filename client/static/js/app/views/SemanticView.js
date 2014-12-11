@@ -204,7 +204,7 @@ define([
 
             // Wanted to get a sort of "snap to nearest" effect when
             var $document = $(document);
-            if(Modernizr.touch){
+            if(Modernizr.touch && false){
                 $document.bind('touchstart', _.bind(this.touchStart, this));
                 $document.bind('touchmove', _.bind(this.touchMove, this));
                 $document.bind('touchend', _.bind(this.touchEnd, this));
