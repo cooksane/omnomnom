@@ -232,10 +232,11 @@ define([
             }
 
             //throttle handlers
-            var rate = 10;
+            var rate = 100;
             this._throttledUpdateNearestIndex = _.throttle(_.bind(this._updateNearestIndex, this), rate);
-            this._throttledUpdatePositions = _.throttle(_.bind(this._updatePositions, this), rate);
-            
+            this._throttledUpdatePositions = _.throttle(_.bind(this._updatePositions, this), 1);
+            //this._throttledUpdatePositions = this._updatePositions;
+
         },
 
         mouseDown: function(event){
@@ -273,12 +274,13 @@ define([
         },
 
         snapToNearest: function() {
-            var discreteIndex = this.updateNearestIndex();
+            var discreteIndex = this._updateNearestIndex();
             this.setItemByIndex(discreteIndex);
         },
 
         updateNearestIndex: function() {
             this._throttledUpdateNearestIndex();
+            //this._updateNearestIndex();
         },
 
         _updateNearestIndex: function(){
@@ -358,6 +360,7 @@ define([
 
         updatePositions: function(){
             this._throttledUpdatePositions();
+            //this._updatePositions();
         },
 
         _updatePositions: function(){
