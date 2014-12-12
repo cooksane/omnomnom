@@ -673,7 +673,7 @@ a.inactive {
   transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-out;
 }
 .semantic-summary-instruction {
-  font-size: 12px;
+  font-size: 14px;
   margin: 0px 0 0px 0;
   padding: 5px 0 5px 6px;
 }
