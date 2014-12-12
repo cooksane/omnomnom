@@ -124,24 +124,27 @@
 
 .label(){
   font-family: "Lato", sans-serif;
-  text-transform: uppercase;
+  line-height: 1.2em;
+  letter-spacing: 0.6px;
   font-weight: 700;
-  color: @dark-gray;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: @black;
   margin-top: 0;
   margin-bottom: 5px;
 }
 
 #ingredients-container {
-  padding-top: 30px;
-  & h4 {
+  padding-top: 60px;
+  & h5 {
     .label();
   }
 }
 
 
 #tools-container {
-  padding-top: 30px;
-  & h4 {
+  padding-top: 60px;
+  & h5 {
     .label();
   }
 }
@@ -256,7 +259,7 @@
     color: @darker-gray;
     font-weight: 400;
     margin-bottom: 2px;
-    .md-font();
+    .sm-font();
     .text-ellipsis();
   }
 }
@@ -268,7 +271,7 @@
 
   @media (min-width: @screen-md-min) {
     margin-bottom: 2px;
-    .md-font();
+    .sm-font();
     .text-ellipsis();
   }
 }
@@ -527,10 +530,4 @@
   &:not(.active) {
     letter-spacing: 1px;
   }
-}
-
-
-#semantic-container .affix {
-  position: fixed;
-  top: 0;
 }

@@ -435,30 +435,34 @@ a.inactive {
   height: 100%;
 }
 #ingredients-container {
-  padding-top: 30px;
+  padding-top: 60px;
 }
-#ingredients-container h4 {
+#ingredients-container h5 {
   letter-spacing: 0;
   padding: 0 5px 0 0;
-  color: #000000;
   font-family: "Lato", sans-serif;
-  text-transform: uppercase;
+  line-height: 1.2em;
+  letter-spacing: 0.6px;
   font-weight: 700;
-  color: #666666;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #000000;
   margin-top: 0;
   margin-bottom: 5px;
 }
 #tools-container {
-  padding-top: 30px;
+  padding-top: 60px;
 }
-#tools-container h4 {
+#tools-container h5 {
   letter-spacing: 0;
   padding: 0 5px 0 0;
-  color: #000000;
   font-family: "Lato", sans-serif;
-  text-transform: uppercase;
+  line-height: 1.2em;
+  letter-spacing: 0.6px;
   font-weight: 700;
-  color: #666666;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #000000;
   margin-top: 0;
   margin-bottom: 5px;
 }
@@ -524,7 +528,7 @@ a.inactive {
     color: #333333;
     font-weight: 400;
     margin-bottom: 2px;
-    font-size: 14px;
+    font-size: 12px;
     display: block;
     overflow: hidden;
     white-space: nowrap;
@@ -546,7 +550,7 @@ a.inactive {
 @media (min-width: 992px) {
   .semantic-ingredient {
     margin-bottom: 2px;
-    font-size: 14px;
+    font-size: 12px;
     display: block;
     overflow: hidden;
     white-space: nowrap;
@@ -794,8 +798,4 @@ a.inactive {
 }
 .stage:not(.active) {
   letter-spacing: 1px;
-}
-#semantic-container .affix {
-  position: fixed;
-  top: 0;
 }
