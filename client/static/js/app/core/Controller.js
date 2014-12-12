@@ -11,7 +11,8 @@ define([
     "views/ControlView",
     "views/ResponsiveView",
     "views/SBSView",
-    "views/SemanticView"
+    "views/SemanticView",
+    "views/ColumnView"
 
 ], function (EventBus, Utils,
              StartView,
@@ -20,7 +21,7 @@ define([
              ThankYouView,
 
              SummaryView,
-             ControlView, ResponsiveView, SBSView, SemanticView) {
+             ControlView, ResponsiveView, SBSView, SemanticView, ColumnView) {
 
     function Controller(){
         this.service = null;
@@ -122,6 +123,9 @@ define([
                 break;
             case "semantic":
                 this.currentView = new SemanticView({model: this.appData.recipeModel, appData: this.appData});
+                break;
+            case "col":
+                this.currentView = new ColumnView({model: this.appData.recipeModel, appData: this.appData});
                 break;
         }
 

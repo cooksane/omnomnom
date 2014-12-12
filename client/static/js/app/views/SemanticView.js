@@ -9,7 +9,8 @@ define([
         className: "semantic-view-wrapper",
         template: nom.templates.RecipeSemantic,
         ingredientTemplate: nom.templates.IngredientSemantic,
-
+        toolsTemplate: nom.templates.Tool,
+        stagesTemplate: nom.templates.Stage,
         instructionSummaryTemplate: nom.templates.InstructionSemanticSummary,
         instructionDetailsTemplate: nom.templates.InstructionSemanticDetails,
 
@@ -63,9 +64,26 @@ define([
         },
 
         renderModel: function(){
+            this.renderTools();
             this.renderIngredients();
+            this.renderStages();
             this.renderInstructions();
             //this.selectInstruction();
+        },
+
+        renderTools: function() {
+            var result = this.model.attributes;
+            var ingredients = result.Ingredients;
+            var $container = this.$el.find("#tools-container");
+            var tools = this.model.get("Tools");
+            if (tools) {
+                for (var i=-1; ++i<tools.length;) {
+                    var tool = tools[i];
+                    tool.index = i;
+                    var compiledTemplate = this.toolsTemplate(tool);
+                    $container.append(compiledTemplate);
+                }
+            }
         },
 
         renderIngredients: function(){
@@ -76,6 +94,16 @@ define([
                 var ingredient = ingredients[i];
                 var compiledTemplate = this.ingredientTemplate(ingredient);
                 ingredientContainer.append(compiledTemplate);
+            }
+        },
+
+        renderStages: function() {
+            var result = this.model.attributes;
+            var stages = result.Stages;
+            var stagesContainer = this.$el.find("#stages-container");
+            for (var i=-1;++i<stages.length;) {
+                var compiledTemplate = this.stagesTemplate(stages[i]);
+                stagesContainer.append(compiledTemplate);
             }
         },
 
@@ -118,6 +146,18 @@ define([
                 $ingredient = ingredientContainer.find("#ingredient_"+iIndex);
                 $ingredient.addClass("highlight-ingredient");
                 $ingredient.removeClass("mute-ingredient");
+            }
+        },
+
+        lastStage: null,
+        updateStage: function() {
+            var instructions = this.model.get("CuratedInstructions");
+            var currentInstruction = instructions[this.stepIndex];
+            if (this.lastStage != currentInstruction.stage || this.lastStage == null) {
+                //var stagesContainer = this.$el.find("#stages-container");
+                this.$el.find(".stage").removeClass("active");
+                this.$el.find("#stage-" + currentInstruction.stage).addClass("active");
+                this.lastStage = currentInstruction.stage;
             }
         },
 
@@ -285,6 +325,7 @@ define([
                 this.lastIndex = this.stepIndex;
                 this.stepIndex = discreteIndex;
                 this.highlightIngredients();
+                this.updateStage();
             }
 
             return discreteIndex;
@@ -292,6 +333,7 @@ define([
 
         setItemByIndex: function(index){
             this.highlightIngredients();
+            this.updateStage();
             console.log('setItemByIndex', index);
             var nrmlPos = index / (this.viewDetailsLookup.length-1);
             var wcontentHeight = this.$el.height();
@@ -411,7 +453,7 @@ define([
                 rendering = true;
             }
 
-            //post
+            //post height
             delta = factor*(this.targetPostHeight-this.currentPostHeight);
             if(Math.abs(delta) > maxDelta) {
                 this.currentPostHeight += delta;
@@ -421,6 +463,7 @@ define([
                 rendering = true;
             }
 
+            //post y
             delta = factor*(this.targetPostPosition-this.currentPostPosition);
             if(Math.abs(delta) > maxDelta) {
                 this.currentPostPosition += delta;
@@ -429,6 +472,7 @@ define([
                 rendering = true;
             }
 
+            //list y
             delta = factor*(this.targetListY-this.currentListY);
             if(Math.abs(delta) > maxDelta) {
                 this.currentListY += delta;
@@ -436,12 +480,15 @@ define([
                 rendering = true;
             }
 
+            //ingredient y
+            /*
             delta = factor*(this.targetIngrY-this.currentIngrY);
             if(Math.abs(delta) > maxDelta) {
                 this.currentIngrY += delta;
                 this.setTransform(this.$ingredientsContainer, "translateY(" + this.currentIngrY + "px)");
                 rendering = true;
             }
+            */
 
             if(rendering){
                 window.requestAnimationFrame(_.bind(this.renderLoop, this));
@@ -454,7 +501,7 @@ define([
             this.currentPostHeight = this.targetPostHeight;
             this.currentPostPosition = this.targetPostPosition;
             this.currentListY = this.targetListY;
-            this.currentIngrY = this.targetIngrY;
+            //this.currentIngrY = this.targetIngrY;
 
             if(this.animationSupported){
                 this.setTransform(this.$instructionContainer, "translateY("+this.currentInstructionPosition+"px)");
@@ -462,14 +509,14 @@ define([
                 this.$postViewport.height(this.currentPostHeight);
                 this.setTransform(this.$postContainer, "translateY("+this.currentPostPosition+"px)");
                 this.setTransform(this.$instructionList, "translateY("+this.currentListY+"px)");
-                this.setTransform(this.$ingredientsContainer, "translateY("+this.currentIngrY+"px)");
+                //this.setTransform(this.$ingredientsContainer, "translateY("+this.currentIngrY+"px)");
             } else {
                 this.$instructionContainer.css("top", this.currentInstructionPosition);
                 this.$preViewport.height(this.currentPreHeight);
                 this.$postViewport.height(this.currentPostHeight);
                 this.$postContainer.css("top", this.currentPostPosition);
                 this.$instructionList.css("top", this.currentListY);
-                this.$ingredientsContainer.css("top", this.currentIngrY);
+                //this.$ingredientsContainer.css("top", this.currentIngrY);
             }
         },
 
@@ -524,6 +571,7 @@ define([
             for (var i = -1; ++i < instructions.length;) {
                 var instruction = instructions[i];
                 instruction.stepIndex = i+1;
+                instruction.total = instructions.length;
                 var compiledTemplate = this.instructionDetailsTemplate(instructions[i]);
                 this.viewDetailsLookup.push(compiledTemplate);
                 this.$instructionContainer.append(compiledTemplate);
@@ -559,7 +607,7 @@ define([
             this.computePreInstructions();
             this.computePostInstructions();
             this.computeInstructionList();
-            this.computeIngrContainer();
+            //this.computeIngrContainer();
         },
 
         computeDimensions: function(){
@@ -594,9 +642,11 @@ define([
             this.$el.height(wcontentHeight);
 
             //compute recipe details top
+            /*
             var $recipeDetails = this.$el.find("#recipe-details");
             var recMid = (this.$window.height() - $recipeDetails.height())/2;
             $recipeDetails.css("marginTop", recMid);
+            */
 
         },
 
@@ -647,14 +697,17 @@ define([
             var $window = $(window);
             var containerHeight = $window.height();
             var ivpHeight = this.$instructionViewport.height();
-            var listY = containerHeight/2 - this.targetPreHeight - ivpHeight/2;
+            var $midHeader = this.$el.find("#instructions-header");
+            var $listFade = this.$el.find("#list-top-fade");
+            var midHeaderHeight = $midHeader.height(); // + this.getVertPaddingMargin($midHeader) + $listFade.height();
+            var listY = containerHeight/2 - this.targetPreHeight - ivpHeight/2 - midHeaderHeight;
             this.targetListY = listY;
         },
 
         computeIngrContainer: function(){
             var scrollNormal = this.getScrollNormal();
             var ivpHeight = this.$instructionViewport.height();
-            var icHeight = this.$ingredientsContainer.height();
+            var icHeight = this.$ingredientsContainer.height() + this.getVertPaddingMargin(this.$ingredientsContainer);
             var diff = icHeight - ivpHeight;
             if(diff < 0){
                 this.targetIngrY = this.targetListY + this.targetPreHeight;

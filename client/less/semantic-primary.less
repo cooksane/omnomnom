@@ -13,6 +13,7 @@
 @light-gray: #BBB;
 @gray: #999;
 @dark-gray: #666;
+@darker-gray: #333;
 @light-green: #C0E336;
 @fresh-green: #A0C336;
 @medium-green: #508912;
@@ -49,14 +50,15 @@
   -webkit-box-shadow: 0 0px 0px 0px;
   box-shadow: 0 0px 0px 0px;
 }
-.shadow-top(@color: @black-40) {
-  -webkit-box-shadow: 0 -5px 10px -5px @color;
-    box-shadow: 0 -5px 10px -5px @color;
-}
 
 .shadow-bottom(@color: @black-20) {
   -webkit-box-shadow: 0 5px 6px -5px @color;
-    box-shadow: 0 5px 6px -5px @color;
+  box-shadow: 0 5px 6px -5px @color;
+}
+
+.shadow-top(@color: @black-20) {
+  -webkit-box-shadow: 0 -5px 6px 5px @color;
+  box-shadow: 0 -5px 6px 5px @color;
 }
 
 .border-radius(@radius) {
@@ -105,9 +107,12 @@ html, body {
 body {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
-  font-size: 16px;
-  //line-height: 1.6em;
-  //letter-spacing: 0.8px;
+  //font-size: 14px;
+  ///*
+  font-size: 1.2em;
+  //line-height: 1.2em;
+  //letter-spacing: 0.6px;
+  //*/
 }
 
 #main-container {
@@ -116,10 +121,6 @@ body {
 
 #instruction-container {
   //padding: 20px 0 15px 0;
-}
-
-strong {
-  color: @color-text-primary;
 }
 
 .highlight-text {

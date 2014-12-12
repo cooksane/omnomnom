@@ -1,20 +1,31 @@
 <div id="semantic-container" class="invisible" data-spy="affix" data-offset-top="0" data-offset-bottom="0">
+    <div id="instructions-header">
+        <h1 class="title">{{Title}}</h1>
+        <p class="stat">{{TotalMinutes}} Min &middot; {{YieldNumber}} {{YieldUnit}}</p>
+    </div>
     <div id="semantic-row" class="row">
 
-        <div id="left" class="hidden-xs hidden-sm hidden-md col-lg-2 text-center">
-            <div id="recipe-details">
-                <div class="thumbnail shadow">
-                    <img id="recipeImage" class="unselectable img-responsive img-rounded" src="{{ImageURL}}" >
-                    <div class="caption">
-                        <h4 class="title">{{Title}}</h4>
-                        <p class="small stats">{{TotalMinutes}} Min | {{YieldNumber}} {{YieldUnit}}</p>
-                    </div>
+        <div id="left" class="hidden-xs hidden-sm hidden-md col-lg-3 text-center">
+            <!--
+            <div class="thumbnail shadow">
+                <img id="recipeImage" class="unselectable img-responsive img-rounded" src="{{ImageURL}}" >
+                <div class="caption">
+                    <h4 class="title">{{Title}}</h4>
+                    <p class="small stats">{{TotalMinutes}} Min | {{YieldNumber}} {{YieldUnit}}</p>
                 </div>
-                <button id="done" type="button" class="btn btn-lg btn-full-width">Done</button>
+            </div>
+            <button id="done" type="button" class="btn btn-lg btn-full-width">Done</button>
+            -->
+            <div id="stages-container">
             </div>
         </div>
 
         <div id="mid" class="col-xs-12 col-sm-9 col-md-8 col-lg-6">
+
+            <!-- <div id="list-top-fade" class="top top-fade"></div> -->
+            <!-- <div class="bottom bottom-fade"></div> -->
+
+
             <!-- div id="mid-filler"></div -->
             <div id="instruction-list">
                 <!-- <h1 class="semantic-column-title-instructions">Instructions</h1> -->
@@ -22,9 +33,11 @@
                     <!-- <div class="bottom bottom-fade"></div> -->
                     <div id="pre-instruction-container" class=""></div>
                 </div>
-                <div id="instruction-viewport" data-spy="scroll">
-                    <!-- <div class="top top-fade"></div> -->
-                    <!-- <div class="bottom bottom-fade"></div> -->
+                <div id="instruction-viewport">
+                    <!--
+                    <div class="top top-fade"></div>
+                    <div class="bottom bottom-fade"></div>
+                    -->
                     <div id="instruction-container">
                     </div>
                 </div>
@@ -34,13 +47,17 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
-        <div id="right" class="hidden-xs col-sm-3 col-md-4 col-lg-4">
-            <div id="right-filler"></div>
+        <div id="right" class="hidden-xs col-sm-3 col-md-4 col-lg-3">
+            <!-- <div id="right-filler"></div> -->
+            <div id="tools-container">
+                <h4>Tools</h4>
+            </div>
             <!-- <h1 class="semantic-column-title">Ingredients</h1> -->
             <div id="ingredients-container">
-
+                <h4>Ingredients</h4>
             </div>
         </div>
 

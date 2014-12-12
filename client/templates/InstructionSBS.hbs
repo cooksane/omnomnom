@@ -1,5 +1,8 @@
 <div class="row instruction">
-    <div class="col-lg-12 col-xs-12">
-        <p class="sbs-instruction-text">{{text}}</p>
+    <div class="col-lg-12 col-xs-12 sbs-instruction">
+        <p id="sbs-instruction-text">{{text}}</p>
+        {{#if imageURL}}
+	        <img id="recipeImage" class="center-block unselectable img-responsive img-rounded" src="{{imageURL}}" />
+	    {{/if}}
     </div>
 </div>

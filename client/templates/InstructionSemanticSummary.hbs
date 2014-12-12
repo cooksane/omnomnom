@@ -1,7 +1,15 @@
 <a id="summary-instruction-link">
     <div id="summary_instruction_{{index}}" class="row instruction semantic-summary-instruction" data-index="{{index}}">
-        <div class="col-xs-12 semantic-summary-column">
-            <div class="semantic-summary"><span id="summary-select-indicator" class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span><span id="step-num">{{index}}.</span> &nbsp; {{summary}}</div>
+        <div class="col-xs-12">
+            <!-- <span id="summary-select-indicator" class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span> -->
+            <img id="summaryImage" class="pull-left unselectable img-rounded" src="{{imageURL}}" />
+            <div id="summaryBody" class="media-body">
+                <div id="summaryText"><b>{{index}}.</b> {{summary}}</div>
+                <!--
+                <h4 class="media-heading">Step {{index}}</h4>
+                <div id="summaryText">{{summary}}</div>
+                -->
+            </div>
         </div>
     </div>
 </a>
