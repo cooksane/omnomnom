@@ -543,14 +543,16 @@ define([
             this.renderPreSummaryInstructions();
             this.renderPostSummaryInstructions();
 
+            //var $midHeader = this.$el.find("#instructions-header");
+            //var midHeaderHeight = $midHeader.height() + this.getVertPaddingMargin($midHeader);
+
+            /*
+             */
             this.$semanticContainer.affix({
                 offset: {
                     top: -10
-                    /*
-                     , bottom: function () {
-                     return 0;
-                     }
-                     */
+                    //, bottom: 0
+                    //, bottom: function () { return 0; }
                 },
                 target: window
             });
@@ -699,7 +701,7 @@ define([
             var ivpHeight = this.$instructionViewport.height();
             var $midHeader = this.$el.find("#instructions-header");
             var $listFade = this.$el.find("#list-top-fade");
-            var midHeaderHeight = $midHeader.height(); // + this.getVertPaddingMargin($midHeader) + $listFade.height();
+            var midHeaderHeight = $midHeader.height() + this.getVertPaddingMargin($midHeader); // + $listFade.height();
             var listY = containerHeight/2 - this.targetPreHeight - ivpHeight/2 - midHeaderHeight;
             this.targetListY = listY;
         },

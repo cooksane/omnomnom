@@ -125,23 +125,24 @@
 .label(){
   font-family: "Lato", sans-serif;
   text-transform: uppercase;
-  .bold();
-  color: @black;
+  font-weight: 700;
+  color: @dark-gray;
+  margin-top: 0;
+  margin-bottom: 5px;
 }
 
 #ingredients-container {
   padding-top: 30px;
   & h4 {
     .label();
-    margin-top: 0;
   }
 }
+
 
 #tools-container {
   padding-top: 30px;
   & h4 {
     .label();
-    margin-top: 0;
   }
 }
 
@@ -219,12 +220,16 @@
  * Media query functions
  */
 
-.sm-font(){
+.xs-font(){
   font-size: 10px;
 }
 
-.md-font(){
+.sm-font(){
   font-size: 12px;
+}
+
+.md-font(){
+  font-size: 14px;
 }
 
 .lg-font(){
@@ -329,16 +334,17 @@
   .unselectable();
   cursor: pointer;
 
-  color: @gray;
+  color: @dark-gray;
   font-weight: 400;
   .single-transition(color, @duration, ease-out);
 
+  /*
   & #summaryImage {
     .desaturate();
     .transition-filter(@duration, ease-out);
   }
+  */
 
-  /*
   & #summary-select-indicator {
     margin-right: -12px;
     position: relative;
@@ -346,42 +352,45 @@
     .transformX(-38px);
     .select-indicator-transition(300ms, ease-in);
   }
-  */
 
   &:hover {
     color: @black;
     //font-weight: 400;
     .single-transition(color, @duration, ease-out);
     //.color-bold-transition(@duration, ease-out);
+    /*
     & #summaryImage {
       .saturate();
       .transition-filter(@duration, ease-in);
     }
+    */
 
-    /*
     & #summary-select-indicator {
       color: @dark-main;
       .transformX(-28px);
       .select-indicator-transition(300ms, ease-out);
     }
-    */
   }
 
 }
 
 .semantic-summary-instruction {
-
   .sm-font();
   margin: 0px 0 0px 0;
   padding: 5px 0 5px 6px;
-
+  & .semantic-summary-column {
+    margin: 0px 15px 0px 6px;
+    padding: 0px 15px 0px 10px;
+  }
   @media (min-width: @screen-md-min) {
     .md-font();
     margin: 0px 0 0px 0;
     padding: 10px 0 10px 0px;
-
+    & .semantic-summary-column {
+      margin: 0px 15px 0px 10px;
+      padding: 0px 15px 0px 10px;
+    }
   }
-
 }
 
 /*
@@ -428,9 +437,12 @@
 
       & h3 {
         display: inline;
+        color: @darker-gray;
       }
 
       & #detail-text {
+        color: @black;
+        font-weight: 700;
         padding-left: 30px;
         margin-bottom: 0px;
       }
@@ -467,7 +479,7 @@
     margin-top: 0;
   }
   //border-top: 1px solid @black-20;
-  border-bottom: 1px solid @black-20;
+  //border-bottom: 1px solid @black-20;
 
 }
 
@@ -517,3 +529,8 @@
   }
 }
 
+
+#semantic-container .affix {
+  position: fixed;
+  top: 0;
+}

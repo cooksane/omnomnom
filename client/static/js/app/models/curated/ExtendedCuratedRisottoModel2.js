@@ -67,27 +67,22 @@ define(
             ],
 
             summaries: [
-                "Peel the carrots, cutting them first into sticks, and then cutting the sticks into dice.",
+                "Cut the carrots.",
                 "Cut the cauliflower and broccoli into bits.",
                 "Dice the yellow onion.",
-
                 "Pour chicken broth into a small saucepan. Heat to a simmer.",
-
                 "In a large pan, heat 2 tablespoons olive oil and 2 tablespoons butter.",
                 "Add diced onions and diced carrots. Stir and cook for a minute or two.",
                 "Add cauliflower and cook for one minute, stirring.",
-                "Add broccoli, and sprinkle in salt. Stir and cook for 30 seconds, then remove from pan and set aside on a plate. The whole point here is to barely cook the vegetables so they won’t be totally falling apart and mushy when it’s time to stir them into the rice.",
-
-                "Add 1 tablespoons olive oil and 1 tablespoon butter to the same pan. Heat over medium-low heat.",
+                "Add broccoli, and sprinkle in salt. Stir and cook for 30 seconds.",
+                "Add 1 tablespoons olive oil and 1 tablespoon butter to the same pan.",
                 "Add rice and stir, cooking for 1 minute.",
-                "Add 3/4 cup wine and 1 1/2 teaspoons kosher salt. Stir and cook until liquid is absorbed.",
-                "Over the next 30 to 45 minutes, add 1 cup of simmering broth at a time, stirring and cooking until each addition of broth has absorbed. The image is at about 30 minutes in--just about done.",
-                "Add another 3/4 cup wine and cook until absorbed to finish it off with a great wine flavor.",
-
+                "Add 3/4 cup wine and 1 1/2 teaspoons kosher salt.",
+                "Over the next 30 to 45 minutes, add 1 cup of simmering broth at a time.",
+                "Add another 3/4 cup wine and cook until absorbed.",
                 "Add green onions and peas, stirring to combine.",
-                "Taste to make sure rice is the right texture; add a bit of broth or wine if rice has too much bite to it. Also check salt content and add more salt if necessary.",
-                "Remove from heat. Stir in goat cheese, Parmesan, and the sautéed vegetables until all goat cheese is combined. Add a small splash of broth if it gets overly thick/sticky.",
-
+                "Taste to make sure rice is the right texture.",
+                "Remove from heat. Stir in goat cheese, Parmesan, and sautéed vegetables.",
                 "Serve on plates, and garnish each with a sprig of dill."
             ],
 
@@ -95,25 +90,22 @@ define(
                 "http://farm3.static.flickr.com/2765/5701280717_8faf88a519_z.jpg",
                 "http://farm3.static.flickr.com/2376/5701849782_211c56c541_z.jpg",
                 "http://farm3.static.flickr.com/2247/5701849976_9b76141742_z.jpg",
-
                 "http://farm3.static.flickr.com/2576/5701287871_74bf73d340_z.jpg",
-
                 "http://farm6.static.flickr.com/5309/5701282411_872a72cdbd_z.jpg",
                 "http://farm6.static.flickr.com/5189/5701283909_dc2b4fa07d_z.jpg",
                 "http://farm6.static.flickr.com/5270/5701284605_c951ed5e2b_z.jpg",
                 "http://farm6.static.flickr.com/5028/5701853972_9728897051_z.jpg",
-
                 "http://farm3.static.flickr.com/2575/5701286185_d8712e06dd_z.jpg",
                 "http://farm3.static.flickr.com/2453/5701854682_05f99b459b_z.jpg",
                 "http://farm4.static.flickr.com/3211/5701288951_5d5a2a852d_z.jpg",
-                "http://farm3.static.flickr.com/2578/5701857990_98eb631c39_z.jpg",
 
+                "http://farm3.static.flickr.com/2578/5701857990_98eb631c39_z.jpg",
                 "http://farm3.static.flickr.com/2578/5701857990_98eb631c39_z.jpg", //extra
+
                 "http://farm4.static.flickr.com/3030/5701858360_7b8cd51e9a_z.jpg",
                 "http://farm4.static.flickr.com/3030/5701858360_7b8cd51e9a_z.jpg", //extra (salt)
 
                 "http://farm4.static.flickr.com/3456/5701859576_7258e80cc7_z.jpg",
-
                 "http://farm3.static.flickr.com/2176/5701294093_0a54069b95_z.jpg"
             ],
 
@@ -121,24 +113,22 @@ define(
                 "Peel the carrots, cutting them first into sticks, and then cutting the sticks into dice.", 
                 "Cut the cauliflower and broccoli into bits.",
                 "Dice the yellow onion.",
-
                 "Pour chicken broth into a small saucepan. Heat to a simmer.",
-            
                 "In a large pan, heat 2 tablespoons olive oil and 2 tablespoons butter.",
                 "Add diced onions and diced carrots. Stir and cook for a minute or two.",
                 "Add cauliflower and cook for one minute, stirring.",
                 "Add broccoli, and sprinkle in salt. Stir and cook for 30 seconds, then remove from pan and set aside on a plate. The whole point here is to barely cook the vegetables so they won’t be totally falling apart and mushy when it’s time to stir them into the rice.",
-        
                 "Add 1 tablespoons olive oil and 1 tablespoon butter to the same pan. Heat over medium-low heat.",
                 "Add rice and stir, cooking for 1 minute.",
                 "Add 3/4 cup wine and 1 1/2 teaspoons kosher salt. Stir and cook until liquid is absorbed.",
+
                 "Over the next 30 to 45 minutes, add 1 cup of simmering broth at a time, stirring and cooking until each addition of broth has absorbed. The image is at about 30 minutes in--just about done.",
                 "Add another 3/4 cup wine and cook until absorbed to finish it off with a great wine flavor.",
-                
+
                 "Add green onions and peas, stirring to combine.",
                 "Taste to make sure rice is the right texture; add a bit of broth or wine if rice has too much bite to it. Also check salt content and add more salt if necessary.",
+
                 "Remove from heat. Stir in goat cheese, Parmesan, and the sautéed vegetables until all goat cheese is combined. Add a small splash of broth if it gets overly thick/sticky.",
-                    
                 "Serve on plates, and garnish each with a sprig of dill."
             ],
 

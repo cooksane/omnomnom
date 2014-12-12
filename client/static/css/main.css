@@ -438,25 +438,29 @@ a.inactive {
   padding-top: 30px;
 }
 #ingredients-container h4 {
+  letter-spacing: 0;
   padding: 0 5px 0 0;
+  color: #000000;
   font-family: "Lato", sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: 0;
-  color: #000000;
+  color: #666666;
   margin-top: 0;
+  margin-bottom: 5px;
 }
 #tools-container {
   padding-top: 30px;
 }
 #tools-container h4 {
+  letter-spacing: 0;
   padding: 0 5px 0 0;
+  color: #000000;
   font-family: "Lato", sans-serif;
   text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: 0;
-  color: #000000;
+  color: #666666;
   margin-top: 0;
+  margin-bottom: 5px;
 }
 #semantic-container {
   height: 100%;
@@ -507,7 +511,7 @@ a.inactive {
   color: #333333;
   font-weight: 400;
   margin-bottom: 0px;
-  font-size: 10px;
+  font-size: 12px;
   display: block;
   overflow: hidden;
   white-space: nowrap;
@@ -520,7 +524,7 @@ a.inactive {
     color: #333333;
     font-weight: 400;
     margin-bottom: 2px;
-    font-size: 12px;
+    font-size: 14px;
     display: block;
     overflow: hidden;
     white-space: nowrap;
@@ -531,7 +535,7 @@ a.inactive {
 }
 .semantic-ingredient {
   margin-bottom: 0px;
-  font-size: 10px;
+  font-size: 12px;
   display: block;
   overflow: hidden;
   white-space: nowrap;
@@ -542,7 +546,7 @@ a.inactive {
 @media (min-width: 992px) {
   .semantic-ingredient {
     margin-bottom: 2px;
-    font-size: 12px;
+    font-size: 14px;
     display: block;
     overflow: hidden;
     white-space: nowrap;
@@ -571,8 +575,8 @@ a.inactive {
  * Instruction Summary
  */
 #summaryImage {
-  width: calc(630px/6);
-  height: calc(419px/6);
+  width: calc(630px/10/2);
+  height: calc(419px/10/2);
 }
 #summaryBody {
   padding-left: 10px;
@@ -614,30 +618,33 @@ a.inactive {
   /* Prevents dragging of images/divs etc */
   user-drag: none;
   cursor: pointer;
-  color: #999999;
+  color: #666666;
   font-weight: 400;
   -webkit-transition: color 100ms ease-out;
   -moz-transition: color 100ms ease-out;
   -o-transition: color 100ms ease-out;
   transition: color 100ms ease-out;
   /*
-  & #summary-select-indicator {
-    margin-right: -12px;
-    position: relative;
-    color: @color-background;
-    .transformX(-38px);
-    .select-indicator-transition(300ms, ease-in);
+  & #summaryImage {
+    .desaturate();
+    .transition-filter(@duration, ease-out);
   }
   */
 }
-#summary-instruction-link #summaryImage {
-  -webkit-filter: grayscale(100%) brightness(1.5);
-  -moz-filter: grayscale(100%) brightness(1.5);
-  filter: grayscale(100%) brightness(1.5);
-  -webkit-transition: filter 100ms, -ms-filter 100ms, -webkit-filter 100ms ease-out;
-  -moz-transition: filter 100ms, -ms-filter 100ms, -webkit-filter 100ms ease-out;
-  -o-transition: filter 100ms, -ms-filter 100ms, -webkit-filter 100ms ease-out;
-  transition: filter 100ms, -ms-filter 100ms, -webkit-filter 100ms ease-out;
+#summary-instruction-link #summary-select-indicator {
+  margin-right: -12px;
+  position: relative;
+  color: #fafafa;
+  transform: translateX(-38px);
+  /* Firefox */
+  -ms-transform: translateX(-38px);
+  /* IE 9 */
+  -webkit-transform: translateX(-38px);
+  /* Chrome, Safari, Opera */
+  -webkit-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-in;
+  -moz-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-in;
+  -o-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-in;
+  transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-in;
 }
 #summary-instruction-link:hover {
   color: #000000;
@@ -646,32 +653,43 @@ a.inactive {
   -o-transition: color 100ms ease-out;
   transition: color 100ms ease-out;
   /*
-    & #summary-select-indicator {
-      color: @dark-main;
-      .transformX(-28px);
-      .select-indicator-transition(300ms, ease-out);
+    & #summaryImage {
+      .saturate();
+      .transition-filter(@duration, ease-in);
     }
     */
 }
-#summary-instruction-link:hover #summaryImage {
-  -webkit-filter: grayscale(0%) brightness(1);
-  -moz-filter: grayscale(0%) brightness(1);
-  filter: grayscale(0%) brightness(1);
-  -webkit-transition: filter 100ms, -ms-filter 100ms, -webkit-filter 100ms ease-in;
-  -moz-transition: filter 100ms, -ms-filter 100ms, -webkit-filter 100ms ease-in;
-  -o-transition: filter 100ms, -ms-filter 100ms, -webkit-filter 100ms ease-in;
-  transition: filter 100ms, -ms-filter 100ms, -webkit-filter 100ms ease-in;
+#summary-instruction-link:hover #summary-select-indicator {
+  color: #a0c336;
+  transform: translateX(-28px);
+  /* Firefox */
+  -ms-transform: translateX(-28px);
+  /* IE 9 */
+  -webkit-transform: translateX(-28px);
+  /* Chrome, Safari, Opera */
+  -webkit-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-out;
+  -moz-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-out;
+  -o-transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-out;
+  transition: color 300ms, transform 300ms, -ms-transform 300ms, -webkit-transform 300ms ease-out;
 }
 .semantic-summary-instruction {
-  font-size: 10px;
+  font-size: 12px;
   margin: 0px 0 0px 0;
   padding: 5px 0 5px 6px;
 }
+.semantic-summary-instruction .semantic-summary-column {
+  margin: 0px 15px 0px 6px;
+  padding: 0px 15px 0px 10px;
+}
 @media (min-width: 992px) {
   .semantic-summary-instruction {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0px 0 0px 0;
     padding: 10px 0 10px 0px;
+  }
+  .semantic-summary-instruction .semantic-summary-column {
+    margin: 0px 15px 0px 10px;
+    padding: 0px 15px 0px 10px;
   }
 }
 /*
@@ -682,7 +700,7 @@ a.inactive {
   height: calc(419px/2);
 }
 .semantic-detail-instruction {
-  font-size: 12px;
+  font-size: 14px;
   color: #000000;
   margin: 0px 0 0px -4px;
   padding: 10px 0 10px 1px;
@@ -710,8 +728,11 @@ a.inactive {
   }
   .semantic-detail-instruction h3 {
     display: inline;
+    color: #333333;
   }
   .semantic-detail-instruction #detail-text {
+    color: #000000;
+    font-weight: 700;
     padding-left: 30px;
     margin-bottom: 0px;
   }
@@ -735,7 +756,6 @@ a.inactive {
   margin-left: -15px;
   margin-right: -15px;
   z-index: 11;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 #instructions-header h1 {
   margin-top: 0;
@@ -774,4 +794,8 @@ a.inactive {
 }
 .stage:not(.active) {
   letter-spacing: 1px;
+}
+#semantic-container .affix {
+  position: fixed;
+  top: 0;
 }
