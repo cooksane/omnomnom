@@ -1,0 +1,89 @@
+Paper Outline:
+    
+    Abstract (write this last once we've figured everything out.)
+
+    What is the problem / human need? How are we solving it? (Discussed in Introduction)
+        Proper nutrition is a human need, and "proper" varies from person to person. For each person, the meaning of proper nutrition could mean one or more of the following: Healthy eating, dietary restrictions due to allergies, religious reasons, personal beliefs, etc.
+        In the US, there are three main options for eating: Take out / Pre-packaged food / Home cooked meals. Take out and pre-packaged foods do not always allow each person to obtain their proper nutritional needs, whereas home cooked meals enable people full control over what they eat.
+        However, cooking is a learned skill. There exists a group of people who: 1) are interested in controlling what they eat, 2) are unable to achieve their dietary needs through take out / pre-packaged food, and 3) do not know how to cook.
+        Our research targets this group and seeks increase their options for obtaining their nutritional needs by improving the antiquated yet prominent process of learning new recipes.
+        (weak assumption) Our target group may perceive the process of learning to cook as difficult and thus may not consider cooking an option, especially those who have grown accustomed to eating out or eating pre-packaged meals.
+        If learning to cook were made easier, it may be more accessible to our target group.
+        We believe learning to cook can be made easier by improving the instructional design of recipes.
+        We believe the instructional design of recipes may be improved (This needs to be argued. I have written a comprehensive argument on this. See attached.).
+        6, 7, and 8 imply that improving the instructional design of recipes addresses, primarily for our target group, the need for proper nutrition.
+
+        The primary goal of this research is to determine whether learning new recipes can be made easier than the now antiquated recipe system.
+
+    Related work
+        Overview of (what is now) relevant related work that contributes to our research.
+        Include subsections discussing:
+            Cognitive Load
+                Working Memory
+                    Insofar as discussing its limitations
+                    extraneous cognitive load
+                        keep track of information for user -> reduce load on working memory
+                        reduce amount of information displayed at any given time -> cognitive proc. WRT to search.
+                            Can reducing information too much increase search time? -> increase cognitive load -> semantic zoom.
+                    germane cognitive load
+                        present information in a manner that emphasizes what should be in mind, what needs to be done, and how that changes in a well defined manner
+                            this can arguably enhance schema construction -> increase germane cog. load
+                        aim of UI to reflect structure of process without deviating too much from UI / content patterns to which target audience has grown accustomed
+                Include something that shows chunking reduces cognitive load (this could just be the papers we read on cognitive load).
+            Fitts' law
+                In particular, emphasize the importance of minimizing amplitude.
+                Argue target acquisition time (amplitude / target size) vs. duration WRT # of clicks to obtain target as comparable metrics (both functions of time).
+                    See time increase as a function of steps in recipe: as # of steps increases, how does target acquisition time vary WRT Fitts' law + duration spent clicking to acquire target step?
+        Close this section with the following argument
+            Chunking reduces cognitive load.
+            Minimizing amplitude of target acquisition reduces search time -> less cognitive processing -> less cognitive load.
+            Leverage adaptive interaction techniques to emphasize relevant information while maintaining accessibility to logically adjacent information.
+                ing highlighting; not tools (may serve as more of a distraction vs. help)
+            Mindlessly clicking requires very little cognitive processing?
+    What is the "question" being answered by our research?
+        Can learning new recipes be made easier?
+    Theoretical Foundation
+        Cognitive load theory & instructional design.
+    Technologies Used
+        Paper design prototypes.
+        Interactive web application.
+    Summarize Results from Study 1
+        Note the design we had before Study 1 (we should use Michelle's original mocks for this).
+        Note the design we had after Study 1 (we can just show the live site)
+            Note the changes and reasoning (in cognitive-load-theoretic terms) we made to final design based results of study 1.
+    Results of Study 2
+        Present Qualitative results:
+        What worked?
+            Ingredient highlighting was very successful (stayed out of users' way while helping them keep track of ingredients involved in a given step).
+        What didn't work?
+            Expected responsive to be more performant than sbs, but this was not the case (for group 3). The drawbacks of SBS were clear (missed important future steps that slowed user down), but it was not clear whether responsive interface helped alleviate This may be due to eggs and risotto recipes being well written and not very parallelized.
+            NASA data seemed to reflect reactions to recipe, not interface.
+        Present iterative design decisions (these are based on qualitative results):
+        Indicate in some manner materials needed for the recipe.
+        Based on success of ingredient highlighting in study 2, highlight materials used per step (similar to ingredients used per step).
+        Changes to curation process:
+            A map between materials and steps should be established.
+            Recipes with small number of steps and long descriptions should be broken down into more steps.
+        Things to try:
+        For responsive, write step summaries that provide information that enables parallelization. This may help counter the drawbacks of SBS, and make the difference in SBS and Responsive interface more prominent.
+    Conclusion
+        In general, we've noticed that a single feature, by incorporating related work, which optimizes several performance factors (adaptive interaction / target acquisition / cognitive load) (spatially fixed buttons for next/prev functionality, de-emphasizing inactive steps while keeping them in view, etc.).
+        Cursory reactions to the final SZ interface suggest that gradual onset of changes to visual configuration of our interface (via animations) seemed to have the effect of conveying the temporal relationship between steps through motion.
+        Having strong knowledge of the logical structure of information aids in the design of interfaces that minimize cognitive load and maximize interactive performance (touch scroll navigation between steps).
+    Future Work
+        Enhancements
+            Naturally snapping to nearest step after touch interaction can minimize target acquisition time.
+
+Quantitative Data
+
+We can present some data, but from what I can tell so far, our data just shows which recipes were difficult. Within those recipes, however, we can perhaps see some data on which interfaces performed better. This might not be bogus, even though our subjects had varying skill levels. There are a few metrics I think are worth mentioning, but I don't know why we would mention them unless they addressed some hypothesis:
+
+    For each recipe, the # of times a step has changed indicates the amount of cognitive load the recipe demands.
+    SBS vs. Responsive
+        For a given recipe, we may compare the # of times a step has changed. We claim a smaller number in step change indicates the ability of that interface to reduce cognitive load due to the capacity of working memory.
+    Control vs. SBS
+        For a given recipe, we may compare the total duration it took to make that recipe. We claim this indicates an overall reduction in cognitive load due to chunking.
+    Control vs. Responsive
+        For a given recipe, we may compare the total duration it took to make that recipe. We claim this indicates an overall reduction in cognitive load due to chunking.
+
+
