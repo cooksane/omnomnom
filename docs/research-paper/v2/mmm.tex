@@ -285,7 +285,7 @@ Based on these observations, we decided to focus on the curation of recipe instr
 
 \begin{figure*}[tbh]
   \centering
-  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=180mm]{ours.png}\\
+  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=180mm]{responsive_wIH.png}\\
   \caption{Example view of our proposed Responsive interface}
   \label{fig:ours}
 \end{figure*}
@@ -296,17 +296,27 @@ In order to compare effectiveness of different recipe interfaces, we developed t
 
 \begin{figure}[tbh]
   \centering
-  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=85mm]{control.png}\\
+  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=85mm]{control2.png}\\
   \caption{Traditional interface of a recipe}
   \label{fig:control}
 \end{figure}
 
 \begin{figure}[tbh]
   \centering
-  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=85mm]{stepbystep.png}\\
+  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=85mm]{SBS_wIH.png}\\
   \caption{Step-by-step interface that is commonly adopted for cellphone applications}
   \label{fig:stepbystep}
 \end{figure}
+
+System architecture of the interfaces is illustrated in Fig \ref{fig:systemarchi}. We receive structured JSON data of recipes from BigOvenAPI via a command-line interface to Server. The recipe is curated and put into Curated Recipes, our database. Recipe Client, a web-based application requests recipes by $\{$id$\}$ from Server, which queries Curated Recipes. 
+
+\begin{figure}[tbh]
+  \centering
+  \includegraphics[trim = 0mm 0mm 0mm 0mm, clip,width=85mm]{systemarchi.pdf}\\
+  \caption{System architecture of interactive web interfaces}
+  \label{fig:systemarchi}
+\end{figure}
+
 
 \section{User Study \#2}
 Three subjects are observed and interviewed for this study. Each subject was asked to test three interfaces (Control, Step-by-step, and our proposed Responsive interface). We curated three recipes (risotto primavera, mushroom lasagna, and baked eggs with spinach and mushrooms) that the subjects did not have prior experience making. Subject 1 tested traditional interface with risotto primavera, step-by-step interface with baked eggs, and our interface with mushroom lasagna. Subject 2 tested traditional interface with mushroom lasagna, step-by-step interface with risotto primavera, and our interface with baked eggs. Subject 3 tested traditional interface with baked eggs, step-by-step interface with mushroom lasagna, and our interface with risotto primavera. We measured time spent on completing individual steps as well as the entire instructions. Similar to User Study \#1, subjects narratively described the process that they were taking and the subjects' responses, behaviors, and surroundings were documented. Subjects completed NASA-TLX \cite{nasa_tlx} worksheet after each interface, and at the end of the experiment they selected their most preferred interface. 
@@ -356,31 +366,72 @@ User feedback indicated that Step-by-step interface chunked information and miss
 Initially, we included NASA TLX survey to get user feedback on different interfaces. However, we realized that the survey ended up reflecting reactions to recipe, not interface. We observed that subjects had most difficult time making lasagna. As expected, lasagna had the highest rating for mental demand (risotto: 2.67; eggs: 3; lasagna: 3.67) and frustration (risotto: 2; eggs: 3; lasagna: 3.67) in NASA TLX survey. Referring back to Table 1, the number of times a step has changed indicated the amount of cognitive load the recipe demands. As lasagna was identified as the most difficult dish, it had the highest number of clicks, eggs had the second highest, and then risotto for both Responsive and Step-by-step interfaces. 
 
 \section {Final Design Iteration}
-For the final design, we improved Responsive interface based on our observations and users' feedbacks in User Study \#2. 
 
-**********Continue writing + Add a screenshot
+For the final design, we refined Responsive interface based on our experience in User Study \#2. The focus of our final iteration was to retain the features that were useful and remove or improve features that provided extraneous information to users. Figure \ref{fig:sz_final_1} and \ref{fig:sz_final_2} show example views of our final recipe interface. In the following subsections, we describe added features of our final design, and some factors that led to its relative success. 
 
-- Most subjects requested presentation of cookwares along with instructions and ingredients. In this iteration, we incorporated the feature of cookware curation. 
 
-- All subjects looked at the photo of the finalized dish to decided on intermediate steps that were not elaborated in the recipe. Most subjects commented that having a picture in each step would greatly help them understand latent instructions. With their request, we added images in each step. 
+%\begin{figure*}[tbh]
+%  \centering
+%  \includegraphics[trim = 0mm 0mm 0mm 22mm, clip,width=180mm]{sbs-final-8.png}\\
+%  \caption{System architecture of interactive web interfaces}
+%  \label{fig:sbs_final_1}
+%\end{figure*}
 
-- In the final design, we clearly added `next' and `previous' button. In previous Responsive interface, those buttons were not visually presented bur rather implied. 
+\begin{figure*}[tbh]
+  \centering
+  \includegraphics[trim = 0mm 0mm 0mm 22mm, clip,width=180mm]{sz-final-8.png}\\
+  \caption{System architecture of interactive web interfaces}
+  \label{fig:sz_final_1}
+\end{figure*}
 
-\section {Design Observations}
+\begin{figure*}[tbh]
+  \centering
+  \includegraphics[trim = 0mm 0mm 0mm 22mm, clip,width=180mm]{sz-final-9.png}\\
+  \caption{System architecture of interactive web interfaces}
+  \label{fig:sz_final_2}
+\end{figure*}
 
-In this section, we describe added features of our final design, and some factors that led to its relative success. 
+\subsection{Semantic Zoom}
+In the course of our study, we found that users had to repeatedly read and scan the entire recipe to identify the step that they were currently on. This was a major issue of the traditional recipe and caused an unnecessary cognitive load to users. We attempted to reduce this extraneous effort and time spent on finding the current step using semantic zoom. Semantic zoom feature interactively emphasized current instruction based on a user feedback (e.g., a click). With this interface, users no longer had to spend time finding their current steps. 
 
-\subsection{Instruction Highlighting}
+The emphasized current step maintained spatial consistency. Figure \ref{fig:sz_final_1} shows the view of the interface when step 8 is selected and Figure \ref{fig:sz_final_2} shows the interface when step 9 is selected. Notice the locations of the emphasized regions have not changed between step 8 and 9. 
+
+From user studies, we found that all subjects looked at the photos of the finalized dish to decided on intermediate steps that were not elaborated in the recipe. Most subjects commented that having a picture in each step would greatly help them understand latent instructions. With their request, we added images in each step. Since the final interface used semantic zoom, it allowed a large portion of interface towards current step. We were able to better utilize the space for adding images that could assist users in identifying latent instructions that were not explicitly described but rather implied as a common knowledge. For example, `making indentations' could be easily resolved with an example image.
+
+Similar to Responsive interface, our final interface allowed users to jump multiple steps to navigate the recipe. According to Fitts's law, this feature ultimately reduces time required to move from one target area to the other. When users hovered over a step, as shown in \ref{fig:sz_final_1}, a green arrow button provided users a sense of where they were about to select.  We designed a system in a way that users can navigate the interface using up/down keys, scrolling, or clicking. 
 
 \subsection{Instruction Summary View}
+While Step-by-step interface reduced cognitive load by clearly separating individual steps, it limited users from having a control over the view of overall picture. Semantic view features keeps the benefit of reducing cognitive load in Step-by-step 
+
+In User Study \#2, both Subject 1 and 3 pointed out that clear separation of steps in Step-by-step interface made for easier digestion without worrying too much of overall picture. This effect reduced cognitive load of users but it did so at the expense of losing the control over the view of overall picture. 
+
+users like to plan current actions in light of what is coming up. 
+
+Incorporated native scrolling feature to navigate individual steps within the recipe. 
+
+ The interface only showed current step, which limited cognitive load but it did so at the expense of knowledge. Hence, it led to longest total cook- ing time compared to Control and Responsive interfaces. 
+
+clear separation of steps made for easier digestion and awareness of what he needed to do without worrying too much of overall picture.? He also stated: ?Even though the second interface was also in paragraph format just like the first one, it didn?t have as daunting of a feel since it was just one.?
+
+Talk about what Michelle added. wrt Gojo's paper. What it does. Sub-goal paper labeling [cite]
 
 \subsection{Ingredient Highlighting}
 
-\subsection{Cookware Listing}
+keeping track of ingredients in relation to current step. 
 
-\subsection{Native Scrolling}
+Based on how often the ingredient appears in the recipe, we can visually show how much should be used in the current step and how much is expected to be used in later steps. 
+
+
+\subsection{Cookware Listing}
+Most subjects requested presentation of cookwares along with instructions and ingredients. In this iteration, we incorporated the feature of cookware curation. List of tools are presented on the right top corner of Figure \ref{fig:sz_final_1}.
 
 \section{Conclusions and Future Work}
+In this paper we present our experiences seeking to develop a machine assisted recipe interface for novice chefs. Through the series of user study, we identified strengths and weakness of traditional recipe designs and iteratively refined the recipe interface. The focus of our 
+
+we retained existing design choices that worked well and improved xx that yy. The focus of our improvement is on 
+
+Based on a series of user study, we developed an interactive recipe interface that includes 
+
 
 
 
