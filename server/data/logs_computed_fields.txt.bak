@@ -1,0 +1,13 @@
+group
+interface
+recipe
+
+totalDuration.m
+timestampDuration.m
+totalStepDuration.m
+totalStepChange
+totalStepChangeRate
+
+maxStepDelta
+totalStepDelta
+totalStepDeltaRate

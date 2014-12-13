@@ -2,7 +2,9 @@ group
 interface
 recipe
 
-totalDuration.m
-timestampDuration.m
-totalStepDuration.m
+maxStepDelta
+totalStepDelta
+totalStepDeltaRate
+
 totalStepChange
+totalStepChangeRate
