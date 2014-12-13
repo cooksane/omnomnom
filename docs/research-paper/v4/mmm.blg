@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: mmm.aux
+The style file: acm-sigchi.bst
+Database file #1: sample1.bib
+Warning--string name "“kraft”" is undefined
+--line 242 of file sample1.bib
+Warning--string name "“martha”" is undefined
+--line 264 of file sample1.bib
+Warning--string name "“goodfoodstories”" is undefined
+--line 274 of file sample1.bib
+Warning--to sort, need author or key in kraft
+Warning--to sort, need author or key in martha
+Warning--to sort, need author or key in goodfoodstories
+Warning--empty booktitle in freyne_2010
+You've used 21 entries,
+            2243 wiz_defined-function locations,
+            619 strings with 6589 characters,
+and the built_in function-call counts, 7376 in all, are:
+= -- 739
+> -- 216
+< -- 0
++ -- 96
+- -- 72
+* -- 302
+:= -- 924
+add.period$ -- 56
+call.type$ -- 21
+change.case$ -- 102
+chr.to.int$ -- 0
+cite$ -- 25
+duplicate$ -- 484
+empty$ -- 686
+format.name$ -- 72
+if$ -- 1800
+int.to.chr$ -- 0
+int.to.str$ -- 21
+missing$ -- 15
+newline$ -- 101
+num.names$ -- 30
+pop$ -- 220
+preamble$ -- 1
+purify$ -- 81
+quote$ -- 0
+skip$ -- 434
+stack$ -- 0
+substring$ -- 312
+swap$ -- 224
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 84
+warning$ -- 4
+while$ -- 42
+width$ -- 23
+write$ -- 189
+(There were 7 warnings)
