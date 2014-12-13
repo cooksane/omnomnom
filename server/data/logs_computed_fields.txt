@@ -2,6 +2,7 @@ group
 interface
 recipe
 
+minStepDelta
 maxStepDelta
 totalStepDelta
 totalStepDeltaRate
