@@ -45,7 +45,7 @@
 % since its job is to redefine many LaTeX commands.
 \usepackage[pdftex]{hyperref}
 \hypersetup{
-pdftitle={MACHINE-ASSISTED COOKING},
+pdftitle={Machine-Assisted Cooking},
 pdfauthor={LaTeX},
 pdfkeywords={SIGCHI, proceedings, archival format},
 bookmarksnumbered,
@@ -119,7 +119,7 @@ For decades now, food options in America have been primarily unhealthy. Unhealth
 
 To get a general sense of traditional recipe design, we initially observed three subjects with varying cooking experience make a meal based on a recipe. Our preliminary observation showed that even experienced cooks exhibit difficulties in digesting the load of information that traditional recipe presents, which lead to mistakes, frustrations, and even a loss in motivation to cook. One major cause of such effects is poor presentation of recipe. Consequently, the primary focus of this work is to improve the experience of learning a new recipe by improving the recipe design. Throughout the paper, we are primarily interested in answering the following questions: What are relevant and extraneous information in learning to cook? What format makes important information salient and reduces confusion? How will the difficulty of cooking be perceived as we design an interface that makes important information salient and removes extraneous information?
 
-For this work, we design a user interface for a machine assisted cooking application. The interface is iteratively improved based on series of detailed observations in user studies. Our interface aims to maintain germane cognitive load and reduce extraneous load through effective recipe presentation. We focus on three main attributes to effective recipe presentation: instructions, ingredients, and materials. 
+For this work, we design a user interface for a cooking application. The interface is iteratively improved based on series of detailed observations in user studies. Our interface aims to maintain germane cognitive load and reduce extraneous load through effective recipe presentation. We focus on three main attributes to effective recipe presentation: instructions, ingredients, and materials. 
 
 The organization for the remainder of this paper is as follows: Related Work contains the necessary background materials for cognitive-load-theoretic principles in relation to cooking and prior work on cooking interface. Procedure section describes the summary of our research methods to developing a recipe interface. We then present our initial vision into an interactive interface in Initial Paper Prototypes section. User Study \#1 includes our preliminary observations seeking to understand relevant and extraneous information in cooking. Based on background information gather from the study, System Design section presents three interactive recipe interfaces: Control, Step-by-step, and Responsive. User Study \#2 shares the experiments conducted to compare the three interfaces and quantitative and qualitative results followed by the experiments. Final Design Iteration discusses the details of the features and rationale of our final design and Conclusions and Future Work section completes the paper. 
 
@@ -394,28 +394,28 @@ For the final design, we refined Responsive interface based on our experience in
 \end{figure*}
 
 \subsection{Semantic Zoom}
-In the course of our study, we found that users had to repeatedly read and scan the entire recipe to identify the step that they were currently on. This was a major issue of the traditional recipe and caused an unnecessary cognitive load to users. We attempted to reduce this extraneous effort and time spent on finding the current step using semantic zoom. Semantic zoom feature interactively emphasized current instruction based on a user feedback (e.g., a click). With this interface, users no longer had to spend time finding their current steps. 
+In the course of our study, we found that users had to repeatedly read and scan the entire recipe to identify the step that they were currently on. This was a major issue of the traditional recipe and caused an unnecessary cognitive load to users. We attempted to reduce this extraneous effort and time spent on finding the current step using semantic zoom. Semantic zoom feature has a capability of magnifying (or demagnifying) not only the geometric properties of data, but also the structure and selection of data. This feature interactively emphasized current instruction based on a user feedback (e.g., a click). With this interface, users no longer had to spend time finding their current steps. 
 
 The emphasized current step maintained spatial consistency. Figure \ref{fig:sz_final_1} shows the view of the interface when step 8 is selected and Figure \ref{fig:sz_final_2} shows the interface when step 9 is selected. Notice the locations of the emphasized regions have not changed between step 8 and 9. 
 
 From user studies, we found that all subjects looked at the photos of the finalized dish to decided on intermediate steps that were not elaborated in the recipe. Most subjects commented that having a picture in each step would greatly help them understand latent instructions. With their request, we added images in each step. Since the final interface used semantic zoom, it allowed a large portion of interface towards current step. We were able to better utilize the space for adding images that could assist users in identifying latent instructions that were not explicitly described but rather implied as a common knowledge. For example, `making indentations' could be easily resolved with an example image.
 
-Similar to Responsive interface, our final interface allowed users to jump multiple steps to navigate the recipe. According to Fitts's law \cite{fitts}, this feature ultimately reduces time required to move from one target area to the other. When users hovered over a step, as shown in \ref{fig:sz_final_1}, a green arrow button provided users a sense of where they were about to select.  We designed a system in a way that users can navigate the interface using up/down keys, scrolling, or clicking. 
+Similar to Responsive interface, our final interface allowed users to jump multiple steps to navigate the recipe. According to Fitts's law \cite{fitts}, this feature ultimately reduces time required to move from one target area to the other. When users hover over a step, as shown in \ref{fig:sz_final_1}, a green arrow button provides users a sense of where they were about to select. Comparing Figure \ref{fig:sz_final_1} and Figure \ref{fig:sz_final_2}, notice the location of the green button remains consistent within step changes. We designed a system in a way that users can navigate the interface using up/down keys, scrolling, or clicking. 
 
-\subsection{Instruction Summary View}
+\subsection{Summary View}
 While Step-by-step interface reduced cognitive load by clearly separating individual steps, it limited users from viewing the overall picture. Semantic view feature kept the benefit of reducing cognitive load in Step-by-step interface while instruction summary view feature kept the benefit of the traditional interface that provided the view of overall picture. To give users a sense of the overall picture of the recipe, the summary view features summarizes detailed instructions of the previous and future steps. Instruction summaries are enumerated above and below the semantic zoom view. Figure \ref{fig:sz_final_1} shows the presentation of instruction summaries in the final design iteration. Additionally, we added a concept of subgoal labels \cite{subgoal} that help users to focus on high level functions rather than low level details (See the left tab of Figure \ref{fig:sz_final_1}).
 
-\subsection{Ingredient Highlighting}
+\subsection{Highlighting}
 
 With Control interface, we learned that users have difficulty locating current step and the ingredients that correspond to the current step. With Step-by-step interface, we noticed users were making mistake in portions of ingredients because they were unsure if the ingredients were being used again in later steps. We developed ingredient highlighting feature that helps users to keep track of active ingredients in relation to current step.
 
-Based on how often the ingredient appears in the recipe, we visually showed how much of the ingredient should be used in the current step and how much is expected to be used in later steps. The right tab of Figure \ref{fig:sz_final_1} presents ingredient highlighting feature. Notice 1/2 cup broccoli and 1.2 teaspoon of salt are highlighted as active ingredients used in the current instruction emphasized in semantic zoom view. 
+Based on how often the ingredient appears in the recipe, we visually showed how much of the ingredient should be used in the current step and how much is expected to be used in later steps. The right tab of Figure \ref{fig:sz_final_1} presents ingredient highlighting feature. Notice 1/2 cup broccoli and 1.2 teaspoon of salt are highlighted as active ingredients used in the current instruction emphasized in semantic zoom view. Similar highlighting technique is adopted for emphasizing current instruction and subgoal label. 
 
 \subsection{Cookware Listing}
 Most subjects requested presentation of cookwares along with instructions and ingredients. In this iteration, we incorporated the feature of cookware curation. List of tools are presented on the right top corner of our interface in Figure \ref{fig:sz_final_1}.
 
 \section{Conclusions and Future Work}
-In this paper we presented our experiences seeking to develop a machine assisted recipe interface for a novice cook. Through series of user study, we developed some understanding on what are important and extraneous information to a novice cook. We investigate features that increase germane load and reduce extraneous cognitive load in a recipe design. We implemented and iteratively tested our interactive recipe interface that focused on curation of recipe instructions and ingredients. We demonstrated the effectiveness of our interactive interface in comparison to commonly used recipe interfaces. We described rationale and detailed descriptions of the features that have contributed to the success of our final design iteration.
+In this paper we presented our experiences seeking to develop a recipe interface for a novice cook. Through series of user study, we developed some understanding on what are important and extraneous information to a novice cook. We investigate features that increase germane load and reduce extraneous cognitive load in a recipe design. We implemented and iteratively tested our interactive recipe interface that focused on curation of recipe instructions and ingredients. We demonstrated the effectiveness of our interactive interface in comparison to commonly used recipe interfaces. We described rationale and detailed descriptions of the features that have contributed to the success of our final design iteration.
 
 As a future work, we would like to gather more quantitative data to acquire statistically meaning results. For this, we need to establish a better scheme to find volunteered subjects. For this study, we faced difficulty in finding volunteers because each experiment took a considerable amount of time and monetary cost. If time permits, we would like to explore possibilities of emulating similar experiments to what we have conducted, using simple objects such as colored blocks and boxes instead of actual food. 
 
@@ -451,7 +451,7 @@ As a future work, we would like to gather more quantitative data to acquire stat
 
 % REFERENCES FORMAT
 % References must be the same font size as other body text.
-
+\small
 \bibliographystyle{acm-sigchi}
 \bibliography{sample1}
 \end{document}
