@@ -1,6 +1,6 @@
-group
-interface
 recipe
+interface
+group
 
 minStepDelta
 maxStepDelta
