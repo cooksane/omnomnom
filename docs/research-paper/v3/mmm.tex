@@ -385,6 +385,13 @@ User feedback indicated that Step-by-step interface chunked information and miss
 
 Initially, we included NASA TLX survey to get user feedback on different interfaces. However, we realized that the survey ended up reflecting reactions to recipe, not interface. We observed that subjects had most difficult time making lasagna. As expected, lasagna had the highest rating for mental demand (risotto: 2.67; eggs: 3; lasagna: 3.67) and frustration (risotto: 2; eggs: 3; lasagna: 3.67) in NASA TLX survey. Referring back to Table 1, the number of times a step has changed indicated the amount of cognitive load the recipe demands. As lasagna was identified as the most difficult dish, it had the highest number of clicks, eggs had the second highest, and then risotto for both Responsive and Step-by-step interfaces. 
 
+\subsection{More data results}
+
+
+- Finding (uniformly) *random* target with SZ interface is O(n) of number of targets. Current item position anchors search, and the structure of the task suggests targets local to the current item have higher probability of being selected. This can be shown by looking at distribution of target change relative to selected target: We have this data -> show a normal distribution for SZ. Show distribution for SBS as well (obviously normal, can be argued by deduction; no data needed). A greater standard deviation with respect to relative target selection distribution demonstrates usefulness of SZ over SBS (user needs more than just immediate local target acquisition). Measuring spikes in target switch deltas which are low (graph of # of items switched vs. time delta between items) can show user's need for more than just immediate local target acquisition (this is important to show for SBS). If we can show this for SBS, then this may be regarded as an increase in extraneous cognitive load, given the step-by-step detailed information the user must traverse over in order to acquire target.
+
+- Also important to note that further analysis WRT to target acquisition may suggest that too many steps is bad (for target acquisition); but unclear whether this implies increase in cognitive load.
+
 \section {Final Design Iteration}
 For the final design, we improved Responsive interface based on our observations and users' feedbacks in User Study \#2. 
 
@@ -408,10 +415,21 @@ In this section, we describe added features of our final design, and some factor
 
 \subsection{Cookware Listing}
 
-\subsection{Native Scrolling}
+%replace this with performance-related enhancements
+%\subsection{Native Scrolling}
+\subsection{Performance}
+
+- Natural Scrolling: instead of having to be over a button on the screen, you can navigate to the next/previous step using the mouse wheel or touch pad. This eliminates the need for target acquisition. The goal of this was to add ``snapping'' to nearest target item upon sufficient deceleration (final position can easily be acquired by integrating over sufficiently large period of time; closest item to final position may be set as new target when deceleration rate of final target equals expected deceleration rate of new target).
+
+- Original SZ had current step change position as a function of the selected step. This required a change in mouse position every time you wanted to select the next step. Also, this interface lacked any notion of a next/prev step button.
+This was improved by keeping the selected step spatially fixed, while varying the position of instruction summaries. Now, selecting the $k$th next/prev step can be done done without changing mouse position. $k=1$, is the equivalent to a next step button. Before, target acquisition for ``next step'' had non-zero amplitude; now, the amplitude for targeting ``next step'' is zero.
+
+% I don't think this makes sense.
+- When summaries overflow off the page, # of visible targets $k$ in target nav direction (relative to current target) decreases # of clicks by a factor of $k$. Data shows people navigate forward more than they navigate backward. Consequently, want to show as many targets in direction more likely to navigate: Show more ``next'' targets than ``previous'' targets (which we have done in final iteration). This doesn't matter without overflow.
+
+- 
 
 \section{Conclusions and Future Work}
-
 
 
 %\section{Acknowledgments}
